@@ -1,0 +1,14 @@
+{
+  "analysisServicesServer": "as",
+  "apiManagementService": "apim-",
+  "appConfigurationStore": "appcs-",
+  "applicationInsights": "appi-",
+  "appServicePlan": "plan-",
+  "appServiceWebApp": "app-",
+  "cognitiveServicesFoundry": "aif-",
+  "keyVault": "kv-",
+  "logAnalyticsWorkspace": "log-",
+  "managedIdentityUserAssigned": "id-",
+  "resourceGroup": "rg-",
+  "storageAccount": "st"
+}

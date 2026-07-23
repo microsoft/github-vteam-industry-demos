@@ -1,0 +1,207 @@
+@page "/"
+@rendermode InteractiveServer
+@inject ClaimsService ClaimsService
+@inject IClaimWorkflowOrchestrator Orchestrator
+
+<PageTitle>Dashboard — ClaimPortal · Fidelis</PageTitle>
+
+<!-- ======================================================
+     HERO
+     ====================================================== -->
+<section class="hero-section">
+    <div class="container-xl hero-content">
+        <div class="row align-items-center gy-4">
+            <div class="col-lg-7">
+                <div class="hero-eyebrow">
+                    <span>⚕️</span> Fidelis Insurance · Claims Portal
+                </div>
+                <h1>
+                    Claims processing,<br />
+                    <span class="highlight">fast and transparent.</span>
+                </h1>
+                <p class="hero-lead">
+                    Submit a claim in seconds. Our deterministic policy engine — enriched
+                    with Azure AI Foundry intelligence — evaluates and decides instantly,
+                    with a full audit trail for every outcome.
+                </p>
+                <div class="hero-cta-group">
+                    <a href="/upload" class="btn btn-hero px-4 py-2">
+                        📤 Submit a Claim
+                    </a>
+                    <a href="/decisions" class="btn btn-hero-outline px-4 py-2">
+                        📋 Audit Trail
+                    </a>
+                </div>
+
+                <!-- Live stats from claims store -->
+                <div class="hero-stats">
+                    <div class="hero-stat-item">
+                        <div class="hs-num">@_totalClaims</div>
+                        <div class="hs-label">Total Claims</div>
+                    </div>
+                    <div class="hero-stat-item">
+                        <div class="hs-num" style="color:#4ade80">@_approvedClaims</div>
+                        <div class="hs-label">Approved</div>
+                    </div>
+                    <div class="hero-stat-item">
+                        <div class="hs-num" style="color:#f87171">@_rejectedClaims</div>
+                        <div class="hs-label">Rejected</div>
+                    </div>
+                    <div class="hero-stat-item">
+                        <div class="hs-num" style="color:#a5b4fc">@_pendingClaims</div>
+                        <div class="hs-label">Pending</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="fc-icon">📤</div>
+                        <h5>Upload Claim</h5>
+                        <p>Submit with supporting PDF or JSON documents. All fields validated before processing.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="fc-icon">⚡</div>
+                        <h5>Instant Decision</h5>
+                        <p>Coverage limits, validity, and thresholds evaluated in milliseconds with AI enrichment.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="fc-icon">🔍</div>
+                        <h5>Full Audit Trail</h5>
+                        <p>Every decision logged with reason, policy notes, and AI recommendation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======================================================
+     DASHBOARD STATS
+     ====================================================== -->
+<div class="container-xl py-4">
+
+    @if (_claims is not null && _claims.Count > 0)
+    {
+        <div class="row g-3 mb-4">
+            <div class="col-sm-6 col-xl-3">
+                <div class="stat-card stat-total d-flex align-items-center gap-3">
+                    <div class="stat-icon">📊</div>
+                    <div>
+                        <span class="stat-number">@_totalClaims</span>
+                        <span class="stat-label">Total Claims</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="stat-card stat-approved d-flex align-items-center gap-3">
+                    <div class="stat-icon">✅</div>
+                    <div>
+                        <span class="stat-number">@_approvedClaims</span>
+                        <span class="stat-label">Approved</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="stat-card stat-rejected d-flex align-items-center gap-3">
+                    <div class="stat-icon">❌</div>
+                    <div>
+                        <span class="stat-number">@_rejectedClaims</span>
+                        <span class="stat-label">Rejected</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="stat-card stat-pending d-flex align-items-center gap-3">
+                    <div class="stat-icon">⏳</div>
+                    <div>
+                        <span class="stat-number">@_pendingClaims</span>
+                        <span class="stat-label">Pending</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent activity -->
+        <div class="fp-card mb-4">
+            <div class="fp-card-header">
+                <span style="font-size:1.1rem">📋</span>
+                <div>
+                    <div style="font-weight:700;color:var(--fp-gray-800)">Recent Claims</div>
+                    <div style="font-size:.8rem;color:var(--fp-gray-400)">Last 5 submitted claims</div>
+                </div>
+                <a href="/decisions" class="btn btn-outline-secondary btn-sm ms-auto">View All →</a>
+            </div>
+            <div class="fp-card-body p-0">
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr>
+                                <th class="ps-4">Claimant</th>
+                                <th>Policy</th>
+                                <th class="text-end">Amount</th>
+                                <th>Submitted</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var c in _claims.Take(5))
+                            {
+                                <tr>
+                                    <td class="ps-4 fw-semibold">@c.ClaimantName</td>
+                                    <td><span class="policy-badge">@c.PolicyNumber</span></td>
+                                    <td class="text-end amount-cell">@c.ClaimAmount.ToString("C0")</td>
+                                    <td style="color:var(--fp-gray-400);font-size:.8rem">@c.SubmittedAt.ToLocalTime().ToString("MMM d, HH:mm")</td>
+                                    <td>
+                                        <span class="status-badge @c.Status.ToString().ToLower()">@c.Status</span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- AI info banner -->
+    <div class="ai-info-banner @(Orchestrator.IsLive ? "live" : "")">
+        <div class="aib-icon">@(Orchestrator.IsLive ? "🟢" : "🤖")</div>
+        <div>
+            @if (Orchestrator.IsLive)
+            {
+                <span><strong>Powered by Microsoft AI Foundry</strong> — a multi-agent orchestration
+                (intake, fraud &amp; risk, and policy assessor agents plus the Microsoft Learn MCP tool)
+                enriches every decision. Explore it on the <a href="/workflow">Agentic Workflow</a> page.</span>
+            }
+            else
+            {
+                <span><strong>Microsoft AI Foundry (Simulation)</strong> — running locally without Azure
+                credentials. The deterministic policy engine is fully operational and the multi-agent
+                orchestration is simulated. See the <a href="/workflow">Agentic Workflow</a> page for the
+                topology, or set <code>Foundry:OrchestratorAgentId</code> to run the live agents.</span>
+            }
+        </div>
+    </div>
+
+</div>
+
+@code {
+    private List<Claim>? _claims;
+    private int _totalClaims;
+    private int _approvedClaims;
+    private int _rejectedClaims;
+    private int _pendingClaims;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var all = await ClaimsService.GetAllClaimsAsync();
+        _claims       = all.ToList();
+        _totalClaims  = _claims.Count;
+        _approvedClaims = _claims.Count(c => c.Status == ClaimStatus.Approved);
+        _rejectedClaims = _claims.Count(c => c.Status == ClaimStatus.Rejected);
+        _pendingClaims  = _claims.Count(c => c.Status == ClaimStatus.Pending);
+    }
+}
+

@@ -1,0 +1,306 @@
+@page "/upload"
+@rendermode InteractiveServer
+@inject ClaimsService ClaimsService
+@inject IClaimsRepository Repository
+
+<PageTitle>Submit Claim — ClaimPortal · Fidelis</PageTitle>
+
+<div class="container-xl py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7">
+
+            <!-- Page Header -->
+            <div class="page-header">
+                <h2>
+                    <span class="page-icon">📤</span>
+                    Submit a Claim
+                </h2>
+                <p>Complete all required fields and optionally attach a supporting document (PDF or JSON).</p>
+            </div>
+
+            <!-- Decision Result (shown after submit) -->
+            @if (_decision is not null)
+            {
+                <div class="decision-result @(_decision.Outcome == DecisionOutcome.Approved ? "approved" : "rejected") mb-4">
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="dr-icon">
+                            @(_decision.Outcome == DecisionOutcome.Approved ? "✅" : "❌")
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="dr-title">
+                                Claim @(_decision.Outcome == DecisionOutcome.Approved ? "Approved" : "Rejected")
+                            </div>
+                            <div class="dr-reason">
+                                <strong>Reason:</strong> @_decision.Reason
+                            </div>
+                            @if (!string.IsNullOrWhiteSpace(_decision.FoundryRecommendation))
+                            {
+                                <div class="dr-ai">
+                                    <strong>🤖 AI Recommendation:</strong> @_decision.FoundryRecommendation
+                                </div>
+                            }
+                            <div class="dr-meta">Decided at @_decision.DecidedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss")</div>
+                        </div>
+                        <button type="button" class="btn-close btn-sm" @onclick="ResetForm" aria-label="Dismiss"></button>
+                    </div>
+                </div>
+            }
+
+            <!-- Error banner -->
+            @if (!string.IsNullOrWhiteSpace(_errorMessage))
+            {
+                <div class="d-flex align-items-center gap-2 p-3 mb-4 rounded-3"
+                     style="background:var(--fp-warning-light);border:1px solid rgba(217,119,6,.2);color:var(--fp-warning);font-size:.875rem">
+                    <span>⚠️</span> @_errorMessage
+                </div>
+            }
+
+            <!-- Claim Form -->
+            <div class="fp-card">
+                <div class="fp-card-body">
+                    <EditForm Model="_model" OnValidSubmit="HandleSubmit" FormName="ClaimForm">
+                        <DataAnnotationsValidator />
+
+                        <!-- Section 1: Policy -->
+                        <div class="form-section">
+                            <div class="form-section-label">01 — Policy</div>
+
+                            <div class="mb-1">
+                                <label class="form-label">Policy Number <span class="text-danger">*</span></label>
+                                <select class="form-select" @bind="_model.PolicyNumber" @bind:after="OnPolicyChanged">
+                                    <option value="">— Select a policy —</option>
+                                    @foreach (var p in _policies)
+                                    {
+                                        <option value="@p.PolicyNumber">
+                                            @p.PolicyNumber — @p.HolderName
+                                            (@p.CoverageType · up to @p.MaxCoverageAmount.ToString("C0"))
+                                            @(!p.IsActive ? " · ⚠️ Inactive" : "")
+                                        </option>
+                                    }
+                                </select>
+                            </div>
+
+                            @if (_selectedPolicy is not null)
+                            {
+                                <div class="policy-info-card @(_selectedPolicy.IsActive ? "" : "inactive-policy")">
+                                    <div class="pic-icon">@(_selectedPolicy.IsActive ? "🛡️" : "⚠️")</div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex gap-3 flex-wrap">
+                                            <div>
+                                                <div class="pic-label">Holder</div>
+                                                <div class="pic-value">@_selectedPolicy.HolderName</div>
+                                            </div>
+                                            <div>
+                                                <div class="pic-label">Coverage Type</div>
+                                                <div class="pic-value">@_selectedPolicy.CoverageType</div>
+                                            </div>
+                                            <div>
+                                                <div class="pic-label">Max Coverage</div>
+                                                <div class="pic-value">@_selectedPolicy.MaxCoverageAmount.ToString("C0")</div>
+                                            </div>
+                                            <div>
+                                                <div class="pic-label">Deductible</div>
+                                                <div class="pic-value">@_selectedPolicy.DeductibleAmount.ToString("C0")</div>
+                                            </div>
+                                            <div>
+                                                <div class="pic-label">Valid Until</div>
+                                                <div class="pic-value @(_selectedPolicy.IsActive ? "" : "text-danger fw-semibold")">
+                                                    @_selectedPolicy.ValidTo.ToString("MMM d, yyyy")
+                                                    @(!_selectedPolicy.IsActive ? " (Expired)" : "")
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <!-- Section 2: Claimant & Amount -->
+                        <div class="form-section">
+                            <div class="form-section-label">02 — Claimant &amp; Amount</div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Claimant Name <span class="text-danger">*</span></label>
+                                <input class="form-control" @bind="_model.ClaimantName"
+                                       placeholder="Full legal name of the claimant" />
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label class="form-label">Claim Amount (USD) <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" @bind="_model.ClaimAmountStr"
+                                               placeholder="0.00" min="0" step="0.01" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Incident Date <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" @bind="_model.IncidentDate"
+                                           max="@TodayStr" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 3: Description -->
+                        <div class="form-section">
+                            <div class="form-section-label">03 — Incident Description</div>
+
+                            <label class="form-label">Description <span class="text-danger">*</span></label>
+                            <textarea class="form-control" @bind="_model.Description" rows="4"
+                                      placeholder="Describe the incident, the circumstances, and the basis for this claim…"></textarea>
+                        </div>
+
+                        <!-- Section 4: Document -->
+                        <div class="form-section">
+                            <div class="form-section-label">04 — Supporting Document <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--fp-gray-400)">(optional · PDF or JSON · max 10 MB)</span></div>
+
+                            <div class="file-upload-zone">
+                                <div class="text-center mb-2" style="color:var(--fp-gray-400);font-size:.85rem;pointer-events:none">
+                                    <span style="font-size:1.75rem">📁</span><br />
+                                    Drop a file here or click to browse
+                                </div>
+                                <InputFile class="form-control" OnChange="OnFileSelected" accept=".pdf,.json" />
+                            </div>
+                            @if (_uploadedFileName is not null)
+                            {
+                                <div class="file-attachment-badge">
+                                    📎 @_uploadedFileName &nbsp;·&nbsp; @(_uploadedFileSize / 1024) KB
+                                </div>
+                            }
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="d-flex gap-2 pt-1">
+                            <button type="submit" class="btn btn-navy px-4 py-2" disabled="@_isSubmitting">
+                                @if (_isSubmitting)
+                                {
+                                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                    <span>Processing…</span>
+                                }
+                                else
+                                {
+                                    <span>📤 Submit Claim</span>
+                                }
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary px-4 py-2" @onclick="ResetForm">
+                                Reset
+                            </button>
+                        </div>
+
+                    </EditForm>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@code {
+    private string TodayStr => DateTime.Today.ToString("yyyy-MM-dd");
+    private ClaimFormModel _model = new();
+    private List<Policy> _policies = [];
+    private Policy? _selectedPolicy;
+    private ClaimDecision? _decision;
+    private string? _errorMessage;
+    private bool _isSubmitting;
+    private string? _uploadedFileName;
+    private long _uploadedFileSize;
+    private byte[]? _uploadedFileContent;
+    private string? _uploadedFileContentType;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _policies = (await Repository.GetAllPoliciesAsync()).ToList();
+    }
+
+    private void OnPolicyChanged()
+    {
+        _selectedPolicy = string.IsNullOrEmpty(_model.PolicyNumber)
+            ? null
+            : _policies.FirstOrDefault(p => p.PolicyNumber == _model.PolicyNumber);
+    }
+
+    private async Task OnFileSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file.Size > 10 * 1024 * 1024)
+        {
+            _errorMessage = "File exceeds the 10 MB limit.";
+            return;
+        }
+        _errorMessage = null;
+        _uploadedFileName = file.Name;
+        _uploadedFileSize = file.Size;
+        _uploadedFileContentType = file.ContentType;
+
+        using var ms = new MemoryStream();
+        await file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024).CopyToAsync(ms);
+        _uploadedFileContent = ms.ToArray();
+    }
+
+    private async Task HandleSubmit()
+    {
+        if (string.IsNullOrWhiteSpace(_model.PolicyNumber))
+        {
+            _errorMessage = "Please select a policy.";
+            return;
+        }
+        if (string.IsNullOrWhiteSpace(_model.ClaimantName))
+        {
+            _errorMessage = "Please enter the claimant name.";
+            return;
+        }
+        if (!decimal.TryParse(_model.ClaimAmountStr, out var amount) || amount <= 0)
+        {
+            _errorMessage = "Please enter a valid claim amount greater than zero.";
+            return;
+        }
+
+        _isSubmitting = true;
+        _decision = null;
+        _errorMessage = null;
+
+        try
+        {
+            var (_, decision) = await ClaimsService.SubmitClaimAsync(
+                _model.PolicyNumber, _model.ClaimantName, amount,
+                _model.IncidentDate.ToDateTime(TimeOnly.MinValue), _model.Description,
+                _uploadedFileName, _uploadedFileContent, _uploadedFileContentType);
+
+            _decision = decision;
+            _model = new();
+            _selectedPolicy = null;
+            _uploadedFileName = null;
+            _uploadedFileContent = null;
+        }
+        catch (Exception ex)
+        {
+            _errorMessage = $"Submission failed: {ex.Message}";
+        }
+        finally
+        {
+            _isSubmitting = false;
+        }
+    }
+
+    private void ResetForm()
+    {
+        _model = new();
+        _selectedPolicy = null;
+        _decision = null;
+        _errorMessage = null;
+        _uploadedFileName = null;
+        _uploadedFileContent = null;
+    }
+
+    private class ClaimFormModel
+    {
+        public string PolicyNumber { get; set; } = string.Empty;
+        public string ClaimantName { get; set; } = string.Empty;
+        public string ClaimAmountStr { get; set; } = string.Empty;
+        public DateOnly IncidentDate { get; set; } = DateOnly.FromDateTime(DateTime.Today);
+        public string Description { get; set; } = string.Empty;
+    }
+}
+

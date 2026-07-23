@@ -1,0 +1,74 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Native Azure AI Foundry HOSTED WORKFLOW — Fidelis claim processing.
+#
+# Microsoft Agent Framework declarative workflow. Registered into the project via
+# WorkflowAgentDefinition so it appears in the Foundry portal's *Workflows* tab
+# with a visual canvas.
+#
+# Sequential multi-agent pipeline (all agents share System.ConversationId, so each
+# one sees the running conversation produced by the previous agents):
+#
+#   user claim
+#     → ClaimIntakeAgent   (extract + validate fields)
+#     → FraudRiskAgent     (risk score + fraud flags)
+#     → ClaimAssessorAgent (policy coverage decision + final synthesis)
+#     → final message
+#
+# Agents are referenced by name and must exist as prompt agents in the project
+# (created by create-hosted-workflow.py).
+# ─────────────────────────────────────────────────────────────────────────────
+kind: workflow
+trigger:
+  kind: OnConversationStart
+  id: trigger_claim
+  actions:
+    - kind: SetVariable
+      id: init_claim
+      variable: Local.LatestMessage
+      value: =UserMessage(System.LastMessageText)
+
+    # 1) Intake — extract & validate the claim fields.
+    - kind: InvokeAzureAgent
+      id: invoke_intake
+      agent:
+        name: ClaimIntakeAgent
+      conversationId: =System.ConversationId
+      input:
+        messages: =Local.LatestMessage
+      output:
+        messages: Local.LatestMessage
+        autoSend: true
+
+    # 2) Fraud & risk — score the claim and raise flags.
+    - kind: InvokeAzureAgent
+      id: invoke_fraud
+      agent:
+        name: FraudRiskAgent
+      conversationId: =System.ConversationId
+      input:
+        messages: =Local.LatestMessage
+      output:
+        messages: Local.LatestMessage
+        autoSend: true
+
+    # 3) Policy assessor — evaluate coverage and synthesize the final decision.
+    - kind: InvokeAzureAgent
+      id: invoke_assessor
+      agent:
+        name: ClaimAssessorAgent
+      conversationId: =System.ConversationId
+      input:
+        messages: =Local.LatestMessage
+      output:
+        messages: Local.LatestMessage
+        autoSend: true
+
+    - kind: SendActivity
+      id: send_final
+      activity: "{Last(Local.LatestMessage).Text}"
+
+    - kind: EndConversation
+      id: end_conversation
+id: ""
+name: ClaimProcessingWorkflow
+description: Fidelis claim processing — intake, fraud & risk, and policy assessor agents run in sequence to produce an advisory recommendation.

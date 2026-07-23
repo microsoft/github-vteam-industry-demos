@@ -1,0 +1,213 @@
+@page "/decisions"
+@rendermode InteractiveServer
+@inject ClaimsService ClaimsService
+
+<PageTitle>Audit Trail — ClaimPortal · Fidelis</PageTitle>
+
+<div class="container-xl py-4">
+
+    <!-- Page Header -->
+    <div class="page-header d-flex align-items-start justify-content-between flex-wrap gap-2">
+        <div>
+            <h2>
+                <span class="page-icon">📋</span>
+                Audit Trail
+            </h2>
+            <p>Every submitted claim and its automated policy decision — fully transparent.</p>
+        </div>
+        <div class="d-flex gap-2 pt-1">
+            <button class="btn btn-outline-secondary btn-sm px-3" @onclick="Refresh" disabled="@_loading">
+                @if (_loading) { <span class="spinner-border spinner-border-sm me-1" role="status"></span> }
+                🔄 Refresh
+            </button>
+            <a href="/upload" class="btn btn-navy btn-sm px-3">📤 New Claim</a>
+        </div>
+    </div>
+
+    @if (_claims is null || _loading)
+    {
+        <div class="d-flex align-items-center justify-content-center py-5" style="gap:.75rem">
+            <div class="spinner-border text-primary" role="status"></div>
+            <span style="color:var(--fp-gray-500)">Loading claims…</span>
+        </div>
+    }
+    else if (!_claims.Any())
+    {
+        <div class="fp-card">
+            <div class="empty-state">
+                <div class="es-icon">📭</div>
+                <h5>No claims submitted yet</h5>
+                <p>Once a claim is submitted and processed, it will appear here with its decision.</p>
+                <a href="/upload" class="btn btn-navy px-4">Submit your first claim</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- Stat summary cards -->
+        <div class="row g-3 mb-4">
+            <div class="col-sm-4">
+                <div class="stat-card stat-total d-flex align-items-center gap-3">
+                    <div class="stat-icon">📊</div>
+                    <div>
+                        <span class="stat-number">@_claims.Count</span>
+                        <span class="stat-label">Total Claims</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="stat-card stat-approved d-flex align-items-center gap-3">
+                    <div class="stat-icon">✅</div>
+                    <div>
+                        <span class="stat-number">@_claims.Count(c => c.Status == ClaimStatus.Approved)</span>
+                        <span class="stat-label">Approved</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="stat-card stat-rejected d-flex align-items-center gap-3">
+                    <div class="stat-icon">❌</div>
+                    <div>
+                        <span class="stat-number">@_claims.Count(c => c.Status == ClaimStatus.Rejected)</span>
+                        <span class="stat-label">Rejected</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter + Table -->
+        <div class="fp-table-wrapper">
+            <div class="fp-table-header">
+                <div class="fp-table-title">@_filteredClaims.Count claim@(_filteredClaims.Count == 1 ? "" : "s")</div>
+                <div class="d-flex gap-2 align-items-center flex-wrap">
+                    <select class="form-select form-select-sm" style="width:auto" @bind="_statusFilter">
+                        <option value="">All statuses</option>
+                        <option value="Approved">✅ Approved</option>
+                        <option value="Rejected">❌ Rejected</option>
+                        <option value="Pending">⏳ Pending</option>
+                    </select>
+                    <input class="form-control form-control-sm" style="width:180px"
+                           placeholder="Search claimant…" @bind="_searchQuery" @bind:event="oninput" />
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="ps-4" style="width:90px">Claim ID</th>
+                            <th style="width:110px">Policy</th>
+                            <th>Claimant</th>
+                            <th class="text-end" style="width:120px">Amount</th>
+                            <th style="width:120px">Incident</th>
+                            <th style="width:130px">Submitted</th>
+                            <th style="width:120px">Status</th>
+                            <th style="width:60px"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var claim in _filteredClaims)
+                        {
+                            var isExpanded = _expandedIds.Contains(claim.Id);
+
+                            <tr>
+                                <td class="ps-4">
+                                    <span class="claim-id-code">@claim.Id.ToString()[..8]…</span>
+                                </td>
+                                <td><span class="policy-badge">@claim.PolicyNumber</span></td>
+                                <td class="fw-semibold" style="color:var(--fp-gray-800)">@claim.ClaimantName</td>
+                                <td class="text-end amount-cell">@claim.ClaimAmount.ToString("C0")</td>
+                                <td style="color:var(--fp-gray-500);font-size:.8rem">@claim.IncidentDate.ToString("MMM d, yyyy")</td>
+                                <td style="color:var(--fp-gray-500);font-size:.8rem">@claim.SubmittedAt.ToLocalTime().ToString("MMM d, HH:mm")</td>
+                                <td>
+                                    <span class="status-badge @claim.Status.ToString().ToLower()">@claim.Status</span>
+                                </td>
+                                <td>
+                                    @if (claim.Decision is not null)
+                                    {
+                                        <button class="expand-btn @(isExpanded ? "open" : "")"
+                                                @onclick="() => ToggleExpand(claim.Id)"
+                                                title="@(isExpanded ? "Collapse" : "View decision details")">
+                                            ▾
+                                        </button>
+                                    }
+                                </td>
+                            </tr>
+
+                            @if (isExpanded && claim.Decision is not null)
+                            {
+                                <tr class="detail-row">
+                                    <td colspan="8">
+                                        <div class="detail-panel @(claim.Decision.Outcome == DecisionOutcome.Approved ? "approved-panel" : "rejected-panel")">
+                                            <div class="row g-3">
+                                                <div class="col-md-5">
+                                                    <div class="dp-section-title">📝 Decision Reason</div>
+                                                    <div class="dp-value">@claim.Decision.Reason</div>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="dp-section-title">🤖 AI Foundry Recommendation</div>
+                                                    <div class="dp-value" style="color:var(--fp-gray-500)">
+                                                        @(claim.Decision.FoundryRecommendation ?? "N/A")
+                                                    </div>
+                                                </div>
+                                                @if (!string.IsNullOrWhiteSpace(claim.Decision.PolicyEvaluationNotes))
+                                                {
+                                                    <div class="col-12">
+                                                        <div class="dp-section-title">⚙️ Policy Engine Notes</div>
+                                                        <div class="dp-value" style="font-family:monospace;font-size:.8rem;color:var(--fp-gray-500)">
+                                                            @claim.Decision.PolicyEvaluationNotes
+                                                        </div>
+                                                    </div>
+                                                }
+                                                @if (!string.IsNullOrWhiteSpace(claim.DocumentFileName))
+                                                {
+                                                    <div class="col-12">
+                                                        <span class="file-attachment-badge">📎 @claim.DocumentFileName</span>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+
+</div>
+
+@code {
+    private List<Claim>? _claims;
+    private bool _loading;
+    private readonly HashSet<Guid> _expandedIds = [];
+    private string _statusFilter = "";
+    private string _searchQuery = "";
+
+    private List<Claim> _filteredClaims => (_claims ?? [])
+        .Where(c =>
+            (string.IsNullOrEmpty(_statusFilter) || c.Status.ToString() == _statusFilter) &&
+            (string.IsNullOrEmpty(_searchQuery)  || c.ClaimantName.Contains(_searchQuery, StringComparison.OrdinalIgnoreCase)))
+        .ToList();
+
+    protected override async Task OnInitializedAsync() => await LoadClaims();
+
+    private async Task Refresh() => await LoadClaims();
+
+    private async Task LoadClaims()
+    {
+        _loading = true;
+        StateHasChanged();
+        var all = await ClaimsService.GetAllClaimsAsync();
+        _claims = all.ToList();
+        _loading = false;
+    }
+
+    private void ToggleExpand(Guid id)
+    {
+        if (!_expandedIds.Remove(id))
+            _expandedIds.Add(id);
+    }
+}
+
