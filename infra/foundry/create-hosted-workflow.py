@@ -111,7 +111,10 @@ def main():
     print(f"Model:    {args.model}")
     print(f"YAML:     {args.yaml}\n")
 
-    client = AIProjectClient(endpoint=args.endpoint, credential=AzureCliCredential(), allow_preview=True)
+    # Azure CLI can be slow to spawn on cold machines; give the token fetch headroom
+    # so the SDK credential doesn't trip its default 10s subprocess timeout.
+    credential = AzureCliCredential(process_timeout=60)
+    client = AIProjectClient(endpoint=args.endpoint, credential=credential, allow_preview=True)
 
     print("Registering specialist agents...")
     agent_ids = create_agents(client, args.model)
