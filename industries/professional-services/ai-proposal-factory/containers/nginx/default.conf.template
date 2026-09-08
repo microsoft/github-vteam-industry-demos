@@ -1,0 +1,43 @@
+server {
+    listen 8080;
+    listen [::]:8080;
+    server_name _;
+
+    root /usr/share/nginx/html;
+    index index.html;
+    client_max_body_size 25m;
+
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+
+    location = /health {
+        proxy_pass ${API_UPSTREAM}/health;
+        proxy_http_version 1.1;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /api/ {
+        proxy_pass ${API_UPSTREAM};
+        proxy_http_version 1.1;
+        proxy_request_buffering off;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
+        # Only Container Apps Easy Auth may populate these headers. The API is loopback-only.
+        proxy_set_header X-MS-CLIENT-PRINCIPAL $http_x_ms_client_principal;
+        proxy_set_header X-MS-CLIENT-PRINCIPAL-ID $http_x_ms_client_principal_id;
+        proxy_set_header X-MS-CLIENT-PRINCIPAL-IDP $http_x_ms_client_principal_idp;
+        proxy_set_header X-MS-CLIENT-PRINCIPAL-NAME "";
+        proxy_set_header X-MS-TOKEN-AAD-ACCESS-TOKEN "";
+        proxy_set_header X-MS-TOKEN-AAD-ID-TOKEN "";
+        proxy_set_header X-MS-TOKEN-AAD-REFRESH-TOKEN "";
+        proxy_set_header Authorization "";
+    }
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}

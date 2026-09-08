@@ -1,0 +1,31 @@
+{
+  "name": "@proposal-factory/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./runtime": "./src/ai-azure-runtime.ts"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.3.0",
+    "@fastify/multipart": "^10.1.1",
+    "@proposal-factory/ai": "*",
+    "@proposal-factory/azure-data": "*",
+    "@proposal-factory/contracts": "*",
+    "@proposal-factory/domain": "*",
+    "fastify": "^5.12.1",
+    "marked": "^16.4.2",
+    "playwright-core": "^1.63.0"
+  },
+  "devDependencies": {
+    "pdfjs-dist": "^6.3.289",
+    "tsx": "^4.23.13"
+  },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "node dist/server.js",
+    "build": "tsup",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --config vitest.config.ts"
+  }
+}

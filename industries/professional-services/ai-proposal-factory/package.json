@@ -1,0 +1,35 @@
+{
+  "name": "ai-proposal-factory",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A local-first Professional Services proposal generation demo with Azure extension seams.",
+  "engines": {
+    "node": ">=24 <25",
+    "npm": ">=11"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:worker": "npm run dev -w @proposal-factory/worker",
+    "build": "npm run build -w @proposal-factory/contracts && npm run build -w @proposal-factory/domain && npm run build -w @proposal-factory/ai && npm run build -w @proposal-factory/azure-data && npm run build -w @proposal-factory/api && npm run build -w @proposal-factory/worker && npm run build -w @proposal-factory/web",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "eslint .",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "check": "npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.13.3",
+    "concurrently": "^10.0.5",
+    "eslint": "^10.9.1",
+    "globals": "^17.11.0",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.68.0",
+    "vitest": "^4.1.11"
+  }
+}

@@ -1,0 +1,28 @@
+# syntax=docker/dockerfile:1.7
+
+ARG NODE_IMAGE=node:24.20.0-bookworm-slim
+ARG NGINX_IMAGE=nginxinc/nginx-unprivileged:1.28.0-alpine
+
+FROM ${NODE_IMAGE} AS build
+WORKDIR /workspace
+COPY package.json package-lock.json .npmrc ./
+COPY apps ./apps
+COPY packages ./packages
+COPY tsconfig.base.json ./
+RUN npm ci --ignore-scripts --no-audit --no-fund
+RUN npm run build -w @proposal-factory/web
+RUN test -s apps/web/dist/index.html \
+    && grep -q '<div id="root"></div>' apps/web/dist/index.html
+
+FROM ${NGINX_IMAGE} AS runtime
+ARG BUILD_VERSION
+LABEL org.opencontainers.image.title="AI Proposal Factory Web" \
+      org.opencontainers.image.version="${BUILD_VERSION}"
+RUN test -n "${BUILD_VERSION}" && test "${BUILD_VERSION}" != "latest"
+ENV API_UPSTREAM=http://localhost:3001
+COPY --chown=101:101 containers/nginx/default.conf.template /etc/nginx/templates/default.conf.template
+COPY --from=build --chown=101:101 /workspace/apps/web/dist /usr/share/nginx/html
+USER 101
+EXPOSE 8080
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
+  CMD ["wget", "--quiet", "--output-document=-", "http://127.0.0.1:8080/health"]

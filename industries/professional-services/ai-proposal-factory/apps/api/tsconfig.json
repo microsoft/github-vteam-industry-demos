@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node", "@fastify/multipart"]
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts", "vitest.config.ts", "tsup.config.ts"]
+}
