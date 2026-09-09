@@ -1,0 +1,47 @@
+# syntax=docker/dockerfile:1.7
+
+ARG NODE_IMAGE=node:24.20.0-bookworm-slim
+
+FROM ${NODE_IMAGE} AS build
+WORKDIR /workspace
+COPY package.json package-lock.json .npmrc ./
+COPY apps ./apps
+COPY packages ./packages
+COPY tsconfig.base.json ./
+RUN npm ci --ignore-scripts --no-audit --no-fund
+RUN npm run build -w @proposal-factory/worker
+
+FROM ${NODE_IMAGE} AS production-dependencies
+WORKDIR /workspace
+COPY package.json package-lock.json .npmrc ./
+COPY apps ./apps
+COPY packages ./packages
+RUN npm ci --omit=dev --ignore-scripts --no-audit --no-fund \
+    && npm cache clean --force
+
+FROM ${NODE_IMAGE} AS runtime-base
+ENV NODE_ENV=production \
+    HOME=/tmp \
+    TMPDIR=/tmp
+WORKDIR /app
+RUN apt-get update \
+    && apt-get install --yes --no-install-recommends dumb-init \
+    && rm -rf /var/lib/apt/lists/*
+COPY --from=production-dependencies --chown=node:node /workspace/node_modules ./node_modules
+COPY --from=build --chown=node:node /workspace/apps/worker/dist ./apps/worker/dist
+USER node
+
+FROM runtime-base AS verification
+RUN node -e "Promise.all([import('@azure/identity'),import('@azure/cosmos'),import('@azure/storage-blob'),import('@azure/storage-queue'),import('@azure/search-documents'),import('openai'),import('zod'),import('marked'),import('playwright-core'),import('mammoth'),import('pdfjs-dist/legacy/build/pdf.mjs')]).then(() => console.log('External runtime dependencies available.'))"
+RUN DATA_PROVIDER=local node apps/worker/dist/index.js | grep -F "Fixture/local mode"
+RUN touch /tmp/worker-verification-ok
+
+FROM runtime-base AS runtime
+ARG BUILD_VERSION
+LABEL org.opencontainers.image.title="AI Proposal Factory Worker" \
+      org.opencontainers.image.version="${BUILD_VERSION}"
+RUN test -n "${BUILD_VERSION}" && test "${BUILD_VERSION}" != "latest"
+COPY --from=verification /tmp/worker-verification-ok /opt/container-verification/worker
+STOPSIGNAL SIGTERM
+ENTRYPOINT ["dumb-init", "--"]
+CMD ["node", "apps/worker/dist/index.js"]

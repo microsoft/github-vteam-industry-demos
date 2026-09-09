@@ -1,0 +1,21 @@
+{
+  "name": "@proposal-factory/ai",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "dependencies": {
+    "@azure/cosmos": "^4.10.0",
+    "@azure/identity": "4.13.2",
+    "@azure/search-documents": "13.0.0",
+    "@proposal-factory/contracts": "*",
+    "@proposal-factory/domain": "*",
+    "openai": "7.8.0",
+    "zod": "4.5.4"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  }
+}
