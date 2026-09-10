@@ -1,118 +1,283 @@
 # AI Proposal Factory
 
-AI Proposal Factory is a polished, local-first Professional Services demo that turns customer opportunities and meeting context into grounded, human-reviewed proposals. The complete browser workflow runs with deterministic fixture adapters and no cloud credentials or live AI calls.
+AI Proposal Factory is a reusable, single-URL customer demonstration that turns
+fictional opportunities and meeting notes into review-ready proposals. It uses
+React, FastAPI, Azure Container Apps, Microsoft Foundry, exactly three Foundry
+Agents, Azure AI Search, and Azure Storage.
 
-## What works
+> **Demo environment — synthetic data only.** The baseline intentionally has no
+> application authentication.
 
-- Dashboard with 10 synthetic opportunities across five service scenarios
-- Structured opportunity intake and real TXT, Markdown, DOCX, and text-based PDF upload/selection
-- Scenario-sensitive retrieval across 45 reusable content records
-- Visible four-stage generation progress with 12 mandatory proposal sections
-- Section editing, regeneration, revision approval, and complete approval rules
-- Visible citations, assumptions, dependencies, risks, and open questions
-- Truthful retrieval mode/warnings and persisted provider-operation evidence for every new generation run
-- Approved-revision Markdown and professional server-side PDF export
-- Opportunity audit history
-- Separate API, web, shared contracts/domain, and worker entrypoint
+## Prerequisites
 
-## Technology
+Install:
 
-- Node.js 24 LTS and npm workspaces
-- TypeScript
-- React and Vite
-- Fastify
-- Server-side Chromium (`playwright-core`) with Noto font fallback
-- Vitest and Testing Library
+- Git
+- Azure CLI
+- Azure Developer CLI (`azd`) 1.32 or later
+- Python 3.12 or later
+- Node.js 22 or later
+- PowerShell 7 on Windows
 
-## Workspace
+Install or update the Container Apps CLI extension:
+
+```powershell
+az extension add --name containerapp --upgrade
+```
+
+Docker Desktop is optional. `azd` uses an Azure Container Registry remote build.
+
+### Required Azure permissions
+
+The deploying identity must be able to:
+
+- create resources in the target subscription;
+- create Azure role assignments;
+- deploy Microsoft Cognitive Services/Foundry models;
+- use the selected Foundry model quota in Sweden Central.
+
+`Owner`, or `Contributor` plus `User Access Administrator`, is the simplest demo
+setup. The `preprovision` hook detects the active Azure user or service principal
+and grants only the data-plane roles required for Storage, Search, and Foundry.
+
+Required providers include `Microsoft.App`, `Microsoft.ContainerRegistry`,
+`Microsoft.ManagedIdentity`, `Microsoft.OperationalInsights`,
+`Microsoft.Storage`, `Microsoft.Search`, `Microsoft.CognitiveServices`, and
+`Microsoft.Authorization`.
+
+## Deploy a fresh independent copy
+
+All regional resources are restricted to **Sweden Central**. The deployment
+stops rather than falling back to another region.
+
+```powershell
+git clone <private-repository-url>
+Set-Location <repository-folder>
+
+az login
+az account set --subscription "<subscription-id>"
+
+azd auth login
+azd env new <short-unique-environment-name>
+azd env set AZURE_SUBSCRIPTION_ID "<subscription-id>"
+azd env set AZURE_LOCATION swedencentral
+
+azd up
+```
+
+One `azd up` performs the complete deployment:
+
+1. The `preprovision` hook verifies the active subscription, resolves the
+   signed-in user or service principal, configures deployment-user RBAC inputs,
+   enforces Sweden Central, and checks the selected model/SKU/capacity.
+2. Bicep creates a dedicated resource group, Container Registry, managed
+   identity, Log Analytics workspace, Container Apps environment, one public
+   Container App, Storage Account, Azure AI Search, Foundry account/project,
+   one model deployment, and required RBAC.
+3. The `postprovision` hook creates/updates exactly three Foundry Agents, tests
+   them, seeds reusable knowledge into Blob Storage and Azure AI Search, stores
+   the new environment-specific Agent IDs in the local azd environment, and
+   applies them to the Container App.
+4. `azd` remote-builds and deploys the application image. Application startup
+   idempotently seeds synthetic opportunities, meeting notes, and Azure Tables.
+
+Generated Agent IDs are stored locally in
+`scripts/azure/deployment-output.json`; that file is ignored by Git.
+
+## Deployment options
+
+### Azure AI Search SKU
+
+The portable default is Basic:
+
+```powershell
+azd env set AZURE_AI_SEARCH_SKU basic
+```
+
+Free can be used when the subscription has not already consumed its single Free
+Search allocation:
+
+```powershell
+azd env set AZURE_AI_SEARCH_SKU free
+```
+
+`standard` is also supported. Set the value before `azd up`.
+
+### Foundry model
+
+Defaults:
 
 ```text
-apps/
-  api/       Fastify API and deterministic local adapters
-  web/       React customer experience
-  worker/    Background processing seam for future Azure Queue work
-packages/
-  contracts/ Shared API and domain types
-  domain/    Proposal lifecycle rules and external-service interfaces
-docs/
-  architecture.md
+AZURE_AI_MODEL_DEPLOYMENT_NAME=gpt-5-mini
+AZURE_AI_MODEL_NAME=gpt-5-mini
+AZURE_AI_MODEL_FORMAT=OpenAI
+AZURE_AI_MODEL_VERSION=2025-08-07
+AZURE_AI_MODEL_DEPLOYMENT_SKU=DataZoneStandard
+AZURE_AI_MODEL_CAPACITY=10
 ```
 
-## Local setup
-
-### Prerequisites
-
-- Node.js `24.20.0` (the repository includes `.nvmrc`)
-- npm 11 or newer
-- Chromium, Google Chrome, or Microsoft Edge for local PDF export
+Override these before `azd up` when another compatible model or quota allocation
+is required:
 
 ```powershell
-npm install
-$env:NODE_ENV = "development"
-$env:AUTH_MODE = "development"
-$env:AUTH_DEVELOPMENT_ORIGINS = "http://127.0.0.1:5173,http://localhost:5173"
-$env:HOST = "127.0.0.1"
-$env:DATA_PROVIDER = "local"
-$env:AI_PROVIDER = "fixture"
-npm run dev
+azd env set AZURE_AI_MODEL_DEPLOYMENT_NAME "<deployment-name>"
+azd env set AZURE_AI_MODEL_NAME "<model-name>"
+azd env set AZURE_AI_MODEL_FORMAT "<model-format>"
+azd env set AZURE_AI_MODEL_VERSION "<model-version>"
+azd env set AZURE_AI_MODEL_DEPLOYMENT_SKU "<deployment-sku>"
+azd env set AZURE_AI_MODEL_CAPACITY "<capacity>"
 ```
 
-Open `http://127.0.0.1:5173` or `http://localhost:5173`. The loopback-only Vite development server proxies `/api` to Fastify on `http://127.0.0.1:3001`; the API accepts browser origins only from the explicit `AUTH_DEVELOPMENT_ORIGINS` list.
+The preflight requires the exact model/version/SKU to be available in
+`swedencentral` and checks the corresponding quota entry. It never changes
+region automatically.
 
-Authentication is explicit, not inferred from the data provider. Local development uses a deterministic **Local Development Member** only outside production. Missing auth configuration fails startup. Azure uses Container Apps built-in Microsoft Entra authentication, assigned application-level workspace membership, and verified actor attribution. Each deployer bootstraps the registration in their own tenant and should assign `ProposalFactory.WorkspaceMember` to a security-enabled group. Direct group members are ordinary application users and need no Azure subscription role or Entra administrator role. See `docs\authentication.md` for the security boundary and secretless registration bootstrap. `.env.example` documents values but is not loaded automatically.
+### Organizational Storage policies
 
-The API persists demo changes to `.data\proposal-factory.json`. Delete that local file to restore the original deterministic seed data.
-Uploaded file bytes are stored under `.data\uploads` by default. Relative `LOCAL_DATA_FILE` and
-`LOCAL_UPLOAD_DIRECTORY` values are resolved from the repository root, and both default locations are ignored by Git.
-See `docs\exports.md` for Unicode PDF rendering, browser discovery, and production font/runtime requirements.
+The default is **off**:
 
-### Useful commands
+```text
+AIPF_STORAGE_SECURITY_CONTROL_IGNORE=false
+```
+
+The original development subscription had a management-group policy that
+disabled Storage public networking unless the resource carried the documented
+`SecurityControl=Ignore` exclusion tag. Only subscriptions with that specific,
+approved policy exception should enable:
 
 ```powershell
-npm run lint
-npm run typecheck
-npm test
+azd env set AIPF_STORAGE_SECURITY_CONTROL_IGNORE true
+```
+
+Do not enable this simply to bypass an unfamiliar organizational policy. Obtain
+the subscription owner's approval or use the networking design mandated by that
+organization.
+
+## Verify the deployment
+
+```powershell
+$url = azd env get-value SERVICE_APP_URI
+Write-Host $url
+
+.\scripts\azure\verify-deployment.ps1 `
+  -ResourceGroupName (azd env get-value AZURE_RESOURCE_GROUP_NAME) `
+  -ContainerAppName (azd env get-value SERVICE_APP_NAME)
+```
+
+Open the printed URL. The dashboard should contain seeded opportunities and the
+proposal workflow should use real Foundry Agents.
+
+## Application-only updates
+
+Application changes do not require infrastructure reprovisioning:
+
+```powershell
+azd auth login
+azd env select <environment-name>
+azd deploy app
+```
+
+Use `azd up` only when Bicep, hook behavior, or azd environment configuration
+also changed.
+
+## Destroy a demo environment
+
+This deletes resources belonging to the selected azd environment:
+
+```powershell
+azd env select <environment-name>
+azd down --purge
+```
+
+Review the selected environment and subscription carefully before confirming.
+
+## Use Squad after cloning
+
+The repository does not commit `.squad/`; each colleague gets independent team
+state, decisions, histories, and casting.
+
+```powershell
+squad init
+squad doctor
+copilot --agent squad
+```
+
+Describe the work and confirm the proposed team when Squad enters Init Mode.
+
+## Troubleshooting
+
+### Search SKU or regional capacity
+
+- If Free reports a quota error, use `AZURE_AI_SEARCH_SKU=basic`.
+- If Basic or Standard reports regional capacity unavailable, retry later or
+  choose another supported Search SKU that is available in Sweden Central.
+- Do not change Azure region as a workaround.
+
+### Foundry model or quota
+
+- The preprovision hook reports the unavailable model/version/SKU or insufficient
+  capacity before Bicep runs.
+- Request quota or configure another Foundry Agent-compatible model available in
+  Sweden Central.
+- Model availability and quota are subscription-specific.
+
+### Organizational Azure policy
+
+- Policy may deny public Container Apps, Storage, Search, or Foundry resources.
+- Do not bypass policy automatically.
+- Use `AIPF_STORAGE_SECURITY_CONTROL_IGNORE=true` only when the subscription
+  owner explicitly approves that exact Storage exclusion.
+
+### Deployment principal detection
+
+The hook supports Azure CLI sessions authenticated as a user or service
+principal. If Microsoft Entra directory lookup of the current service principal
+is prohibited, an administrator must supply its object ID:
+
+```powershell
+azd env set AZURE_DEPLOYER_PRINCIPAL_ID "<object-id>"
+azd env set AZURE_DEPLOYER_PRINCIPAL_TYPE ServicePrincipal
+```
+
+## Local development
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python -m pip install -r requirements-dev.txt
+
+Set-Location app\frontend
+npm ci
 npm run build
-npm run check
+Set-Location ..\..
+
+.\.venv\Scripts\python -m uvicorn app.backend.main:app --host 0.0.0.0 --port 8000
 ```
 
-### Run services separately
+Open `http://localhost:8000`. Local mode uses deterministic mock agents, local
+keyword retrieval, and `data/runtime/store.json`.
+
+## Validation
 
 ```powershell
-npm run dev -w @proposal-factory/api
-npm run dev -w @proposal-factory/web
-npm run dev:worker
+.\.venv\Scripts\python -m ruff check app tests scripts\app scripts\azure
+.\.venv\Scripts\python -m pytest -q
+npm ci --prefix app\frontend
+npm run build --prefix app\frontend
+az bicep build --file infra\main.bicep
 ```
 
-## Demo flow
+## Architecture
 
-1. Choose an opportunity from the dashboard.
-2. Review its structured intake and scenario-sensitive retrieval preview.
-3. Select fixture meeting notes or upload a supported document; extracted text is included in requirements analysis.
-4. Start proposal generation and show each visible agent stage.
-5. Review the 12 generated sections, risks, and supporting sources.
-6. Edit or regenerate a section and observe approval invalidation.
-7. Approve every current section, then approve the complete proposal.
-8. Export Markdown or PDF.
-9. Open Audit history to review the trace.
+```text
+app/frontend/                  React + TypeScript + Vite
+app/backend/                   FastAPI application and Azure adapters
+data/seed/                     deterministic synthetic catalog
+infra/                         subscription-scoped Bicep
+scripts/azure/preprovision.py  subscription, principal, region, model preflight
+scripts/azure/postprovision.py platform seed, agents, IDs, app configuration
+tests/                         focused application tests
+```
 
-## Local API
-
-Key endpoints are grouped under:
-
-- `/api/opportunities`
-- `/api/documents`
-- `/api/content`
-- `/api/generation-runs`
-- `/api/proposals`
-- `/api/audit`
-
-`GET /health` reports local API readiness.
-
-## Azure handoff
-
-The repository includes Bicep, Azure SDK adapters, and Container Apps packaging. Azure resource managed identities are distinct from end-user identity: production API access requires a verified assigned Entra workspace member. One authorized tenant/application administrator must create or finalize the registration and assign a user or group to the app role; ongoing membership can then be delegated to a group owner. Follow `docs\deployment-azure.md` and `docs\authentication.md`; local success is not deployed validation or permission to provision.
-
-Sweden Central (`swedencentral`) is the primary Azure region and `rg-aipf-dev-swc-001` is the development resource group. Platform will host the web/API and worker on Container Apps with Storage Queue, Cosmos DB serverless, and Azure AI Search Basic. Intelligence will configure `proposal-chat` and `proposal-embeddings` Azure OpenAI deployments. Configuration is endpoint and deployment-name based so Managed Identity adapters remain replaceable. No automatic secondary-region fallback is assumed.
-
-See [docs\architecture.md](docs/architecture.md) for boundaries and integration guidance, and [DEMO-EXTENSIONS.md](DEMO-EXTENSIONS.md) for live Copilot enhancements.
+FastAPI serves the frontend and `/api/*` from one Container App URL. Proposal
+generation runs Requirements Analyst, Proposal Writer with Search-grounded
+knowledge, and Risk Reviewer in sequence.
