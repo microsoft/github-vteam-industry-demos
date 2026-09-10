@@ -1,26 +1,24 @@
-# Squad: ignore runtime state (logs, inbox, sessions)
-# Note: .squad/casting/* is identity and MUST be committed to main, not ignored
-.squad/orchestration-log/
-.squad/log/
-.squad/decisions/inbox/
-.squad/sessions/
-.squad/.scratch/
-.squad/.cache/
-# Squad: SubSquad activation file (local to this machine)
+# Squad state is initialized independently by each colleague.
+.squad/
 .squad-workstream
 
-# Application dependencies and build output
+# Azure Developer CLI and generated deployment state
+.azure/
+scripts/azure/deployment-output.json
+
+# Local session and environment-specific status artifacts
+STATUS.md
+squad*_prompt.md
+.copilot/mcp-config.json
+
+# Application build and runtime artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
 node_modules/
-dist/
-coverage/
-*.tsbuildinfo
-
-# Local application state and uploads
-.data/
-uploads/
-
-# Developer-specific files
+app/frontend/dist/
+data/runtime/
 .env
 .env.*
 !.env.example
-*.log

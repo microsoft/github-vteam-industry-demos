@@ -1,0 +1,21 @@
+{
+  "version": "2026-09-09-v1",
+  "fictional_data_only": true,
+  "opportunities": 9,
+  "knowledge": {
+    "proposal_snippets": 18,
+    "case_studies": 8,
+    "methodologies": 5,
+    "service_descriptions": 6,
+    "templates": 3,
+    "pricing_and_effort": 6
+  },
+  "meeting_notes": 9,
+  "scenarios": [
+    "cloud modernization",
+    "AI adoption",
+    "data platform modernization",
+    "application modernization",
+    "customer service transformation"
+  ]
+}

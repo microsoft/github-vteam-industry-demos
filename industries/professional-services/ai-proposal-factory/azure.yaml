@@ -1,12 +1,43 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
 name: ai-proposal-factory
-metadata:
-  template: ai-proposal-factory@0.1.0
+
 infra:
   provider: bicep
   path: infra
-  module: main
+
 hooks:
   preprovision:
-    shell: pwsh
-    run: ./scripts/azure/preflight.ps1
-    interactive: true
+    windows:
+      run: ./scripts/azure/run-hook.ps1 preprovision.py
+      shell: pwsh
+      interactive: false
+      continueOnError: false
+    posix:
+      run: ./scripts/azure/run-hook.sh preprovision.py
+      shell: sh
+      interactive: false
+      continueOnError: false
+  postprovision:
+    windows:
+      run: ./scripts/azure/run-hook.ps1 postprovision.py
+      shell: pwsh
+      interactive: false
+      continueOnError: false
+    posix:
+      run: ./scripts/azure/run-hook.sh postprovision.py
+      shell: sh
+      interactive: false
+      continueOnError: false
+
+services:
+  app:
+    project: .
+    language: docker
+    host: containerapp
+    resourceName: ${SERVICE_APP_NAME}
+    docker:
+      path: ./Dockerfile
+      context: .
+      platform: linux/amd64
+      remoteBuild: true

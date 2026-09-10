@@ -1,0 +1,43 @@
+name: Application CI
+
+on:
+  push:
+    paths:
+      - "app/**"
+      - "data/**"
+      - "scripts/app/**"
+      - "tests/**"
+      - "requirements*.txt"
+      - "Dockerfile"
+      - ".github/workflows/application-ci.yml"
+  pull_request:
+    paths:
+      - "app/**"
+      - "data/**"
+      - "scripts/app/**"
+      - "tests/**"
+      - "requirements*.txt"
+      - "Dockerfile"
+      - ".github/workflows/application-ci.yml"
+
+jobs:
+  application:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check app tests scripts/app scripts/azure
+      - run: pytest -q
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: app/frontend/package-lock.json
+      - working-directory: app/frontend
+        run: npm ci
+      - working-directory: app/frontend
+        run: npm run build
