@@ -1,6 +1,6 @@
 fastapi==0.116.1
 uvicorn[standard]==0.35.0
-python-multipart==0.0.20
+python-multipart==0.0.31
 pypdf==6.16.2
 reportlab==5.0.1
 azure-identity==1.25.0
