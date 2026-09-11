@@ -1,0 +1,4273 @@
+{
+  "cases": [
+    {
+      "assigned_analyst": "Mira Chen",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-001-01",
+          "timestamp": "2026-09-09T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-001-02",
+          "timestamp": "2026-09-09T09:05:00+01:00"
+        }
+      ],
+      "company": "Northstar Components AB",
+      "completeness": [],
+      "completeness_percent": 82,
+      "country": "Sweden",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Northstar Components AB"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420001"
+            }
+          ],
+          "id": "DOC-001-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Northstar Components AB\nRegistration number: SC-420001\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "13 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-001-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Northstar Components AB\nAddress: 13 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-001-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nElin Marvik: 58% indirect interest\nJonas Elden: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-001-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Northstar Components AB\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-001-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nNorthstar Components AB\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-001",
+      "last_modified": "2026-09-10T09:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Northstar Meridian Holdings",
+          "owner": "Elin Marvik",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Northstar Meridian Holdings",
+          "owner": "Jonas Elden",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Northstar Components AB",
+          "owner": "Northstar Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Sweden",
+            "name": "Oskar Noren",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Linnea Sande",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Sweden",
+        "incorporation_date": "2013-02-15",
+        "legal_name": "Northstar Components AB",
+        "registered_address": "13 Aurora Quay, Stockholm",
+        "registration_number": "SC-420001",
+        "trading_address": "88 Lantern Wharf, Gothenburg"
+      },
+      "risk_level": "Medium",
+      "risks": [],
+      "scenario": "Ownership complexity and potential screening similarity",
+      "status": "Investigating",
+      "submitted_date": "2026-09-09",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Sam Okafor",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-002-01",
+          "timestamp": "2026-09-08T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-002-02",
+          "timestamp": "2026-09-08T09:05:00+01:00"
+        }
+      ],
+      "company": "Bluehaven Trade Oy",
+      "completeness": [],
+      "completeness_percent": 74,
+      "country": "Finland",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Bluehaven Trade Oy"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420002"
+            }
+          ],
+          "id": "DOC-002-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Bluehaven Trade Oy\nRegistration number: SC-420002\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "14 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-002-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Bluehaven Trade Oy\nAddress: 14 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-002-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nJonas Elden: 58% indirect interest\nMara Voss: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-002-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Bluehaven Trade Oy\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-002-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nBluehaven Trade Oy\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-002",
+      "last_modified": "2026-09-10T10:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Bluehaven Meridian Holdings",
+          "owner": "Jonas Elden",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Bluehaven Meridian Holdings",
+          "owner": "Mara Voss",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Bluehaven Trade Oy",
+          "owner": "Bluehaven Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Finland",
+            "name": "Linnea Sande",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Tobias Renn",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Finland",
+        "incorporation_date": "2014-03-15",
+        "legal_name": "Bluehaven Trade Oy",
+        "registered_address": "14 Aurora Quay, Stockholm",
+        "registration_number": "SC-420002",
+        "trading_address": "14 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Medium",
+      "risks": [],
+      "scenario": "Ownership complexity",
+      "status": "Investigating",
+      "submitted_date": "2026-09-08",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Alex Rivera",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-003-01",
+          "timestamp": "2026-09-07T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-003-02",
+          "timestamp": "2026-09-07T09:05:00+01:00"
+        }
+      ],
+      "company": "Lumen Ridge Holdings ApS",
+      "completeness": [],
+      "completeness_percent": 81,
+      "country": "Denmark",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Lumen Ridge Holdings ApS"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420003"
+            }
+          ],
+          "id": "DOC-003-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Lumen Ridge Holdings ApS\nRegistration number: SC-420003\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "15 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-003-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Lumen Ridge Holdings ApS\nAddress: 15 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-003-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nMara Voss: 58% indirect interest\nOskar Noren: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-003-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Lumen Ridge Holdings ApS\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-003-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nLumen Ridge Holdings ApS\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-003",
+      "last_modified": "2026-09-10T11:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Lumen Meridian Holdings",
+          "owner": "Mara Voss",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Lumen Meridian Holdings",
+          "owner": "Oskar Noren",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Lumen Ridge Holdings ApS",
+          "owner": "Lumen Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Denmark",
+            "name": "Tobias Renn",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Aila Kest",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Denmark",
+        "incorporation_date": "2015-04-15",
+        "legal_name": "Lumen Ridge Holdings ApS",
+        "registered_address": "15 Aurora Quay, Stockholm",
+        "registration_number": "SC-420003",
+        "trading_address": "15 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Medium",
+      "risks": [],
+      "scenario": "Missing evidence",
+      "status": "Awaiting Information",
+      "submitted_date": "2026-09-07",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Mira Chen",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-004-01",
+          "timestamp": "2026-09-06T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-004-02",
+          "timestamp": "2026-09-06T09:05:00+01:00"
+        }
+      ],
+      "company": "Silver Pine Logistics AB",
+      "completeness": [],
+      "completeness_percent": 88,
+      "country": "Norway",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Silver Pine Logistics AB"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420004"
+            }
+          ],
+          "id": "DOC-004-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Silver Pine Logistics AB\nRegistration number: SC-420004\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "16 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-004-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Silver Pine Logistics AB\nAddress: 16 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-004-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nOskar Noren: 58% indirect interest\nLinnea Sande: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-004-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Silver Pine Logistics AB\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-004-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nSilver Pine Logistics AB\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-004",
+      "last_modified": "2026-09-10T12:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Silver Meridian Holdings",
+          "owner": "Oskar Noren",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Silver Meridian Holdings",
+          "owner": "Linnea Sande",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Silver Pine Logistics AB",
+          "owner": "Silver Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Norway",
+            "name": "Aila Kest",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Henrik Vale",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Norway",
+        "incorporation_date": "2016-05-15",
+        "legal_name": "Silver Pine Logistics AB",
+        "registered_address": "16 Aurora Quay, Stockholm",
+        "registration_number": "SC-420004",
+        "trading_address": "16 Aurora Quay, Stockholm"
+      },
+      "risk_level": "High",
+      "risks": [],
+      "scenario": "Potential screening similarity",
+      "status": "Ready for Decision",
+      "submitted_date": "2026-09-06",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Sam Okafor",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-005-01",
+          "timestamp": "2026-09-05T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-005-02",
+          "timestamp": "2026-09-05T09:05:00+01:00"
+        }
+      ],
+      "company": "Aurora Field Systems Oy",
+      "completeness": [],
+      "completeness_percent": 95,
+      "country": "Sweden",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Aurora Field Systems Oy"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420005"
+            }
+          ],
+          "id": "DOC-005-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Aurora Field Systems Oy\nRegistration number: SC-420005\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "17 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-005-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Aurora Field Systems Oy\nAddress: 17 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-005-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nLinnea Sande: 58% indirect interest\nTobias Renn: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-005-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Aurora Field Systems Oy\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-005-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nAurora Field Systems Oy\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-005",
+      "last_modified": "2026-09-10T13:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Aurora Meridian Holdings",
+          "owner": "Linnea Sande",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Aurora Meridian Holdings",
+          "owner": "Tobias Renn",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Aurora Field Systems Oy",
+          "owner": "Aurora Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Sweden",
+            "name": "Henrik Vale",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Sofia Arden",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Sweden",
+        "incorporation_date": "2017-06-15",
+        "legal_name": "Aurora Field Systems Oy",
+        "registered_address": "17 Aurora Quay, Stockholm",
+        "registration_number": "SC-420005",
+        "trading_address": "17 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Low",
+      "risks": [],
+      "scenario": "Address inconsistency",
+      "status": "Approved",
+      "submitted_date": "2026-09-05",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Alex Rivera",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-006-01",
+          "timestamp": "2026-09-04T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-006-02",
+          "timestamp": "2026-09-04T09:05:00+01:00"
+        }
+      ],
+      "company": "Clearwater Packaging ApS",
+      "completeness": [],
+      "completeness_percent": 62,
+      "country": "Finland",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Clearwater Packaging ApS"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420006"
+            }
+          ],
+          "id": "DOC-006-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Clearwater Packaging ApS\nRegistration number: SC-420006\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "18 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-006-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Clearwater Packaging ApS\nAddress: 18 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-006-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nTobias Renn: 58% indirect interest\nAila Kest: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-006-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Clearwater Packaging ApS\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-006-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nClearwater Packaging ApS\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-006",
+      "last_modified": "2026-09-10T14:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Clearwater Meridian Holdings",
+          "owner": "Tobias Renn",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Clearwater Meridian Holdings",
+          "owner": "Aila Kest",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Clearwater Packaging ApS",
+          "owner": "Clearwater Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Finland",
+            "name": "Sofia Arden",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Mikkel Roan",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Finland",
+        "incorporation_date": "2018-07-15",
+        "legal_name": "Clearwater Packaging ApS",
+        "registered_address": "18 Aurora Quay, Stockholm",
+        "registration_number": "SC-420006",
+        "trading_address": "18 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Medium",
+      "risks": [],
+      "scenario": "Historical approval",
+      "status": "Escalated",
+      "submitted_date": "2026-09-04",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Mira Chen",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-007-01",
+          "timestamp": "2026-09-03T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-007-02",
+          "timestamp": "2026-09-03T09:05:00+01:00"
+        }
+      ],
+      "company": "Cobalt Bridge Analytics AB",
+      "completeness": [],
+      "completeness_percent": 69,
+      "country": "Denmark",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Cobalt Bridge Analytics AB"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420007"
+            }
+          ],
+          "id": "DOC-007-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Cobalt Bridge Analytics AB\nRegistration number: SC-420007\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "19 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-007-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Cobalt Bridge Analytics AB\nAddress: 19 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-007-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nAila Kest: 58% indirect interest\nHenrik Vale: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-007-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Cobalt Bridge Analytics AB\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-007-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nCobalt Bridge Analytics AB\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-007",
+      "last_modified": "2026-09-10T15:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Cobalt Meridian Holdings",
+          "owner": "Aila Kest",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Cobalt Meridian Holdings",
+          "owner": "Henrik Vale",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Cobalt Bridge Analytics AB",
+          "owner": "Cobalt Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Denmark",
+            "name": "Mikkel Roan",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Freja Linde",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Denmark",
+        "incorporation_date": "2019-08-15",
+        "legal_name": "Cobalt Bridge Analytics AB",
+        "registered_address": "19 Aurora Quay, Stockholm",
+        "registration_number": "SC-420007",
+        "trading_address": "19 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Medium",
+      "risks": [],
+      "scenario": "Awaiting customer evidence",
+      "status": "New",
+      "submitted_date": "2026-09-03",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Sam Okafor",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-008-01",
+          "timestamp": "2026-09-02T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-008-02",
+          "timestamp": "2026-09-02T09:05:00+01:00"
+        }
+      ],
+      "company": "Ember Coast Textiles Oy",
+      "completeness": [],
+      "completeness_percent": 76,
+      "country": "Norway",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Ember Coast Textiles Oy"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420008"
+            }
+          ],
+          "id": "DOC-008-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Ember Coast Textiles Oy\nRegistration number: SC-420008\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "20 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-008-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Ember Coast Textiles Oy\nAddress: 20 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-008-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nHenrik Vale: 58% indirect interest\nSofia Arden: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-008-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Ember Coast Textiles Oy\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-008-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nEmber Coast Textiles Oy\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-008",
+      "last_modified": "2026-09-09T16:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Ember Meridian Holdings",
+          "owner": "Henrik Vale",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Ember Meridian Holdings",
+          "owner": "Sofia Arden",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Ember Coast Textiles Oy",
+          "owner": "Ember Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Norway",
+            "name": "Freja Linde",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Nils Corven",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Norway",
+        "incorporation_date": "2020-01-15",
+        "legal_name": "Ember Coast Textiles Oy",
+        "registered_address": "20 Aurora Quay, Stockholm",
+        "registration_number": "SC-420008",
+        "trading_address": "20 Aurora Quay, Stockholm"
+      },
+      "risk_level": "High",
+      "risks": [],
+      "scenario": "Previous analyst escalation",
+      "status": "Investigating",
+      "submitted_date": "2026-09-02",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Alex Rivera",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-009-01",
+          "timestamp": "2026-09-01T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-009-02",
+          "timestamp": "2026-09-01T09:05:00+01:00"
+        }
+      ],
+      "company": "Frostline Marine ApS",
+      "completeness": [],
+      "completeness_percent": 83,
+      "country": "Sweden",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Frostline Marine ApS"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420009"
+            }
+          ],
+          "id": "DOC-009-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Frostline Marine ApS\nRegistration number: SC-420009\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "21 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-009-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Frostline Marine ApS\nAddress: 21 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-009-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nSofia Arden: 58% indirect interest\nMikkel Roan: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-009-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Frostline Marine ApS\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-009-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nFrostline Marine ApS\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-009",
+      "last_modified": "2026-09-09T17:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Frostline Meridian Holdings",
+          "owner": "Sofia Arden",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Frostline Meridian Holdings",
+          "owner": "Mikkel Roan",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Frostline Marine ApS",
+          "owner": "Frostline Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Sweden",
+            "name": "Nils Corven",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Elin Marvik",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Sweden",
+        "incorporation_date": "2021-02-15",
+        "legal_name": "Frostline Marine ApS",
+        "registered_address": "21 Aurora Quay, Stockholm",
+        "registration_number": "SC-420009",
+        "trading_address": "21 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Low",
+      "risks": [],
+      "scenario": "Straightforward onboarding",
+      "status": "Awaiting Information",
+      "submitted_date": "2026-09-01",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Mira Chen",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-010-01",
+          "timestamp": "2026-08-31T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-010-02",
+          "timestamp": "2026-08-31T09:05:00+01:00"
+        }
+      ],
+      "company": "Granite Bloom Foods AB",
+      "completeness": [],
+      "completeness_percent": 90,
+      "country": "Finland",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Granite Bloom Foods AB"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420010"
+            }
+          ],
+          "id": "DOC-010-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Granite Bloom Foods AB\nRegistration number: SC-420010\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "22 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-010-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Granite Bloom Foods AB\nAddress: 22 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-010-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nMikkel Roan: 58% indirect interest\nFreja Linde: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-010-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Granite Bloom Foods AB\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-010-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nGranite Bloom Foods AB\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-010",
+      "last_modified": "2026-09-09T08:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Granite Meridian Holdings",
+          "owner": "Mikkel Roan",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Granite Meridian Holdings",
+          "owner": "Freja Linde",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Granite Bloom Foods AB",
+          "owner": "Granite Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Finland",
+            "name": "Elin Marvik",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Jonas Elden",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Finland",
+        "incorporation_date": "2012-03-15",
+        "legal_name": "Granite Bloom Foods AB",
+        "registered_address": "22 Aurora Quay, Stockholm",
+        "registration_number": "SC-420010",
+        "trading_address": "22 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Medium",
+      "risks": [],
+      "scenario": "Ownership complexity",
+      "status": "Ready for Decision",
+      "submitted_date": "2026-08-31",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Sam Okafor",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-011-01",
+          "timestamp": "2026-08-30T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-011-02",
+          "timestamp": "2026-08-30T09:05:00+01:00"
+        }
+      ],
+      "company": "Harborlight Engineering Oy",
+      "completeness": [],
+      "completeness_percent": 97,
+      "country": "Denmark",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Harborlight Engineering Oy"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420011"
+            }
+          ],
+          "id": "DOC-011-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Harborlight Engineering Oy\nRegistration number: SC-420011\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "23 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-011-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Harborlight Engineering Oy\nAddress: 23 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-011-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nFreja Linde: 58% indirect interest\nNils Corven: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-011-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Harborlight Engineering Oy\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-011-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nHarborlight Engineering Oy\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-011",
+      "last_modified": "2026-09-09T09:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Harborlight Meridian Holdings",
+          "owner": "Freja Linde",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Harborlight Meridian Holdings",
+          "owner": "Nils Corven",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Harborlight Engineering Oy",
+          "owner": "Harborlight Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Denmark",
+            "name": "Jonas Elden",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Mara Voss",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Denmark",
+        "incorporation_date": "2013-04-15",
+        "legal_name": "Harborlight Engineering Oy",
+        "registered_address": "23 Aurora Quay, Stockholm",
+        "registration_number": "SC-420011",
+        "trading_address": "23 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Medium",
+      "risks": [],
+      "scenario": "Missing evidence",
+      "status": "Approved",
+      "submitted_date": "2026-08-30",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Alex Rivera",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-012-01",
+          "timestamp": "2026-08-29T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-012-02",
+          "timestamp": "2026-08-29T09:05:00+01:00"
+        }
+      ],
+      "company": "Ivory Peak Consulting ApS",
+      "completeness": [],
+      "completeness_percent": 64,
+      "country": "Norway",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Ivory Peak Consulting ApS"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420012"
+            }
+          ],
+          "id": "DOC-012-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Ivory Peak Consulting ApS\nRegistration number: SC-420012\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "24 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-012-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Ivory Peak Consulting ApS\nAddress: 24 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-012-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nNils Corven: 58% indirect interest\nElin Marvik: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-012-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Ivory Peak Consulting ApS\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-012-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nIvory Peak Consulting ApS\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-012",
+      "last_modified": "2026-09-09T10:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Ivory Meridian Holdings",
+          "owner": "Nils Corven",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Ivory Meridian Holdings",
+          "owner": "Elin Marvik",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Ivory Peak Consulting ApS",
+          "owner": "Ivory Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Norway",
+            "name": "Mara Voss",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Oskar Noren",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Norway",
+        "incorporation_date": "2014-05-15",
+        "legal_name": "Ivory Peak Consulting ApS",
+        "registered_address": "24 Aurora Quay, Stockholm",
+        "registration_number": "SC-420012",
+        "trading_address": "24 Aurora Quay, Stockholm"
+      },
+      "risk_level": "High",
+      "risks": [],
+      "scenario": "Potential screening similarity",
+      "status": "Escalated",
+      "submitted_date": "2026-08-29",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Mira Chen",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-013-01",
+          "timestamp": "2026-08-28T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-013-02",
+          "timestamp": "2026-08-28T09:05:00+01:00"
+        }
+      ],
+      "company": "Juniper Vale Energy AB",
+      "completeness": [],
+      "completeness_percent": 71,
+      "country": "Sweden",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Juniper Vale Energy AB"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420013"
+            }
+          ],
+          "id": "DOC-013-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Juniper Vale Energy AB\nRegistration number: SC-420013\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "25 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-013-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Juniper Vale Energy AB\nAddress: 25 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-013-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nElin Marvik: 58% indirect interest\nJonas Elden: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-013-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Juniper Vale Energy AB\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-013-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nJuniper Vale Energy AB\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-013",
+      "last_modified": "2026-09-09T11:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Juniper Meridian Holdings",
+          "owner": "Elin Marvik",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Juniper Meridian Holdings",
+          "owner": "Jonas Elden",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Juniper Vale Energy AB",
+          "owner": "Juniper Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Sweden",
+            "name": "Oskar Noren",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Linnea Sande",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Sweden",
+        "incorporation_date": "2015-06-15",
+        "legal_name": "Juniper Vale Energy AB",
+        "registered_address": "25 Aurora Quay, Stockholm",
+        "registration_number": "SC-420013",
+        "trading_address": "25 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Low",
+      "risks": [],
+      "scenario": "Address inconsistency",
+      "status": "New",
+      "submitted_date": "2026-08-28",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Sam Okafor",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-014-01",
+          "timestamp": "2026-08-27T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-014-02",
+          "timestamp": "2026-08-27T09:05:00+01:00"
+        }
+      ],
+      "company": "Kindred Stone Imports Oy",
+      "completeness": [],
+      "completeness_percent": 78,
+      "country": "Finland",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Kindred Stone Imports Oy"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420014"
+            }
+          ],
+          "id": "DOC-014-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Kindred Stone Imports Oy\nRegistration number: SC-420014\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "26 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-014-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Kindred Stone Imports Oy\nAddress: 26 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-014-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nJonas Elden: 58% indirect interest\nMara Voss: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-014-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Kindred Stone Imports Oy\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-014-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nKindred Stone Imports Oy\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-014",
+      "last_modified": "2026-09-09T12:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Kindred Meridian Holdings",
+          "owner": "Jonas Elden",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Kindred Meridian Holdings",
+          "owner": "Mara Voss",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Kindred Stone Imports Oy",
+          "owner": "Kindred Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Finland",
+            "name": "Linnea Sande",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Tobias Renn",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Finland",
+        "incorporation_date": "2016-07-15",
+        "legal_name": "Kindred Stone Imports Oy",
+        "registered_address": "26 Aurora Quay, Stockholm",
+        "registration_number": "SC-420014",
+        "trading_address": "26 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Medium",
+      "risks": [],
+      "scenario": "Historical approval",
+      "status": "Investigating",
+      "submitted_date": "2026-08-27",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Alex Rivera",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-015-01",
+          "timestamp": "2026-08-26T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-015-02",
+          "timestamp": "2026-08-26T09:05:00+01:00"
+        }
+      ],
+      "company": "Lakewind Medical Supplies ApS",
+      "completeness": [],
+      "completeness_percent": 85,
+      "country": "Denmark",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Lakewind Medical Supplies ApS"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420015"
+            }
+          ],
+          "id": "DOC-015-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Lakewind Medical Supplies ApS\nRegistration number: SC-420015\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "27 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-015-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Lakewind Medical Supplies ApS\nAddress: 27 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-015-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nMara Voss: 58% indirect interest\nOskar Noren: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-015-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Lakewind Medical Supplies ApS\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-015-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nLakewind Medical Supplies ApS\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-015",
+      "last_modified": "2026-09-09T13:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Lakewind Meridian Holdings",
+          "owner": "Mara Voss",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Lakewind Meridian Holdings",
+          "owner": "Oskar Noren",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Lakewind Medical Supplies ApS",
+          "owner": "Lakewind Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Denmark",
+            "name": "Tobias Renn",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Aila Kest",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Denmark",
+        "incorporation_date": "2017-08-15",
+        "legal_name": "Lakewind Medical Supplies ApS",
+        "registered_address": "27 Aurora Quay, Stockholm",
+        "registration_number": "SC-420015",
+        "trading_address": "27 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Medium",
+      "risks": [],
+      "scenario": "Awaiting customer evidence",
+      "status": "Awaiting Information",
+      "submitted_date": "2026-08-26",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Mira Chen",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-016-01",
+          "timestamp": "2026-08-25T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-016-02",
+          "timestamp": "2026-08-25T09:05:00+01:00"
+        }
+      ],
+      "company": "Meadow Arc Technologies AB",
+      "completeness": [],
+      "completeness_percent": 92,
+      "country": "Norway",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Meadow Arc Technologies AB"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420016"
+            }
+          ],
+          "id": "DOC-016-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Meadow Arc Technologies AB\nRegistration number: SC-420016\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "28 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-016-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Meadow Arc Technologies AB\nAddress: 28 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-016-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nOskar Noren: 58% indirect interest\nLinnea Sande: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-016-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Meadow Arc Technologies AB\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-016-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nMeadow Arc Technologies AB\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-016",
+      "last_modified": "2026-09-08T14:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Meadow Meridian Holdings",
+          "owner": "Oskar Noren",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Meadow Meridian Holdings",
+          "owner": "Linnea Sande",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Meadow Arc Technologies AB",
+          "owner": "Meadow Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Norway",
+            "name": "Aila Kest",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Henrik Vale",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Norway",
+        "incorporation_date": "2018-01-15",
+        "legal_name": "Meadow Arc Technologies AB",
+        "registered_address": "28 Aurora Quay, Stockholm",
+        "registration_number": "SC-420016",
+        "trading_address": "28 Aurora Quay, Stockholm"
+      },
+      "risk_level": "High",
+      "risks": [],
+      "scenario": "Previous analyst escalation",
+      "status": "Ready for Decision",
+      "submitted_date": "2026-08-25",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Sam Okafor",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-017-01",
+          "timestamp": "2026-08-24T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-017-02",
+          "timestamp": "2026-08-24T09:05:00+01:00"
+        }
+      ],
+      "company": "Nordic Cedar Furnishings Oy",
+      "completeness": [],
+      "completeness_percent": 99,
+      "country": "Sweden",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Nordic Cedar Furnishings Oy"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420017"
+            }
+          ],
+          "id": "DOC-017-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Nordic Cedar Furnishings Oy\nRegistration number: SC-420017\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "29 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-017-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Nordic Cedar Furnishings Oy\nAddress: 29 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-017-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nLinnea Sande: 58% indirect interest\nTobias Renn: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-017-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Nordic Cedar Furnishings Oy\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-017-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nNordic Cedar Furnishings Oy\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-017",
+      "last_modified": "2026-09-08T15:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Nordic Meridian Holdings",
+          "owner": "Linnea Sande",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Nordic Meridian Holdings",
+          "owner": "Tobias Renn",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Nordic Cedar Furnishings Oy",
+          "owner": "Nordic Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Sweden",
+            "name": "Henrik Vale",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Sofia Arden",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Sweden",
+        "incorporation_date": "2019-02-15",
+        "legal_name": "Nordic Cedar Furnishings Oy",
+        "registered_address": "29 Aurora Quay, Stockholm",
+        "registration_number": "SC-420017",
+        "trading_address": "29 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Low",
+      "risks": [],
+      "scenario": "Straightforward onboarding",
+      "status": "Approved",
+      "submitted_date": "2026-08-24",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Alex Rivera",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-018-01",
+          "timestamp": "2026-08-23T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-018-02",
+          "timestamp": "2026-08-23T09:05:00+01:00"
+        }
+      ],
+      "company": "Opal Current Ventures ApS",
+      "completeness": [],
+      "completeness_percent": 66,
+      "country": "Finland",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Opal Current Ventures ApS"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420018"
+            }
+          ],
+          "id": "DOC-018-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Opal Current Ventures ApS\nRegistration number: SC-420018\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "30 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-018-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Opal Current Ventures ApS\nAddress: 30 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-018-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nTobias Renn: 58% indirect interest\nAila Kest: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-018-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Opal Current Ventures ApS\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-018-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nOpal Current Ventures ApS\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-018",
+      "last_modified": "2026-09-08T16:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Opal Meridian Holdings",
+          "owner": "Tobias Renn",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Opal Meridian Holdings",
+          "owner": "Aila Kest",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Opal Current Ventures ApS",
+          "owner": "Opal Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Finland",
+            "name": "Sofia Arden",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Mikkel Roan",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Finland",
+        "incorporation_date": "2020-03-15",
+        "legal_name": "Opal Current Ventures ApS",
+        "registered_address": "30 Aurora Quay, Stockholm",
+        "registration_number": "SC-420018",
+        "trading_address": "30 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Medium",
+      "risks": [],
+      "scenario": "Ownership complexity",
+      "status": "Escalated",
+      "submitted_date": "2026-08-23",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Mira Chen",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-019-01",
+          "timestamp": "2026-08-22T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-019-02",
+          "timestamp": "2026-08-22T09:05:00+01:00"
+        }
+      ],
+      "company": "Pinecrest Mobility AB",
+      "completeness": [],
+      "completeness_percent": 73,
+      "country": "Denmark",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Pinecrest Mobility AB"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420019"
+            }
+          ],
+          "id": "DOC-019-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Pinecrest Mobility AB\nRegistration number: SC-420019\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "31 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-019-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Pinecrest Mobility AB\nAddress: 31 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-019-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nAila Kest: 58% indirect interest\nHenrik Vale: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-019-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Pinecrest Mobility AB\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-019-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nPinecrest Mobility AB\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-019",
+      "last_modified": "2026-09-08T17:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Pinecrest Meridian Holdings",
+          "owner": "Aila Kest",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Pinecrest Meridian Holdings",
+          "owner": "Henrik Vale",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Pinecrest Mobility AB",
+          "owner": "Pinecrest Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Denmark",
+            "name": "Mikkel Roan",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Freja Linde",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Denmark",
+        "incorporation_date": "2021-04-15",
+        "legal_name": "Pinecrest Mobility AB",
+        "registered_address": "31 Aurora Quay, Stockholm",
+        "registration_number": "SC-420019",
+        "trading_address": "31 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Medium",
+      "risks": [],
+      "scenario": "Missing evidence",
+      "status": "New",
+      "submitted_date": "2026-08-22",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Sam Okafor",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-020-01",
+          "timestamp": "2026-08-21T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-020-02",
+          "timestamp": "2026-08-21T09:05:00+01:00"
+        }
+      ],
+      "company": "Quartz Harbor Services Oy",
+      "completeness": [],
+      "completeness_percent": 80,
+      "country": "Norway",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Quartz Harbor Services Oy"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420020"
+            }
+          ],
+          "id": "DOC-020-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Quartz Harbor Services Oy\nRegistration number: SC-420020\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "32 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-020-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Quartz Harbor Services Oy\nAddress: 32 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-020-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nHenrik Vale: 58% indirect interest\nSofia Arden: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-020-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Quartz Harbor Services Oy\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-020-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nQuartz Harbor Services Oy\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-020",
+      "last_modified": "2026-09-08T08:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Quartz Meridian Holdings",
+          "owner": "Henrik Vale",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Quartz Meridian Holdings",
+          "owner": "Sofia Arden",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Quartz Harbor Services Oy",
+          "owner": "Quartz Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Norway",
+            "name": "Freja Linde",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Nils Corven",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Norway",
+        "incorporation_date": "2012-05-15",
+        "legal_name": "Quartz Harbor Services Oy",
+        "registered_address": "32 Aurora Quay, Stockholm",
+        "registration_number": "SC-420020",
+        "trading_address": "32 Aurora Quay, Stockholm"
+      },
+      "risk_level": "High",
+      "risks": [],
+      "scenario": "Potential screening similarity",
+      "status": "Investigating",
+      "submitted_date": "2026-08-21",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Alex Rivera",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-021-01",
+          "timestamp": "2026-08-20T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-021-02",
+          "timestamp": "2026-08-20T09:05:00+01:00"
+        }
+      ],
+      "company": "Riverglass Manufacturing ApS",
+      "completeness": [],
+      "completeness_percent": 87,
+      "country": "Sweden",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Riverglass Manufacturing ApS"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420021"
+            }
+          ],
+          "id": "DOC-021-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Riverglass Manufacturing ApS\nRegistration number: SC-420021\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "33 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-021-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Riverglass Manufacturing ApS\nAddress: 33 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-021-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nSofia Arden: 58% indirect interest\nMikkel Roan: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-021-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Riverglass Manufacturing ApS\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-021-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nRiverglass Manufacturing ApS\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-021",
+      "last_modified": "2026-09-08T09:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Riverglass Meridian Holdings",
+          "owner": "Sofia Arden",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Riverglass Meridian Holdings",
+          "owner": "Mikkel Roan",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Riverglass Manufacturing ApS",
+          "owner": "Riverglass Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Sweden",
+            "name": "Nils Corven",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Elin Marvik",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Sweden",
+        "incorporation_date": "2013-06-15",
+        "legal_name": "Riverglass Manufacturing ApS",
+        "registered_address": "33 Aurora Quay, Stockholm",
+        "registration_number": "SC-420021",
+        "trading_address": "33 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Low",
+      "risks": [],
+      "scenario": "Address inconsistency",
+      "status": "Awaiting Information",
+      "submitted_date": "2026-08-20",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Mira Chen",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-022-01",
+          "timestamp": "2026-08-19T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-022-02",
+          "timestamp": "2026-08-19T09:05:00+01:00"
+        }
+      ],
+      "company": "Solstice Orchard Exports AB",
+      "completeness": [],
+      "completeness_percent": 94,
+      "country": "Finland",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Solstice Orchard Exports AB"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420022"
+            }
+          ],
+          "id": "DOC-022-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Solstice Orchard Exports AB\nRegistration number: SC-420022\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "34 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-022-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Solstice Orchard Exports AB\nAddress: 34 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-022-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nMikkel Roan: 58% indirect interest\nFreja Linde: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-022-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Solstice Orchard Exports AB\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-022-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nSolstice Orchard Exports AB\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-022",
+      "last_modified": "2026-09-08T10:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Solstice Meridian Holdings",
+          "owner": "Mikkel Roan",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Solstice Meridian Holdings",
+          "owner": "Freja Linde",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Solstice Orchard Exports AB",
+          "owner": "Solstice Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Finland",
+            "name": "Elin Marvik",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Jonas Elden",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Finland",
+        "incorporation_date": "2014-07-15",
+        "legal_name": "Solstice Orchard Exports AB",
+        "registered_address": "34 Aurora Quay, Stockholm",
+        "registration_number": "SC-420022",
+        "trading_address": "34 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Medium",
+      "risks": [],
+      "scenario": "Historical approval",
+      "status": "Ready for Decision",
+      "submitted_date": "2026-08-19",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Sam Okafor",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-023-01",
+          "timestamp": "2026-08-18T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-023-02",
+          "timestamp": "2026-08-18T09:05:00+01:00"
+        }
+      ],
+      "company": "Tundra Beacon Software Oy",
+      "completeness": [],
+      "completeness_percent": 61,
+      "country": "Denmark",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Tundra Beacon Software Oy"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420023"
+            }
+          ],
+          "id": "DOC-023-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Tundra Beacon Software Oy\nRegistration number: SC-420023\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "35 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-023-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Tundra Beacon Software Oy\nAddress: 35 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-023-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nFreja Linde: 58% indirect interest\nNils Corven: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-023-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Tundra Beacon Software Oy\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-023-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nTundra Beacon Software Oy\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-023",
+      "last_modified": "2026-09-08T11:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Tundra Meridian Holdings",
+          "owner": "Freja Linde",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Tundra Meridian Holdings",
+          "owner": "Nils Corven",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Tundra Beacon Software Oy",
+          "owner": "Tundra Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Denmark",
+            "name": "Jonas Elden",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Mara Voss",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Denmark",
+        "incorporation_date": "2015-08-15",
+        "legal_name": "Tundra Beacon Software Oy",
+        "registered_address": "35 Aurora Quay, Stockholm",
+        "registration_number": "SC-420023",
+        "trading_address": "35 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Medium",
+      "risks": [],
+      "scenario": "Awaiting customer evidence",
+      "status": "Approved",
+      "submitted_date": "2026-08-18",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Alex Rivera",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-024-01",
+          "timestamp": "2026-08-17T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-024-02",
+          "timestamp": "2026-08-17T09:05:00+01:00"
+        }
+      ],
+      "company": "Umber Sky Retail ApS",
+      "completeness": [],
+      "completeness_percent": 68,
+      "country": "Norway",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Umber Sky Retail ApS"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420024"
+            }
+          ],
+          "id": "DOC-024-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Umber Sky Retail ApS\nRegistration number: SC-420024\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "36 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-024-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Umber Sky Retail ApS\nAddress: 36 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-024-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nNils Corven: 58% indirect interest\nElin Marvik: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-024-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Umber Sky Retail ApS\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-024-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nUmber Sky Retail ApS\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-024",
+      "last_modified": "2026-09-08T12:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Umber Meridian Holdings",
+          "owner": "Nils Corven",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Umber Meridian Holdings",
+          "owner": "Elin Marvik",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Umber Sky Retail ApS",
+          "owner": "Umber Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Norway",
+            "name": "Mara Voss",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Oskar Noren",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Norway",
+        "incorporation_date": "2016-01-15",
+        "legal_name": "Umber Sky Retail ApS",
+        "registered_address": "36 Aurora Quay, Stockholm",
+        "registration_number": "SC-420024",
+        "trading_address": "36 Aurora Quay, Stockholm"
+      },
+      "risk_level": "High",
+      "risks": [],
+      "scenario": "Previous analyst escalation",
+      "status": "Escalated",
+      "submitted_date": "2026-08-17",
+      "summary": null
+    },
+    {
+      "assigned_analyst": "Mira Chen",
+      "audit": [
+        {
+          "action": "Case created",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "Synthetic onboarding case created from deterministic seed data.",
+          "id": "AUD-025-01",
+          "timestamp": "2026-08-16T09:00:00+01:00"
+        },
+        {
+          "action": "Documents received",
+          "actor": "Demo seeder",
+          "actor_type": "System",
+          "detail": "5 synthetic documents attached to the case.",
+          "id": "AUD-025-02",
+          "timestamp": "2026-08-16T09:05:00+01:00"
+        }
+      ],
+      "company": "Verdant Echo Materials AB",
+      "completeness": [],
+      "completeness_percent": 75,
+      "country": "Sweden",
+      "decisions": [],
+      "documents": [
+        {
+          "confidence": 0.99,
+          "document_type": "Certificate of Incorporation",
+          "extracted_facts": [
+            {
+              "confidence": 0.99,
+              "field": "Legal company name",
+              "source_document": "Certificate of Incorporation",
+              "value": "Verdant Echo Materials AB"
+            },
+            {
+              "confidence": 0.98,
+              "field": "Registration number",
+              "source_document": "Company Registration Extract",
+              "value": "SC-420025"
+            }
+          ],
+          "id": "DOC-025-01",
+          "name": "certificate-of-incorporation.txt",
+          "preview": "SYNTHETIC DOCUMENT\nCertificate of Incorporation\n\nLegal name: Verdant Echo Materials AB\nRegistration number: SC-420025\nIssuing authority: Fictional Nordic Companies Office\nThis document is generated solely for demonstration.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.96,
+          "document_type": "Proof of Registered Address",
+          "extracted_facts": [
+            {
+              "confidence": 0.96,
+              "field": "Registered address",
+              "source_document": "Proof of Registered Address",
+              "value": "37 Aurora Quay, Stockholm"
+            }
+          ],
+          "id": "DOC-025-02",
+          "name": "registered-address-evidence.txt",
+          "preview": "SYNTHETIC DOCUMENT\nRegistered Address Confirmation\n\nOrganisation: Verdant Echo Materials AB\nAddress: 37 Aurora Quay, Stockholm\nDocument date: 2026-08-21\nNo real person or organisation is represented.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.91,
+          "document_type": "Beneficial Ownership Declaration",
+          "extracted_facts": [],
+          "id": "DOC-025-03",
+          "name": "beneficial-ownership-declaration.txt",
+          "preview": "SYNTHETIC DOCUMENT\nBeneficial Ownership Declaration\n\nElin Marvik: 58% indirect interest\nJonas Elden: 42% indirect interest\nOne intermediate holding-company extract remains subject to review.",
+          "status": "Ready",
+          "submitted_at": "2026-09-08"
+        },
+        {
+          "confidence": 0.97,
+          "document_type": "Onboarding Form",
+          "extracted_facts": [],
+          "id": "DOC-025-04",
+          "name": "onboarding-form.txt",
+          "preview": "SYNTHETIC ONBOARDING FORM\nApplicant: Verdant Echo Materials AB\nPurpose: Business banking relationship demonstration\nExpected activity: Domestic and Nordic-region supplier payments.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        },
+        {
+          "confidence": 0.89,
+          "document_type": "Corporate Structure Document",
+          "extracted_facts": [],
+          "id": "DOC-025-05",
+          "name": "corporate-structure.txt",
+          "preview": "SYNTHETIC CORPORATE STRUCTURE\nVerdant Echo Materials AB\nControlled through a fictional intermediate holding entity.\nOwnership totals reconcile to 100%; supporting evidence for one layer is pending.",
+          "status": "Ready",
+          "submitted_at": "2026-09-09"
+        }
+      ],
+      "id": "KYC-DEMO-025",
+      "last_modified": "2026-09-08T13:20:00+01:00",
+      "onboarding_type": "Business customer",
+      "ownership": [
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Verdant Meridian Holdings",
+          "owner": "Elin Marvik",
+          "percentage": 58.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Finland",
+          "owned_entity": "Verdant Meridian Holdings",
+          "owner": "Jonas Elden",
+          "percentage": 42.0,
+          "relationship": "Indirect beneficial owner",
+          "source_document": "Beneficial Ownership Declaration"
+        },
+        {
+          "jurisdiction": "Sweden",
+          "owned_entity": "Verdant Echo Materials AB",
+          "owner": "Verdant Meridian Holdings",
+          "percentage": 100.0,
+          "relationship": "Corporate shareholder",
+          "source_document": "Corporate Structure Document"
+        }
+      ],
+      "profile": {
+        "directors": [
+          {
+            "country": "Sweden",
+            "name": "Oskar Noren",
+            "role": "Director"
+          },
+          {
+            "country": "Sweden",
+            "name": "Linnea Sande",
+            "role": "Director"
+          }
+        ],
+        "incorporation_country": "Sweden",
+        "incorporation_date": "2017-02-15",
+        "legal_name": "Verdant Echo Materials AB",
+        "registered_address": "37 Aurora Quay, Stockholm",
+        "registration_number": "SC-420025",
+        "trading_address": "37 Aurora Quay, Stockholm"
+      },
+      "risk_level": "Low",
+      "risks": [],
+      "scenario": "Straightforward onboarding",
+      "status": "New",
+      "submitted_date": "2026-08-16",
+      "summary": null
+    }
+  ],
+  "primary_case_id": "KYC-DEMO-001",
+  "screening_records": [
+    {
+      "aliases": [
+        "Fictional Alias 01"
+      ],
+      "category": "Synthetic PEP-style",
+      "country": "Sweden",
+      "entity_type": "Person",
+      "id": "SCR-001",
+      "name": "Jonas Elden Demo 01",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 02"
+      ],
+      "category": "Internal demo risk",
+      "country": "Finland",
+      "entity_type": "Person",
+      "id": "SCR-002",
+      "name": "Mara Voss Demo 02",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 03"
+      ],
+      "category": "Synthetic watchlist",
+      "country": "Denmark",
+      "entity_type": "Person",
+      "id": "SCR-003",
+      "name": "Oskar Noren Demo 03",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 04"
+      ],
+      "category": "Synthetic PEP-style",
+      "country": "Norway",
+      "entity_type": "Organisation",
+      "id": "SCR-004",
+      "name": "Linnea Sande Demo 04",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 05"
+      ],
+      "category": "Internal demo risk",
+      "country": "Fictionland",
+      "entity_type": "Person",
+      "id": "SCR-005",
+      "name": "Tobias Renn Demo 05",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 06"
+      ],
+      "category": "Synthetic watchlist",
+      "country": "Sweden",
+      "entity_type": "Person",
+      "id": "SCR-006",
+      "name": "Aila Kest Demo 06",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 07"
+      ],
+      "category": "Synthetic PEP-style",
+      "country": "Finland",
+      "entity_type": "Person",
+      "id": "SCR-007",
+      "name": "Elina Marvik",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 08"
+      ],
+      "category": "Internal demo risk",
+      "country": "Denmark",
+      "entity_type": "Organisation",
+      "id": "SCR-008",
+      "name": "Sofia Arden Demo 08",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 09"
+      ],
+      "category": "Synthetic watchlist",
+      "country": "Norway",
+      "entity_type": "Person",
+      "id": "SCR-009",
+      "name": "Mikkel Roan Demo 09",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 10"
+      ],
+      "category": "Synthetic PEP-style",
+      "country": "Fictionland",
+      "entity_type": "Person",
+      "id": "SCR-010",
+      "name": "Freja Linde Demo 10",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 11"
+      ],
+      "category": "Internal demo risk",
+      "country": "Sweden",
+      "entity_type": "Person",
+      "id": "SCR-011",
+      "name": "Nils Corven Demo 11",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 12"
+      ],
+      "category": "Synthetic watchlist",
+      "country": "Finland",
+      "entity_type": "Organisation",
+      "id": "SCR-012",
+      "name": "Elin Marvik Demo 12",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 13"
+      ],
+      "category": "Synthetic PEP-style",
+      "country": "Denmark",
+      "entity_type": "Person",
+      "id": "SCR-013",
+      "name": "Jonas Elden Demo 13",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 14"
+      ],
+      "category": "Internal demo risk",
+      "country": "Norway",
+      "entity_type": "Person",
+      "id": "SCR-014",
+      "name": "Mara Voss Demo 14",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 15"
+      ],
+      "category": "Synthetic watchlist",
+      "country": "Fictionland",
+      "entity_type": "Person",
+      "id": "SCR-015",
+      "name": "Oskar Noren Demo 15",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 16"
+      ],
+      "category": "Synthetic PEP-style",
+      "country": "Sweden",
+      "entity_type": "Organisation",
+      "id": "SCR-016",
+      "name": "Linnea Sande Demo 16",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 17"
+      ],
+      "category": "Internal demo risk",
+      "country": "Finland",
+      "entity_type": "Person",
+      "id": "SCR-017",
+      "name": "Tobias Renn Demo 17",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 18"
+      ],
+      "category": "Synthetic watchlist",
+      "country": "Denmark",
+      "entity_type": "Person",
+      "id": "SCR-018",
+      "name": "Aila Kest Demo 18",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 19"
+      ],
+      "category": "Synthetic PEP-style",
+      "country": "Norway",
+      "entity_type": "Person",
+      "id": "SCR-019",
+      "name": "Henrik Vale Demo 19",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 20"
+      ],
+      "category": "Internal demo risk",
+      "country": "Fictionland",
+      "entity_type": "Organisation",
+      "id": "SCR-020",
+      "name": "Sofia Arden Demo 20",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 21"
+      ],
+      "category": "Synthetic watchlist",
+      "country": "Sweden",
+      "entity_type": "Person",
+      "id": "SCR-021",
+      "name": "Mikkel Roan Demo 21",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 22"
+      ],
+      "category": "Synthetic PEP-style",
+      "country": "Finland",
+      "entity_type": "Person",
+      "id": "SCR-022",
+      "name": "Freja Linde Demo 22",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 23"
+      ],
+      "category": "Internal demo risk",
+      "country": "Denmark",
+      "entity_type": "Person",
+      "id": "SCR-023",
+      "name": "Nils Corven Demo 23",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 24"
+      ],
+      "category": "Synthetic watchlist",
+      "country": "Norway",
+      "entity_type": "Organisation",
+      "id": "SCR-024",
+      "name": "Elin Marvik Demo 24",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 25"
+      ],
+      "category": "Synthetic PEP-style",
+      "country": "Fictionland",
+      "entity_type": "Person",
+      "id": "SCR-025",
+      "name": "Jonas Elden Demo 25",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 26"
+      ],
+      "category": "Internal demo risk",
+      "country": "Sweden",
+      "entity_type": "Person",
+      "id": "SCR-026",
+      "name": "Mara Voss Demo 26",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 27"
+      ],
+      "category": "Synthetic watchlist",
+      "country": "Finland",
+      "entity_type": "Person",
+      "id": "SCR-027",
+      "name": "Oskar Noren Demo 27",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 28"
+      ],
+      "category": "Synthetic PEP-style",
+      "country": "Denmark",
+      "entity_type": "Organisation",
+      "id": "SCR-028",
+      "name": "Linnea Sande Demo 28",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 29"
+      ],
+      "category": "Internal demo risk",
+      "country": "Norway",
+      "entity_type": "Person",
+      "id": "SCR-029",
+      "name": "Tobias Renn Demo 29",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 30"
+      ],
+      "category": "Synthetic watchlist",
+      "country": "Fictionland",
+      "entity_type": "Person",
+      "id": "SCR-030",
+      "name": "Aila Kest Demo 30",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 31"
+      ],
+      "category": "Synthetic PEP-style",
+      "country": "Sweden",
+      "entity_type": "Person",
+      "id": "SCR-031",
+      "name": "Henrik Vale Demo 31",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 32"
+      ],
+      "category": "Internal demo risk",
+      "country": "Finland",
+      "entity_type": "Organisation",
+      "id": "SCR-032",
+      "name": "Sofia Arden Demo 32",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 33"
+      ],
+      "category": "Synthetic watchlist",
+      "country": "Denmark",
+      "entity_type": "Person",
+      "id": "SCR-033",
+      "name": "Mikkel Roan Demo 33",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 34"
+      ],
+      "category": "Synthetic PEP-style",
+      "country": "Norway",
+      "entity_type": "Person",
+      "id": "SCR-034",
+      "name": "Freja Linde Demo 34",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 35"
+      ],
+      "category": "Internal demo risk",
+      "country": "Fictionland",
+      "entity_type": "Person",
+      "id": "SCR-035",
+      "name": "Nils Corven Demo 35",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 36"
+      ],
+      "category": "Synthetic watchlist",
+      "country": "Sweden",
+      "entity_type": "Organisation",
+      "id": "SCR-036",
+      "name": "Elin Marvik Demo 36",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 37"
+      ],
+      "category": "Synthetic PEP-style",
+      "country": "Finland",
+      "entity_type": "Person",
+      "id": "SCR-037",
+      "name": "Jonas Elden Demo 37",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 38"
+      ],
+      "category": "Internal demo risk",
+      "country": "Denmark",
+      "entity_type": "Person",
+      "id": "SCR-038",
+      "name": "Mara Voss Demo 38",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 39"
+      ],
+      "category": "Synthetic watchlist",
+      "country": "Norway",
+      "entity_type": "Person",
+      "id": "SCR-039",
+      "name": "Oskar Noren Demo 39",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    },
+    {
+      "aliases": [
+        "Fictional Alias 40"
+      ],
+      "category": "Synthetic PEP-style",
+      "country": "Fictionland",
+      "entity_type": "Organisation",
+      "id": "SCR-040",
+      "name": "Linnea Sande Demo 40",
+      "synthetic_risk_description": "Synthetic fictional record for name-similarity demonstration only; not a real sanctions, PEP, or adverse-media record."
+    }
+  ],
+  "seed_version": "2026-09-10-v1"
+}

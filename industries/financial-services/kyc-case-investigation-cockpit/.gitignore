@@ -1,0 +1,65 @@
+# Azure Developer CLI and local configuration
+.azure/
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+.azd-hooks/
+scripts/.azd-hooks/
+
+# Local tools and captured prompts
+.copilot/
+.vscode/
+.mcp.json
+/quad_initial_prompt.md
+/squad_second_prompt.md
+
+# Squad: keep reusable team configuration, ignore mutable local identity/state
+.squad/orchestration-log/
+.squad/log/
+.squad/decisions/inbox/
+.squad/sessions/
+.squad/.scratch/
+.squad/.cache/
+.squad/.first-run
+.squad/config.json
+.squad/agents/*/history.md
+.squad/casting/history.json
+.squad/casting/registry.json
+.squad/memory/
+.squad/identity/
+.squad/rai/audit-trail.md
+.squad/fact-checker/audit-trail.md
+# Squad: SubSquad activation file (local to this machine)
+.squad-workstream
+
+# Application build and local development artifacts
+app/backend/.venv/
+venv/
+.venv/
+app/frontend/node_modules/
+app/frontend/dist/
+app/frontend/*.tsbuildinfo
+**/__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage/
+build/
+dist/
+*.log
+*.tmp
+*.bak
+infra/main.json
+
+# Credentials and certificates must be supplied outside Git
+*.pem
+*.pfx
+*.p12
+*.key
+credentials.json
+credentials.*.json
