@@ -1,17 +1,34 @@
-# Transport & Logistics
+# \# Professional Services
 
-This folder contains industry-specific solution plays, demos, architecture patterns, and reusable assets for Transport and Logistics organizations.
+# 
 
-## Suggested Scenarios
+# Demos, solution plays, architecture patterns, and reusable assets for Professional Services scenarios.
 
-- Route Optimization Agent
-- Fleet Operations Assistant
-- Shipment Tracking Portal
-- Warehouse Management Assistant
-- Logistics Planning Copilot
-- Supply Chain Visibility Dashboard
-- Delivery Operations Agent
+# 
 
-## Contributing
+# \## AI Proposal Factory
 
-Include real-world operational and logistics use cases when possible.
+# 
+
+# An end-to-end AI-powered proposal generation experience built with Microsoft Foundry, Azure AI Search, Azure Container Apps, React, FastAPI, and GitHub Copilot CLI + Squad.
+
+# 
+
+# \### 🚀 Live Demo
+
+# 
+
+# \[Launch AI Proposal Factory](https://ca-professional-services-04.graysmoke-ab215499.swedencentral.azurecontainerapps.io/)
+
+# 
+
+# \### 📁 Project
+
+# 
+
+# \[View the AI Proposal Factory project](./ai-proposal-factory/)
+
+# 
+
+# The project folder contains the application source code, infrastructure as code, deployment configuration, demo data, architecture documentation, and the Squad build brief.
+

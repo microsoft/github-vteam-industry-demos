@@ -1,43 +1,31 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
-
 name: ai-proposal-factory
-
+resourceGroup: rg-professional-services-04
+metadata:
+  template: ai-proposal-factory@0.3.0
 infra:
   provider: bicep
   path: infra
-
-hooks:
-  preprovision:
-    windows:
-      run: ./scripts/azure/run-hook.ps1 preprovision.py
-      shell: pwsh
-      interactive: false
-      continueOnError: false
-    posix:
-      run: ./scripts/azure/run-hook.sh preprovision.py
-      shell: sh
-      interactive: false
-      continueOnError: false
-  postprovision:
-    windows:
-      run: ./scripts/azure/run-hook.ps1 postprovision.py
-      shell: pwsh
-      interactive: false
-      continueOnError: false
-    posix:
-      run: ./scripts/azure/run-hook.sh postprovision.py
-      shell: sh
-      interactive: false
-      continueOnError: false
-
+  module: main
+# The application service remains declared for azd inspection and explicit service commands.
+# `azd up` is overridden below because the completed deployment also requires Foundry
+# agent configuration, Search indexing, deterministic seeding, and a live smoke test.
 services:
-  app:
+  web:
     project: .
-    language: docker
     host: containerapp
-    resourceName: ${SERVICE_APP_NAME}
+    language: python
     docker:
       path: ./Dockerfile
       context: .
-      platform: linux/amd64
       remoteBuild: true
+hooks:
+  postup:
+    shell: pwsh
+    run: ./scripts/deploy_phase3.ps1
+    dir: .
+    interactive: true
+    continueOnError: false
+workflows:
+  up:
+    steps:
+      - azd: provision
