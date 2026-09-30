@@ -1,93 +1,103 @@
-export type Opportunity = {
+export interface Opportunity {
   id: string;
   customer: string;
   name: string;
   industry: string;
-  estimated_value: string;
-  delivery_duration: string;
-  business_problem: string;
-  expected_outcomes: string[];
-  scope: string;
+  estimatedValue: string;
+  duration: string;
+  status: string;
+  progress: number;
+  modifiedAt: string;
+  businessProblem: string;
+  expectedOutcomes: string[];
+  scope: string[];
   stakeholders: string[];
   constraints: string[];
-  target_timeline: string;
-  budget_assumptions: string;
+  targetTimeline: string;
+  budgetAssumptions: string;
   notes: string;
-  status: string;
-  proposal_progress: number;
-  proposal_id?: string;
-  updated_at: string;
-};
+}
 
-export type OpportunityCreate = Omit<
-  Opportunity,
-  "id" | "status" | "proposal_progress" | "proposal_id" | "updated_at"
->;
-
-export type Document = {
+export interface Document {
   id: string;
-  opportunity_id: string;
-  filename: string;
-  content_type: string;
-  selected: boolean;
-  seeded: boolean;
-  created_at: string;
-};
+  opportunityId: string;
+  name: string;
+  content: string;
+  contentType: string;
+}
 
-export type KnowledgeItem = {
+export interface Generation {
+  generation_id: string;
+  status: string;
+  progress_message: string;
+  proposal_id?: string;
+  error?: string;
+}
+
+export interface ProposalSection {
   id: string;
   title: string;
-  type: string;
+  order: number;
+  content: string;
+  sourceIds: string[];
+  status: "Generated" | "In Review" | "Approved";
+  updatedAt: string;
+  approvedAt?: string;
+  sources: KnowledgeSource[];
+}
+
+export interface KnowledgeSource {
+  id: string;
+  title: string;
+  kind: string;
   industry: string;
   tags: string[];
-  content: string;
-  source: string;
-};
+  sourceBlobName: string;
+  snippet: string;
+}
 
-export type ProposalSection = {
-  id: string;
-  title: string;
+export interface KnowledgeItem extends Omit<KnowledgeSource, "snippet"> {
   content: string;
-  order: number;
-  status: "Draft" | "Generated" | "In Review" | "Approved";
-  source_references: string[];
-};
+}
 
-export type RiskFinding = {
+export interface RiskFinding {
   id: string;
   severity: "Low" | "Medium" | "High";
   category: string;
   description: string;
-  mitigation: string;
-};
+  mitigationOrQuestion: string;
+  status: "Open" | "Acknowledged";
+  disposition?: string;
+  acknowledgedAt?: string;
+  relatedSectionIds: string[];
+}
 
-export type Proposal = {
+export interface Proposal {
   id: string;
-  opportunity_id: string;
-  title: string;
-  status: "Draft" | "Generated" | "In Review" | "Approved";
-  requirements_analysis: Record<string, unknown>;
+  opportunityId: string;
+  customer: string;
+  opportunityName: string;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+  approvedAt?: string;
   sections: ProposalSection[];
-  risks: RiskFinding[];
-  updated_at: string;
-};
+  riskFindings: RiskFinding[];
+  requirementsAnalysis: {
+    businessGoals: string[];
+    openQuestions: string[];
+    missingInformation: string[];
+  };
+}
 
-export type AuditEvent = {
+export interface AuditEvent {
   id: string;
-  opportunity_id?: string;
-  proposal_id?: string;
-  event_type: string;
-  message: string;
-  timestamp: string;
-};
-
-export type GenerationJob = {
-  id: string;
-  opportunity_id: string;
-  status: "queued" | "running" | "completed" | "failed";
-  progress: number;
-  current_step: string;
-  proposal_id?: string;
-  error?: string;
-  retryable: boolean;
-};
+  eventType: string;
+  proposalId?: string;
+  sectionId?: string;
+  actorType: "user" | "system";
+  actorId?: string;
+  summary: string;
+  createdAt: string;
+  details?: Record<string, unknown>;
+}

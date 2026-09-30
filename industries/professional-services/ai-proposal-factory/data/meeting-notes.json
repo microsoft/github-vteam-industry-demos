@@ -1,0 +1,72 @@
+[
+  {
+    "id": "doc-cloud-discovery",
+    "opportunityId": "opp-cloud-modernization",
+    "name": "Cloud modernization discovery notes.md",
+    "content": "Northstar confirmed checkout resilience is the first priority. Product teams release monthly and want weekly release capability. The programme must avoid the November-to-January change freeze. Architecture prefers strangler migrations and managed Azure services. Success measures include 99.95% availability, 30% lower run cost, and lead time below five days.",
+    "contentType": "text/markdown"
+  },
+  {
+    "id": "doc-cloud-architecture",
+    "opportunityId": "opp-cloud-modernization",
+    "name": "Architecture workshop notes.md",
+    "content": "The current estate contains 42 applications. Six commerce services account for most incidents and release delays. Identity and networking foundations already exist. Customer asks for a migration factory backlog, target architecture, two modernized services, and knowledge transfer.",
+    "contentType": "text/markdown"
+  },
+  {
+    "id": "doc-ai-adoption",
+    "opportunityId": "opp-ai-adoption",
+    "name": "AI use-case workshop.md",
+    "content": "Priority ideas are matter intake summarisation and internal precedent search. Outputs require lawyer review and citations to approved sources. Risk Committee requests evaluation criteria, prompt governance, and a documented human-in-the-loop process.",
+    "contentType": "text/markdown"
+  },
+  {
+    "id": "doc-data-platform",
+    "opportunityId": "opp-data-platform",
+    "name": "Data platform discovery.md",
+    "content": "Plant managers need hourly production and downtime views. ERP and historian sources use inconsistent asset identifiers. The first lighthouse products cover throughput, quality, and predictive maintenance. Data owners must be named before ingestion begins.",
+    "contentType": "text/markdown"
+  },
+  {
+    "id": "doc-app-modernization",
+    "opportunityId": "opp-app-modernization",
+    "name": "Claims domain workshop.md",
+    "content": "Claims status and document requests generate the highest call volume. The customer supports extracting notification and status capabilities first. Every state change must remain traceable and reconcile with the policy platform.",
+    "contentType": "text/markdown"
+  },
+  {
+    "id": "doc-customer-service",
+    "opportunityId": "opp-customer-service",
+    "name": "Contact centre observation.md",
+    "content": "Agents use six knowledge sources and copy answers manually. Disruption policies change frequently. The pilot should provide grounded suggested responses, customer context, and mandatory confirmation before any compensation action.",
+    "contentType": "text/markdown"
+  },
+  {
+    "id": "doc-security-uplift",
+    "opportunityId": "opp-security-uplift",
+    "name": "Security posture review.md",
+    "content": "Identity protection and central logging are inconsistent across subscriptions. Clinical teams require staged remediation with rollback. The CISO wants a risk-ranked backlog and evidence that critical controls are operating.",
+    "contentType": "text/markdown"
+  },
+  {
+    "id": "doc-workplace",
+    "opportunityId": "opp-workplace",
+    "name": "Employee persona interviews.md",
+    "content": "Field engineers need low-bandwidth mobile collaboration and fast access to procedures. Office teams report duplicate workspaces. Regional champions are available, but local-language materials are required.",
+    "contentType": "text/markdown"
+  },
+  {
+    "id": "doc-devops",
+    "opportunityId": "opp-devops",
+    "name": "Engineering value stream notes.md",
+    "content": "Teams wait days for environments and security approvals. Three pilot teams volunteered. The VP Engineering wants deployment frequency, lead time, change failure rate, and developer satisfaction tracked from the baseline.",
+    "contentType": "text/markdown"
+  },
+  {
+    "id": "doc-devops-platform",
+    "opportunityId": "opp-devops",
+    "name": "Platform engineering workshop.md",
+    "content": "A paved-road approach is preferred over mandated central tooling. Golden pipeline templates should include policy checks, artifact provenance, and self-service environment requests.",
+    "contentType": "text/markdown"
+  }
+]

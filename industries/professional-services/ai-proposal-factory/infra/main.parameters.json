@@ -2,86 +2,20 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "environmentName": {
-      "value": "${AZURE_ENV_NAME}"
-    },
     "location": {
-      "value": "${AZURE_LOCATION=swedencentral}"
+      "value": "swedencentral"
     },
-    "resourceGroupName": {
-      "value": "${AZURE_RESOURCE_GROUP_NAME=}"
-    },
-    "containerRegistryName": {
-      "value": "${AZURE_CONTAINER_REGISTRY_NAME=}"
-    },
-    "containerEnvironmentName": {
-      "value": "${AZURE_CONTAINER_ENVIRONMENT_NAME=}"
-    },
-    "containerAppName": {
-      "value": "${AZURE_CONTAINER_APP_NAME=}"
-    },
-    "managedIdentityName": {
-      "value": "${SERVICE_APP_IDENTITY_NAME=}"
-    },
-    "logAnalyticsName": {
-      "value": "${AZURE_LOG_ANALYTICS_NAME=}"
-    },
-    "storageAccountName": {
-      "value": "${AZURE_STORAGE_ACCOUNT_NAME=}"
-    },
-    "applyStorageSecurityControlException": {
-      "value": "${AIPF_STORAGE_SECURITY_CONTROL_IGNORE=false}"
-    },
-    "searchServiceName": {
-      "value": "${AZURE_AI_SEARCH_SERVICE_NAME=}"
-    },
-    "searchSku": {
-      "value": "${AZURE_AI_SEARCH_SKU=basic}"
-    },
-    "searchIndexName": {
-      "value": "${AZURE_AI_SEARCH_INDEX_NAME=aipf-knowledge}"
-    },
-    "foundryAccountName": {
-      "value": "${AZURE_AI_FOUNDRY_ACCOUNT_NAME=}"
+    "namingStem": {
+      "value": "professional-services-04"
     },
     "foundryProjectName": {
-      "value": "${AZURE_AI_FOUNDRY_PROJECT_NAME=aipf-project}"
+      "value": "proj-professional-services-04"
     },
-    "modelDeploymentName": {
-      "value": "${AZURE_AI_MODEL_DEPLOYMENT_NAME=gpt-5-mini}"
+    "deployerPrincipalId": {
+      "value": "${AZURE_PRINCIPAL_ID}"
     },
-    "modelName": {
-      "value": "${AZURE_AI_MODEL_NAME=gpt-5-mini}"
-    },
-    "modelFormat": {
-      "value": "${AZURE_AI_MODEL_FORMAT=OpenAI}"
-    },
-    "modelVersion": {
-      "value": "${AZURE_AI_MODEL_VERSION=2025-08-07}"
-    },
-    "modelDeploymentSku": {
-      "value": "${AZURE_AI_MODEL_DEPLOYMENT_SKU=DataZoneStandard}"
-    },
-    "modelCapacity": {
-      "value": "${AZURE_AI_MODEL_CAPACITY=10}"
-    },
-    "deploymentPrincipalId": {
-      "value": "${AZURE_DEPLOYER_PRINCIPAL_ID=}"
-    },
-    "deploymentPrincipalType": {
-      "value": "${AZURE_DEPLOYER_PRINCIPAL_TYPE=User}"
-    },
-    "requirementsAgentId": {
-      "value": "${AIPF_REQUIREMENTS_AGENT_ID=}"
-    },
-    "proposalAgentId": {
-      "value": "${AIPF_PROPOSAL_AGENT_ID=}"
-    },
-    "riskAgentId": {
-      "value": "${AIPF_RISK_AGENT_ID=}"
-    },
-    "appImageName": {
-      "value": "${SERVICE_APP_IMAGE_NAME=}"
+    "deployModel": {
+      "value": true
     }
   }
 }

@@ -5,7 +5,11 @@
 .vscode
 **/__pycache__
 **/.pytest_cache
+**/.ruff_cache
 **/node_modules
 app/frontend/dist
+infra
 tests
+docs
 *.md
+!app/backend/pyproject.toml
