@@ -1,0 +1,134 @@
+{
+  "artifact_version": "1.0",
+  "validated_at": "2026-09-30T20:19:01.170011+00:00",
+  "contains_secrets": false,
+  "application_url": "https://ca-kyc-fs01.salmonpebble-2b6fa79e.norwayeast.azurecontainerapps.io",
+  "homepage": {
+    "status_code": 200,
+    "title_present": true
+  },
+  "health": {
+    "status": "ok",
+    "phase": 3,
+    "storage": "azure"
+  },
+  "cases": {
+    "count": 25,
+    "primary_case_id": "KYC-2026-001",
+    "primary_case_name": "Northstar Meridian AB",
+    "documents": 6,
+    "processed_documents": 6,
+    "ownership_entries": 4
+  },
+  "pre_acceptance_checkpoint": {
+    "investigation_id": "INV-8d83a7ea-1225-4def-aa04-8e126645db7e",
+    "status": "completed",
+    "all_seven_stages_completed": true
+  },
+  "accepted_investigation": {
+    "investigation_id": "INV-4c667b09-757b-48d1-80b6-347a976682a9",
+    "status": "completed",
+    "completed_stages": 7,
+    "agent_runs": [
+      {
+        "name": "kyc-document-entity-extractor",
+        "version": "1",
+        "response_id": "resp_07021007c4979d80006abd6e3e66608190a9e2978d1ad7db88"
+      },
+      {
+        "name": "kyc-completeness-validator",
+        "version": "1",
+        "response_id": "resp_0ac58abb343e703d006abd6e5e8a8881908383dbea807399a2"
+      },
+      {
+        "name": "kyc-risk-investigator",
+        "version": "1",
+        "response_id": "resp_044c32beaac77a13006abd6e8aa4f48190983c86be2421ca3a"
+      },
+      {
+        "name": "kyc-analyst-summary",
+        "version": "1",
+        "response_id": "resp_00cdae4c2f3f8cec006abd6ea6779c81908ea87221dd6b3b99"
+      }
+    ],
+    "normalized_profile": {
+      "legal_company_name": "Northstar Meridian AB",
+      "registration_number": "559999-4107",
+      "beneficial_owner_count": 2,
+      "ownership_relationship_count": 2,
+      "document_fact_count": 4
+    },
+    "completeness": {
+      "finding_count": 2,
+      "complete": 0,
+      "missing": 1,
+      "needs_review": 1,
+      "conflicting": 0
+    },
+    "risk": {
+      "screening_status": "completed",
+      "potential_match": true,
+      "confirmed_match": false,
+      "analyst_review_required": true,
+      "evidence_ref": "EV-SEARCH-SYN-WATCH-001",
+      "source_index": "kyc-screening-v1",
+      "language_verified": "Potential synthetic screening similarity - not a confirmed match. Analyst verification is required."
+    },
+    "summary": {
+      "ai_generated_label_present": true,
+      "advisory_only": true,
+      "required_sections_present": [
+        "customer_overview",
+        "ownership_summary",
+        "evidence_summary",
+        "risk_summary",
+        "open_questions",
+        "recommended_next_action",
+        "recommendation_rationale"
+      ],
+      "recommended_next_action": "Request More Information"
+    }
+  },
+  "human_decision": {
+    "decision_id": "DEC-LIVE-INV-4c667b09-757b-48d1-80b6-347a976682a9",
+    "analyst_name": "Elin Berg (fictional)",
+    "action": "Request More Information",
+    "reason": "Additional evidence is required to validate the beneficial ownership structure and resolve the potential screening similarity.",
+    "decided_at": "2026-09-30T20:19:01.170011+00:00",
+    "previous_status": "Ready for Decision",
+    "new_status": "Awaiting Information"
+  },
+  "audit": {
+    "chronological": true,
+    "ai_and_human_activity_distinguished": true,
+    "human_decision_event_id": "AUD-bcf7d293-8f51-4cc2-a1b6-2b9c29459067",
+    "status_change_event_id": "AUD-3fea6595-52e5-4274-8cda-69e78c8996af",
+    "analyst_timestamp_action_and_exact_reason_present": true
+  },
+  "persistence": {
+    "fresh_case_status": "Awaiting Information",
+    "fresh_investigation_id": "INV-4c667b09-757b-48d1-80b6-347a976682a9",
+    "homepage_after_decision": "passed",
+    "health_after_decision": "passed",
+    "case_count_after_decision": 25
+  },
+  "azure": {
+    "resource_group": "rg-financial-services-01",
+    "public_container_app_count": 1,
+    "container_app": "ca-kyc-fs01",
+    "external_ingress": true,
+    "running_status": "Running",
+    "revision": "ca-kyc-fs01--phase3-20260930h",
+    "revision_health": "Healthy",
+    "traffic_percent": 100,
+    "ai_data_identity_acr_region": "swedencentral",
+    "hosting_exception_region": "norwayeast"
+  },
+  "deployment_changes": {
+    "rebuilt": false,
+    "redeployed": false,
+    "configuration_changed": false,
+    "services_added": false
+  },
+  "blockers": []
+}

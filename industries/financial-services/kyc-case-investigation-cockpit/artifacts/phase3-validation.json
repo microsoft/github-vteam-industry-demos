@@ -1,0 +1,379 @@
+{
+  "validated_at": "2026-09-30T20:12:02.619000+00:00",
+  "model_deployment_name": "gpt-5-mini",
+  "model_deployment": {
+    "name": "gpt-5-mini",
+    "model": "gpt-5-mini",
+    "version": "2025-08-07",
+    "sku": "GlobalStandard",
+    "capacity": 20,
+    "region": "swedencentral",
+    "rate_limits": {
+      "requests_per_minute": 20,
+      "tokens_per_minute": 20000
+    }
+  },
+  "agent_validations": [
+    {
+      "name": "kyc-document-entity-extractor",
+      "version": "1",
+      "response_id": "resp_0f91c17513d54adc006abd6cbf119c819093ca2e11f747f3d7",
+      "schema_name": "DocumentEntityExtractionOutputV1",
+      "schema_valid": true,
+      "started_at": "2026-09-30T20:10:38.561511+00:00",
+      "validated_at": "2026-09-30T20:11:04.044436+00:00",
+      "elapsed_seconds": 25.483,
+      "output": {
+        "schema_version": "1.0",
+        "legal_company_name": {
+          "fact_id": "FACT-INV-AZ-001-LCN",
+          "field": "legal_company_name",
+          "value": "Northstar Meridian AB",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "EV-DOC-001-NAME"
+          ]
+        },
+        "registration_number": {
+          "fact_id": "FACT-INV-AZ-001-REG",
+          "field": "registration_number",
+          "value": "559999-1001",
+          "confidence": 0.98,
+          "evidence_refs": [
+            "EV-DOC-001-REG"
+          ]
+        },
+        "incorporation_country": {
+          "fact_id": "FACT-INV-AZ-001-INCCTRY",
+          "field": "incorporation_country",
+          "value": "Sweden",
+          "confidence": null,
+          "evidence_refs": []
+        },
+        "incorporation_date": null,
+        "registered_address": null,
+        "trading_address": null,
+        "directors": [],
+        "authorised_representatives": [],
+        "beneficial_owners": [
+          {
+            "person_id": "PERSON-ELARA-VOSS-001",
+            "full_name": "Elara Voss",
+            "roles": [
+              "beneficial_owner"
+            ],
+            "ownership_percentage": 36,
+            "nationality_or_country": null,
+            "date_of_birth": null,
+            "evidence_refs": [
+              "EV-DOC-003-OWNER"
+            ]
+          }
+        ],
+        "ownership_relationships": [
+          {
+            "relationship_id": "REL-INV-AZ-001-ELARA-NSM",
+            "owner_name": "Elara Voss",
+            "owned_entity_name": "Northstar Meridian AB",
+            "relationship": "indirect beneficial ownership",
+            "ownership_percentage": 36,
+            "jurisdiction": null,
+            "evidence_refs": [
+              "EV-DOC-003-OWNER"
+            ]
+          }
+        ],
+        "document_facts": [
+          {
+            "fact_id": "FACT-INV-AZ-001-LCN",
+            "field": "legal_company_name",
+            "value": "Northstar Meridian AB",
+            "confidence": 0.99,
+            "evidence_refs": [
+              "EV-DOC-001-NAME"
+            ]
+          },
+          {
+            "fact_id": "FACT-INV-AZ-001-REG",
+            "field": "registration_number",
+            "value": "559999-1001",
+            "confidence": 0.98,
+            "evidence_refs": [
+              "EV-DOC-001-REG"
+            ]
+          },
+          {
+            "fact_id": "FACT-INV-AZ-001-BENOWNER-ELARA",
+            "field": "beneficial_owner",
+            "value": "Elara Voss",
+            "confidence": 0.96,
+            "evidence_refs": [
+              "EV-DOC-003-OWNER"
+            ]
+          }
+        ],
+        "contradictions": [],
+        "review_flags": [
+          {
+            "flag_id": "FLAG-INV-AZ-001-MISSING-INC-DATE",
+            "category": "missing",
+            "description": "Incorporation / registration date not provided in supplied documents or case record.",
+            "evidence_refs": []
+          },
+          {
+            "flag_id": "FLAG-INV-AZ-001-MISSING-ADDRESS",
+            "category": "missing",
+            "description": "Registered address not present in supplied documents.",
+            "evidence_refs": []
+          },
+          {
+            "flag_id": "FLAG-INV-AZ-001-MISSING-DIRECTORS",
+            "category": "missing",
+            "description": "No directors or authorised representatives identified in supplied documents.",
+            "evidence_refs": []
+          },
+          {
+            "flag_id": "FLAG-INV-AZ-001-ANALYST-CFM-BENOWN",
+            "category": "analyst_confirmation",
+            "description": "Beneficial ownership percentage (36%) and indirect ownership are present in the document excerpt; analyst should confirm structured ownership details and whether 36% is exact and/or rounded.",
+            "evidence_refs": [
+              "EV-DOC-003-OWNER"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "kyc-completeness-validator",
+      "version": "1",
+      "response_id": "resp_0e060c4d0c5c8d49006abd6cdbab24819086982484e128d377",
+      "schema_name": "CompletenessValidationOutputV1",
+      "schema_valid": true,
+      "started_at": "2026-09-30T20:11:07.021403+00:00",
+      "validated_at": "2026-09-30T20:11:21.063497+00:00",
+      "elapsed_seconds": 14.042,
+      "output": {
+        "schema_version": "1.0",
+        "findings": [
+          {
+            "finding_id": "F-REQ-REG-1",
+            "requirement_id": "REQ-REG",
+            "requirement": "Company registration evidence",
+            "status": "Complete",
+            "evidence_refs": [
+              "EV-DOC-001-REG"
+            ],
+            "missing_information": [],
+            "explanation": "The profile contains a registration_number fact (559999-1001) with supporting evidence EV-DOC-001-REG (Company Registration Extract excerpt: 'Registration 559999-1001')."
+          },
+          {
+            "finding_id": "F-REQ-ADDRESS-1",
+            "requirement_id": "REQ-ADDRESS",
+            "requirement": "Registered address evidence",
+            "status": "Missing",
+            "evidence_refs": [],
+            "missing_information": [
+              "Registered/registered office address (street, city, postal code, country)",
+              "Documentary evidence showing registered address (e.g., company registration extract page with address, official registration document, or utility/lease showing registered address)"
+            ],
+            "explanation": "No registered_address is present in the profile. A review flag FLAG-MISSING-ADDRESS indicates the absence of an address, and no available evidence items reference an address."
+          }
+        ],
+        "counts": {
+          "complete": 1,
+          "missing": 1,
+          "needs_review": 0,
+          "conflicting": 0
+        },
+        "completeness_percent": 50,
+        "open_questions": [
+          "Can the respondent provide a document that substantiates the company's registered address (e.g., full company registration extract page showing address or other official proof)?",
+          "Is there any additional evidence (document IDs/evidence refs) for the company's name or address beyond EV-DOC-001-REG?"
+        ]
+      }
+    },
+    {
+      "name": "kyc-risk-investigator",
+      "version": "1",
+      "response_id": "resp_0fc2243c74ab019d006abd6cec565481908dc08cea5aac8482",
+      "schema_name": "RiskInvestigationOutputV1",
+      "schema_valid": true,
+      "started_at": "2026-09-30T20:11:24.163608+00:00",
+      "validated_at": "2026-09-30T20:11:46.532630+00:00",
+      "elapsed_seconds": 22.369,
+      "output": {
+        "schema_version": "1.0",
+        "findings": [
+          {
+            "finding_id": "FIND-001-MISSING-ADDRESS",
+            "category": "address_inconsistency",
+            "severity": "Medium",
+            "title": "Registered address missing from company record",
+            "description": "The supplied company fixture for 'Northstar Meridian AB' contains registration evidence (EV-DOC-001-REG) and a legal name (EV-DOC-001-NAME) but no registered or trading address fields were provided. The completeness review flagged registered address evidence as missing (FIND-ADDRESS / FLAG-MISSING-ADDRESS). Absence of an address prevents verification of business location and cross-checks with public registries.",
+            "evidence_refs": [
+              "EV-DOC-001-REG",
+              "EV-DOC-001-NAME"
+            ],
+            "source_labels": [
+              "focused_fixture",
+              "completeness_report"
+            ],
+            "confidence": "Medium",
+            "recommended_analyst_action": "Request and obtain registered/trading address documentation (e.g., certificate of registration, utility bill, lease). Verify address against official registry records for the jurisdiction of incorporation. Update profile with address evidence and re-run screening.",
+            "potential_match": true,
+            "analyst_review_required": true
+          },
+          {
+            "finding_id": "FIND-002-OWNERSHIP-PARTIAL",
+            "category": "ownership_complexity",
+            "severity": "Medium",
+            "title": "Partial beneficial ownership information for Elara Voss",
+            "description": "The focused fixture lists one beneficial owner, Elara Voss (PERSON-ELARA-VOSS) with 36% ownership (EV-DOC-003-OWNER). Key corroborating attributes are present (name, ownership percentage) but critical identity attributes are missing (no date of birth, no nationality documentary corroboration beyond a stated 'Sweden', no address or ID documents). No other ownership relationships or corporate structure details were supplied.",
+            "evidence_refs": [
+              "EV-DOC-003-OWNER"
+            ],
+            "source_labels": [
+              "focused_fixture"
+            ],
+            "confidence": "Medium",
+            "recommended_analyst_action": "Obtain certified KYC documents for the beneficial owner (government ID, proof of address), clarify nationality and taxation residency, and request a full ownership chart showing all ultimate beneficial owners to confirm 36% stake and identify other owners.",
+            "potential_match": true,
+            "analyst_review_required": true
+          },
+          {
+            "finding_id": "FIND-003-SCREENING-SIMILARITY",
+            "category": "potential_screening_similarity",
+            "severity": "High",
+            "title": "Potential name similarity with watchlist-style record 'Elara Vos' (SYN-WATCH-001)",
+            "description": "Search candidate EV-SEARCH-SYN-WATCH-001 (record_id: SYN-WATCH-001) returns 'Elara Vos' / alias 'E. Vos' with country Finland and a match_basis of token_similarity and fuzzy_similarity against the case subject 'Elara Voss'. The search_score is 1.0. The focused fixture's beneficial owner is 'Elara Voss' (PERSON-ELARA-VOSS, EV-DOC-003-OWNER). Corroborating attributes are limited: name similarity is strong, but there is no date of birth, no aliases in the fixture, and differing country values (fixture lists Sweden for nationality, candidate lists Finland). Given the synthetic-style watchlist candidate and limited identity attributes in the profile, this is a potential screening similarity requiring analyst verification.",
+            "evidence_refs": [
+              "EV-SEARCH-SYN-WATCH-001",
+              "EV-DOC-003-OWNER"
+            ],
+            "source_labels": [
+              "search_candidate",
+              "focused_fixture"
+            ],
+            "confidence": "Medium",
+            "recommended_analyst_action": "Perform targeted name-resolution: compare aliases, request DOB and other identifiers from the beneficial owner, check official registries in Sweden and Finland, and review the provenance of the watchlist-style record. Document any distinguishing attributes (DOB, national ID, addresses) before concluding similarity.",
+            "potential_match": true,
+            "analyst_review_required": true
+          }
+        ],
+        "screening_status": "completed",
+        "limitations": [
+          "Input is a synthetic focused fixture; supplied evidence may be incomplete or synthetic in nature.",
+          "Search candidate is a synthetic watchlist-style record; treat match signals as retrieval indicators, not confirmed identity matches.",
+          "Key identity attributes (dates of birth, addresses, incorporation jurisdiction/date) are missing from the supplied profile."
+        ],
+        "open_questions": [
+          "Can registered address evidence be supplied for Northstar Meridian AB?",
+          "Can the beneficial owner Elara Voss provide verified identity documents (DOB, government ID, proof of address) to resolve potential name similarity?",
+          "Please confirm incorporation country and date for Northstar Meridian AB and provide any additional ownership relationships or UBO chart."
+        ]
+      }
+    },
+    {
+      "name": "kyc-analyst-summary",
+      "version": "1",
+      "response_id": "resp_0749be9601891288006abd6d0599c881908b0975620ca9bbca",
+      "schema_name": "AnalystSummaryOutputV1",
+      "schema_valid": true,
+      "started_at": "2026-09-30T20:11:49.383437+00:00",
+      "validated_at": "2026-09-30T20:12:02.066271+00:00",
+      "elapsed_seconds": 12.683,
+      "output": {
+        "schema_version": "1.0",
+        "customer_overview": "Northstar Meridian AB (registration number 559999-1001) is present in the focused fixture. Core corporate attributes (incorporation country, incorporation date, registered/trading addresses, directors) are not supplied in the focused fixture. One beneficial owner, Elara Voss (Sweden), is recorded with 36% ownership.",
+        "ownership_summary": "A single beneficial owner record is present: Elara Voss (36% ownership, nationality Sweden) referenced by EV-DOC-003-OWNER. No further ownership relationships, director records, or full ownership chain are present in the supplied data to confirm control to 100%.",
+        "evidence_summary": "Available evidence in the fixture: company name (EV-DOC-001-NAME), company registration evidence/number (EV-DOC-001-REG), beneficial owner evidence for Elara Voss (EV-DOC-003-OWNER). A synthetic screening/watch result referencing a similar fictional name is present (EV-SEARCH-SYN-WATCH-001). Missing: registered address evidence, incorporation country/date, director/authorised representative documents, identity attributes for owners (e.g., date of birth, ID).",
+        "risk_summary": "Screening flagged a potential similarity to a fictional record (Elara Vos) with low confidence and recommended analyst verification (RISK-001). The screening status is reported as completed, but the flagged match lacks corroborating identity attributes (no DOB) and country corroboration. Given missing corporate/address details and incomplete identity attributes, there is residual uncertainty for KYC/risk decisions.",
+        "open_questions": [
+          "Can registered address evidence for Northstar Meridian AB be supplied?",
+          "Can incorporation country and incorporation date documents be provided?",
+          "Can supporting identity attributes for Elara Voss (date of birth, government ID, proof of address) be provided to confirm identity and resolve the screening similarity?",
+          "Are there additional beneficial owners, directors, or authorised representatives not currently in the focused fixture to complete ownership and control mapping?"
+        ],
+        "recommended_next_action": "Request More Information",
+        "recommendation_rationale": "Key onboarding/KYC elements are missing (registered address, incorporation details, full ownership/director information) and a low-confidence screening similarity was flagged for the beneficial owner. To reach an informed risk decision, provide the missing corporate documents and additional identity attributes for the named beneficial owner so the screening alert can be resolved and ownership can be fully corroborated.",
+        "evidence_refs": [
+          "EV-DOC-001-NAME",
+          "EV-DOC-001-REG",
+          "EV-DOC-003-OWNER",
+          "EV-SEARCH-SYN-WATCH-001"
+        ],
+        "limitations": [
+          "This summary is based on a focused synthetic fixture; supplied items may be incomplete by design.",
+          "No registered address, incorporation country, or incorporation date were provided in the fixture.",
+          "Beneficial owner identity attributes are incomplete (no date of birth or government ID), limiting screening resolution.",
+          "Screening match is low-confidence and references a fictional/synthetic record; additional identity corroboration is required."
+        ],
+        "advisory_only": true
+      }
+    }
+  ],
+  "search_validation": {
+    "query": "Elara Voss",
+    "record_id": "SYN-WATCH-001",
+    "display_name": "Elara Vos",
+    "record_type": "watchlist_style",
+    "synthetic": true,
+    "source_label": "Synthetic demo screening data",
+    "search_score": 4.4753804
+  },
+  "search_seed_count": 40,
+  "search_seed_reused": true,
+  "capacity_diagnosis": {
+    "observed_429_at": "2026-09-30T20:01:26.4489789+00:00",
+    "request_id": "d0718f73c5e09fbbb0986813f2c02d0a",
+    "error_code": "rate_limit_exceeded",
+    "rate_limit_source": "rapi",
+    "deployment_capacity_before": 1,
+    "rate_limits_before": {
+      "requests_per_minute": 1,
+      "tokens_per_minute": 1000
+    },
+    "quota_before": {
+      "quota_name": "OpenAI.GlobalStandard.gpt-5-mini",
+      "allocated_capacity": 686,
+      "quota_limit": 1000,
+      "available_capacity": 314
+    },
+    "deployment_capacity_after": 20,
+    "rate_limits_after": {
+      "requests_per_minute": 20,
+      "tokens_per_minute": 20000
+    }
+  },
+  "deployed_flow_validation": {
+    "validated_at": "2026-09-30T20:13:44Z",
+    "application_revision": "ca-kyc-fs01--phase3-20260930h",
+    "investigation_id": "INV-8d83a7ea-1225-4def-aa04-8e126645db7e",
+    "status": "completed",
+    "all_seven_stages_completed": true,
+    "human_decision_submitted": false,
+    "agent_runs": [
+      {
+        "name": "kyc-document-entity-extractor",
+        "version": "1",
+        "response_id": "resp_0f719393e4dfb2dc006abd59a935fc8190a2ffc06ec4d6c925",
+        "checkpoint_reused": true
+      },
+      {
+        "name": "kyc-completeness-validator",
+        "version": "1",
+        "response_id": "resp_02374192e60fdef2006abd6d286b248190bdc225b121a4a0b6"
+      },
+      {
+        "name": "kyc-risk-investigator",
+        "version": "1",
+        "response_id": "resp_0557ec7d5f5a178e006abd6d39e90c819098ca99a0dcbb5fcf"
+      },
+      {
+        "name": "kyc-analyst-summary",
+        "version": "1",
+        "response_id": "resp_060730e84135cbbb006abd6d61233c8190b418b5e6849c5262"
+      }
+    ]
+  }
+}

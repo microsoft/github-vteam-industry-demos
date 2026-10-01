@@ -1,94 +1,151 @@
-targetScope = 'subscription'
+targetScope = 'resourceGroup'
 
-@description('Deployment environment name.')
-param environmentName string
-
-@description('Primary and only deployment region.')
 @allowed([
   'swedencentral'
 ])
 param location string = 'swedencentral'
 
-@description('Object ID of the user or service principal running azd.')
-param deploymentPrincipalId string
+@allowed([
+  'norwayeast'
+  'northeurope'
+  'westeurope'
+  'germanywestcentral'
+])
+param containerAppsLocation string = 'norwayeast'
 
-@description('Name of the Azure OpenAI model deployment.')
-param modelDeploymentName string = 'gpt-5-1-kyc'
+param containerAppsEnvironmentName string = 'cae-kyc-fs01-norwayeast'
+param foundryName string = 'foundry-financial-services-01'
+param foundryProjectName string = 'proj-financial-services-01'
+param modelDeploymentName string = 'gpt-5-mini'
+param modelDeploymentCapacity int = 20
+param foundryAgentDocumentVersion string = ''
+param foundryAgentCompletenessVersion string = ''
+param foundryAgentRiskVersion string = ''
+param foundryAgentSummaryVersion string = ''
+param provisionFoundation bool = false
+param provisionContainerEnvironment bool = true
+param applicationImage string = ''
 
-@description('Azure OpenAI model name available in Sweden Central.')
-param modelName string = 'gpt-5.1'
-
-@description('Azure OpenAI model version available in Sweden Central.')
-param modelVersion string = '2025-11-13'
-
-@description('Model deployment capacity represented as a string for azd substitution.')
-param modelCapacity string = '3'
-
-param extractAgentName string = 'agt-kyc-extract'
-param completeAgentName string = 'agt-kyc-complete'
-param riskAgentName string = 'agt-kyc-risk'
-param summaryAgentName string = 'agt-kyc-summary'
-
-@description('Initial image. azd replaces this with the image built from the root Dockerfile.')
-param webImageName string = 'mcr.microsoft.com/azuredocs/containerapps-helloworld:latest'
-
-@description('Deploy Azure AI Search when Sweden Central has capacity.')
-param deploySearch bool = false
-
-var environmentToken = take(replace(toLower(environmentName), '-', ''), 8)
-var resourceSuffix = take(uniqueString(subscription().subscriptionId, environmentName, location), 6)
-var resourceGroupName = 'rg-kyc-${environmentToken}-${resourceSuffix}-swc'
-
+var suffix = uniqueString(subscription().id, resourceGroup().id)
+var storageAccountName = 'stkycfs01${suffix}'
+var documentIntelligenceName = 'di-kyc-fs01-${suffix}'
+var searchServiceName = 'srch-kyc-fs01-${suffix}'
+var containerRegistryName = 'acrkycfs01${suffix}'
 var tags = {
   project: 'kyc-case-investigation-cockpit'
   industry: 'financial-services'
   purpose: 'customer-demo'
-  environment: environmentName
+  environment: 'dev'
   'managed-by': 'azd'
 }
 
-resource resourceGroup 'Microsoft.Resources/resourceGroups@2025-04-01' = {
-  name: resourceGroupName
+resource workloadIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2023-01-31' = if (provisionFoundation) {
+  name: 'id-kyc-fs01'
   location: location
   tags: tags
 }
 
-module core './modules/core.bicep' = {
-  name: 'kyc-core-${environmentName}'
-  scope: resourceGroup
+resource existingWorkloadIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2023-01-31' existing = if (!provisionFoundation) {
+  name: 'id-kyc-fs01'
+}
+
+resource existingDocumentIntelligence 'Microsoft.CognitiveServices/accounts@2025-06-01' existing = {
+  name: documentIntelligenceName
+}
+
+resource existingRegistry 'Microsoft.ContainerRegistry/registries@2025-04-01' existing = {
+  name: containerRegistryName
+}
+
+var workloadIdentityId = provisionFoundation ? workloadIdentity!.id : existingWorkloadIdentity!.id
+var workloadPrincipalId = provisionFoundation ? workloadIdentity!.properties.principalId : existingWorkloadIdentity!.properties.principalId
+
+module platform 'modules/platform.bicep' = if (provisionFoundation) {
+  name: 'phase1-platform'
   params: {
-    environmentName: environmentName
     location: location
-    resourceSuffix: resourceSuffix
+    suffix: suffix
     tags: tags
-    webImageName: webImageName
-    deploySearch: deploySearch
-    deploymentPrincipalId: deploymentPrincipalId
-    modelDeploymentName: modelDeploymentName
-    modelName: modelName
-    modelVersion: modelVersion
-    modelCapacity: int(modelCapacity)
-    extractAgentName: extractAgentName
-    completeAgentName: completeAgentName
-    riskAgentName: riskAgentName
-    summaryAgentName: summaryAgentName
+    workloadPrincipalId: workloadPrincipalId
   }
 }
 
-output AZURE_LOCATION string = location
-output AZURE_RESOURCE_GROUP string = resourceGroup.name
-output AZURE_CONTAINER_APP_NAME string = core.outputs.containerAppName
-output AZURE_CONTAINER_APP_ENVIRONMENT_NAME string = core.outputs.containerAppsEnvironmentName
-output AZURE_CONTAINER_REGISTRY_ENDPOINT string = core.outputs.containerRegistryEndpoint
-output AZURE_STORAGE_ACCOUNT_NAME string = core.outputs.storageAccountName
-output AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT string = core.outputs.documentIntelligenceEndpoint
-output AZURE_AI_FOUNDRY_ENDPOINT string = core.outputs.foundryEndpoint
-output AZURE_AI_FOUNDRY_PROJECT_NAME string = core.outputs.foundryProjectName
-output AZURE_AI_PROJECT_ENDPOINT string = core.outputs.foundryProjectEndpoint
-output AZURE_AI_MODEL_DEPLOYMENT_NAME string = core.outputs.modelDeploymentName
-output AZURE_AI_SEARCH_ENDPOINT string = core.outputs.searchEndpoint
-output FOUNDRY_AGENT_EXTRACT string = extractAgentName
-output FOUNDRY_AGENT_COMPLETE string = completeAgentName
-output FOUNDRY_AGENT_RISK string = riskAgentName
-output FOUNDRY_AGENT_SUMMARY string = summaryAgentName
-output SERVICE_WEB_URI string = core.outputs.containerAppUrl
+module hostingNetwork 'modules/hosting-network.bicep' = {
+  name: 'phase2-hosting-network'
+  params: {
+    location: containerAppsLocation
+    tags: tags
+    storageAccountId: resourceId('Microsoft.Storage/storageAccounts', storageAccountName)
+  }
+}
+
+module containerEnvironment 'modules/container-environment.bicep' = {
+  name: 'phase2-container-environment-reference'
+  params: {
+    location: containerAppsLocation
+    environmentName: containerAppsEnvironmentName
+    infrastructureSubnetId: hostingNetwork.outputs.containerAppsSubnetId
+    tags: tags
+    provision: provisionContainerEnvironment
+  }
+}
+
+module application 'modules/application.bicep' = {
+  name: 'phase2-application'
+  params: {
+    containerAppsLocation: containerAppsLocation
+    tags: tags
+    environmentId: containerEnvironment.outputs.id
+    workloadIdentityId: workloadIdentityId
+    registryLoginServer: existingRegistry.properties.loginServer
+    storageAccountName: storageAccountName
+    documentIntelligenceEndpoint: existingDocumentIntelligence.properties.endpoint
+    foundryProjectEndpoint: 'https://${foundryName}.services.ai.azure.com/api/projects/${foundryProjectName}'
+    modelDeploymentName: modelDeploymentName
+    foundryAgentDocumentVersion: foundryAgentDocumentVersion
+    foundryAgentCompletenessVersion: foundryAgentCompletenessVersion
+    foundryAgentRiskVersion: foundryAgentRiskVersion
+    foundryAgentSummaryVersion: foundryAgentSummaryVersion
+    searchEndpoint: 'https://${searchServiceName}.search.windows.net'
+    imageName: applicationImage
+  }
+}
+
+module phase3 'modules/phase3.bicep' = {
+  name: 'phase3-ai-access'
+  params: {
+    foundryName: foundryName
+    modelDeploymentName: modelDeploymentName
+    modelDeploymentCapacity: modelDeploymentCapacity
+    searchServiceName: searchServiceName
+    workloadPrincipalId: workloadPrincipalId
+  }
+}
+
+module foundry 'modules/foundry.bicep' = if (provisionFoundation) {
+  name: 'phase1-foundry'
+  params: {
+    location: location
+    tags: tags
+    foundryName: foundryName
+    projectName: foundryProjectName
+    modelDeploymentName: modelDeploymentName
+    modelDeploymentCapacity: modelDeploymentCapacity
+    workloadPrincipalId: workloadPrincipalId
+  }
+}
+
+output location string = location
+output containerAppsLocation string = containerAppsLocation
+output managedIdentityName string = 'id-kyc-fs01'
+output containerAppsEnvironmentName string = containerEnvironment.outputs.name
+output storageAccountName string = storageAccountName
+output documentIntelligenceName string = documentIntelligenceName
+output searchServiceName string = searchServiceName
+output foundryName string = foundryName
+output foundryProjectName string = foundryProjectName
+output modelDeploymentName string = modelDeploymentName
+output applicationName string = application.outputs.applicationName
+output applicationUrl string = application.outputs.applicationUrl
+output containerRegistryName string = containerRegistryName
+output containerRegistryLoginServer string = existingRegistry.properties.loginServer
