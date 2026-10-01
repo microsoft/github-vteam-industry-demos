@@ -1,0 +1,727 @@
+{
+  "seed_version": "1.0.0",
+  "index_name": "kyc-screening-v1",
+  "records": [
+    {
+      "record_id": "SYN-WATCH-001",
+      "record_type": "watchlist_style",
+      "display_name": "Elara Vos",
+      "normalized_name": "elara vos",
+      "aliases": [
+        "E. Vos",
+        "Elara V."
+      ],
+      "countries": [
+        "Finland"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Potential name similarity",
+      "synthetic_risk_description": "Synthetic potential similarity only; not a confirmed match and analyst verification is required.",
+      "reference_text": "Fictional watchlist-style demo record deliberately near the synthetic beneficial owner Elara Voss.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-WATCH-002",
+      "record_type": "watchlist_style",
+      "display_name": "Bryn Berg",
+      "normalized_name": "bryn berg",
+      "aliases": [
+        "B. Berg"
+      ],
+      "countries": [
+        "Finland"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional watchlist-style indicator",
+      "synthetic_risk_description": "Synthetic potential-match content requiring analyst review; never a confirmed sanctions conclusion.",
+      "reference_text": "Deterministic fictional watchlist-style record 2.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-WATCH-003",
+      "record_type": "watchlist_style",
+      "display_name": "Corin Cove",
+      "normalized_name": "corin cove",
+      "aliases": [
+        "C. Cove"
+      ],
+      "countries": [
+        "Denmark"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional watchlist-style indicator",
+      "synthetic_risk_description": "Synthetic potential-match content requiring analyst review; never a confirmed sanctions conclusion.",
+      "reference_text": "Deterministic fictional watchlist-style record 3.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-WATCH-004",
+      "record_type": "watchlist_style",
+      "display_name": "Della Dahl",
+      "normalized_name": "della dahl",
+      "aliases": [
+        "D. Dahl"
+      ],
+      "countries": [
+        "Ireland"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional watchlist-style indicator",
+      "synthetic_risk_description": "Synthetic potential-match content requiring analyst review; never a confirmed sanctions conclusion.",
+      "reference_text": "Deterministic fictional watchlist-style record 4.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-WATCH-005",
+      "record_type": "watchlist_style",
+      "display_name": "Emil Elm",
+      "normalized_name": "emil elm",
+      "aliases": [
+        "E. Elm"
+      ],
+      "countries": [
+        "Sweden"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional watchlist-style indicator",
+      "synthetic_risk_description": "Synthetic potential-match content requiring analyst review; never a confirmed sanctions conclusion.",
+      "reference_text": "Deterministic fictional watchlist-style record 5.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-WATCH-006",
+      "record_type": "watchlist_style",
+      "display_name": "Freja Frost",
+      "normalized_name": "freja frost",
+      "aliases": [
+        "F. Frost"
+      ],
+      "countries": [
+        "Norway"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional watchlist-style indicator",
+      "synthetic_risk_description": "Synthetic potential-match content requiring analyst review; never a confirmed sanctions conclusion.",
+      "reference_text": "Deterministic fictional watchlist-style record 6.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-WATCH-007",
+      "record_type": "watchlist_style",
+      "display_name": "Galen Grove",
+      "normalized_name": "galen grove",
+      "aliases": [
+        "G. Grove"
+      ],
+      "countries": [
+        "Finland"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional watchlist-style indicator",
+      "synthetic_risk_description": "Synthetic potential-match content requiring analyst review; never a confirmed sanctions conclusion.",
+      "reference_text": "Deterministic fictional watchlist-style record 7.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-WATCH-008",
+      "record_type": "watchlist_style",
+      "display_name": "Hanne Holm",
+      "normalized_name": "hanne holm",
+      "aliases": [
+        "H. Holm"
+      ],
+      "countries": [
+        "Denmark"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional watchlist-style indicator",
+      "synthetic_risk_description": "Synthetic potential-match content requiring analyst review; never a confirmed sanctions conclusion.",
+      "reference_text": "Deterministic fictional watchlist-style record 8.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-WATCH-009",
+      "record_type": "watchlist_style",
+      "display_name": "Ivar Isle",
+      "normalized_name": "ivar isle",
+      "aliases": [
+        "I. Isle"
+      ],
+      "countries": [
+        "Ireland"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional watchlist-style indicator",
+      "synthetic_risk_description": "Synthetic potential-match content requiring analyst review; never a confirmed sanctions conclusion.",
+      "reference_text": "Deterministic fictional watchlist-style record 9.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-WATCH-010",
+      "record_type": "watchlist_style",
+      "display_name": "Juna Jade",
+      "normalized_name": "juna jade",
+      "aliases": [
+        "J. Jade"
+      ],
+      "countries": [
+        "Sweden"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional watchlist-style indicator",
+      "synthetic_risk_description": "Synthetic potential-match content requiring analyst review; never a confirmed sanctions conclusion.",
+      "reference_text": "Deterministic fictional watchlist-style record 10.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-WATCH-011",
+      "record_type": "watchlist_style",
+      "display_name": "Kian Klint",
+      "normalized_name": "kian klint",
+      "aliases": [
+        "K. Klint"
+      ],
+      "countries": [
+        "Norway"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional watchlist-style indicator",
+      "synthetic_risk_description": "Synthetic potential-match content requiring analyst review; never a confirmed sanctions conclusion.",
+      "reference_text": "Deterministic fictional watchlist-style record 11.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-WATCH-012",
+      "record_type": "watchlist_style",
+      "display_name": "Livia Lark",
+      "normalized_name": "livia lark",
+      "aliases": [
+        "L. Lark"
+      ],
+      "countries": [
+        "Finland"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional watchlist-style indicator",
+      "synthetic_risk_description": "Synthetic potential-match content requiring analyst review; never a confirmed sanctions conclusion.",
+      "reference_text": "Deterministic fictional watchlist-style record 12.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-PEP-001",
+      "record_type": "pep_style",
+      "display_name": "Aster Lark",
+      "normalized_name": "aster lark",
+      "aliases": [
+        "Aster Lark (fictional public role)"
+      ],
+      "countries": [
+        "Finland"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional public-role indicator",
+      "synthetic_risk_description": "Synthetic PEP-style reference for demo correlation only; analyst verification is required.",
+      "reference_text": "Deterministic fictional public-role reference 1.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-PEP-002",
+      "record_type": "pep_style",
+      "display_name": "Bryn Klint",
+      "normalized_name": "bryn klint",
+      "aliases": [
+        "Bryn Klint (fictional public role)"
+      ],
+      "countries": [
+        "Denmark"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional public-role indicator",
+      "synthetic_risk_description": "Synthetic PEP-style reference for demo correlation only; analyst verification is required.",
+      "reference_text": "Deterministic fictional public-role reference 2.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-PEP-003",
+      "record_type": "pep_style",
+      "display_name": "Corin Jade",
+      "normalized_name": "corin jade",
+      "aliases": [
+        "Corin Jade (fictional public role)"
+      ],
+      "countries": [
+        "Ireland"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional public-role indicator",
+      "synthetic_risk_description": "Synthetic PEP-style reference for demo correlation only; analyst verification is required.",
+      "reference_text": "Deterministic fictional public-role reference 3.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-PEP-004",
+      "record_type": "pep_style",
+      "display_name": "Della Isle",
+      "normalized_name": "della isle",
+      "aliases": [
+        "Della Isle (fictional public role)"
+      ],
+      "countries": [
+        "Sweden"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional public-role indicator",
+      "synthetic_risk_description": "Synthetic PEP-style reference for demo correlation only; analyst verification is required.",
+      "reference_text": "Deterministic fictional public-role reference 4.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-PEP-005",
+      "record_type": "pep_style",
+      "display_name": "Emil Holm",
+      "normalized_name": "emil holm",
+      "aliases": [
+        "Emil Holm (fictional public role)"
+      ],
+      "countries": [
+        "Norway"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional public-role indicator",
+      "synthetic_risk_description": "Synthetic PEP-style reference for demo correlation only; analyst verification is required.",
+      "reference_text": "Deterministic fictional public-role reference 5.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-PEP-006",
+      "record_type": "pep_style",
+      "display_name": "Freja Grove",
+      "normalized_name": "freja grove",
+      "aliases": [
+        "Freja Grove (fictional public role)"
+      ],
+      "countries": [
+        "Finland"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional public-role indicator",
+      "synthetic_risk_description": "Synthetic PEP-style reference for demo correlation only; analyst verification is required.",
+      "reference_text": "Deterministic fictional public-role reference 6.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-PEP-007",
+      "record_type": "pep_style",
+      "display_name": "Galen Frost",
+      "normalized_name": "galen frost",
+      "aliases": [
+        "Galen Frost (fictional public role)"
+      ],
+      "countries": [
+        "Denmark"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional public-role indicator",
+      "synthetic_risk_description": "Synthetic PEP-style reference for demo correlation only; analyst verification is required.",
+      "reference_text": "Deterministic fictional public-role reference 7.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-PEP-008",
+      "record_type": "pep_style",
+      "display_name": "Hanne Elm",
+      "normalized_name": "hanne elm",
+      "aliases": [
+        "Hanne Elm (fictional public role)"
+      ],
+      "countries": [
+        "Ireland"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional public-role indicator",
+      "synthetic_risk_description": "Synthetic PEP-style reference for demo correlation only; analyst verification is required.",
+      "reference_text": "Deterministic fictional public-role reference 8.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-PEP-009",
+      "record_type": "pep_style",
+      "display_name": "Ivar Dahl",
+      "normalized_name": "ivar dahl",
+      "aliases": [
+        "Ivar Dahl (fictional public role)"
+      ],
+      "countries": [
+        "Sweden"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional public-role indicator",
+      "synthetic_risk_description": "Synthetic PEP-style reference for demo correlation only; analyst verification is required.",
+      "reference_text": "Deterministic fictional public-role reference 9.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-PEP-010",
+      "record_type": "pep_style",
+      "display_name": "Juna Cove",
+      "normalized_name": "juna cove",
+      "aliases": [
+        "Juna Cove (fictional public role)"
+      ],
+      "countries": [
+        "Norway"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional public-role indicator",
+      "synthetic_risk_description": "Synthetic PEP-style reference for demo correlation only; analyst verification is required.",
+      "reference_text": "Deterministic fictional public-role reference 10.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-PEP-011",
+      "record_type": "pep_style",
+      "display_name": "Kian Berg",
+      "normalized_name": "kian berg",
+      "aliases": [
+        "Kian Berg (fictional public role)"
+      ],
+      "countries": [
+        "Finland"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional public-role indicator",
+      "synthetic_risk_description": "Synthetic PEP-style reference for demo correlation only; analyst verification is required.",
+      "reference_text": "Deterministic fictional public-role reference 11.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-PEP-012",
+      "record_type": "pep_style",
+      "display_name": "Livia Alder",
+      "normalized_name": "livia alder",
+      "aliases": [
+        "Livia Alder (fictional public role)"
+      ],
+      "countries": [
+        "Denmark"
+      ],
+      "date_of_birth": "",
+      "entity_type": "person",
+      "category": "Fictional public-role indicator",
+      "synthetic_risk_description": "Synthetic PEP-style reference for demo correlation only; analyst verification is required.",
+      "reference_text": "Deterministic fictional public-role reference 12.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-RISK-001",
+      "record_type": "internal_risk",
+      "display_name": "Aurora Ledger AB",
+      "normalized_name": "aurora ledger ab",
+      "aliases": [],
+      "countries": [
+        "Denmark"
+      ],
+      "date_of_birth": "",
+      "entity_type": "organisation",
+      "category": "Fictional internal risk note",
+      "synthetic_risk_description": "Synthetic internal concern that requires evidence review and does not establish a compliance conclusion.",
+      "reference_text": "Deterministic fictional internal risk record 1.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-RISK-002",
+      "record_type": "internal_risk",
+      "display_name": "Birch Harbor Oy",
+      "normalized_name": "birch harbor oy",
+      "aliases": [],
+      "countries": [
+        "Ireland"
+      ],
+      "date_of_birth": "",
+      "entity_type": "organisation",
+      "category": "Fictional internal risk note",
+      "synthetic_risk_description": "Synthetic internal concern that requires evidence review and does not establish a compliance conclusion.",
+      "reference_text": "Deterministic fictional internal risk record 2.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-RISK-003",
+      "record_type": "internal_risk",
+      "display_name": "Cobalt Meadow AS",
+      "normalized_name": "cobalt meadow as",
+      "aliases": [],
+      "countries": [
+        "Sweden"
+      ],
+      "date_of_birth": "",
+      "entity_type": "organisation",
+      "category": "Fictional internal risk note",
+      "synthetic_risk_description": "Synthetic internal concern that requires evidence review and does not establish a compliance conclusion.",
+      "reference_text": "Deterministic fictional internal risk record 3.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-RISK-004",
+      "record_type": "internal_risk",
+      "display_name": "Dune Quill Ltd",
+      "normalized_name": "dune quill ltd",
+      "aliases": [],
+      "countries": [
+        "Norway"
+      ],
+      "date_of_birth": "",
+      "entity_type": "organisation",
+      "category": "Fictional internal risk note",
+      "synthetic_risk_description": "Synthetic internal concern that requires evidence review and does not establish a compliance conclusion.",
+      "reference_text": "Deterministic fictional internal risk record 4.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-RISK-005",
+      "record_type": "internal_risk",
+      "display_name": "Ember Vale ApS",
+      "normalized_name": "ember vale aps",
+      "aliases": [],
+      "countries": [
+        "Finland"
+      ],
+      "date_of_birth": "",
+      "entity_type": "organisation",
+      "category": "Fictional internal risk note",
+      "synthetic_risk_description": "Synthetic internal concern that requires evidence review and does not establish a compliance conclusion.",
+      "reference_text": "Deterministic fictional internal risk record 5.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-RISK-006",
+      "record_type": "internal_risk",
+      "display_name": "Fable North AB",
+      "normalized_name": "fable north ab",
+      "aliases": [],
+      "countries": [
+        "Denmark"
+      ],
+      "date_of_birth": "",
+      "entity_type": "organisation",
+      "category": "Fictional internal risk note",
+      "synthetic_risk_description": "Synthetic internal concern that requires evidence review and does not establish a compliance conclusion.",
+      "reference_text": "Deterministic fictional internal risk record 6.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-RISK-007",
+      "record_type": "internal_risk",
+      "display_name": "Garnet Pier Oy",
+      "normalized_name": "garnet pier oy",
+      "aliases": [],
+      "countries": [
+        "Ireland"
+      ],
+      "date_of_birth": "",
+      "entity_type": "organisation",
+      "category": "Fictional internal risk note",
+      "synthetic_risk_description": "Synthetic internal concern that requires evidence review and does not establish a compliance conclusion.",
+      "reference_text": "Deterministic fictional internal risk record 7.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-RISK-008",
+      "record_type": "internal_risk",
+      "display_name": "Hearthline AS",
+      "normalized_name": "hearthline as",
+      "aliases": [],
+      "countries": [
+        "Sweden"
+      ],
+      "date_of_birth": "",
+      "entity_type": "organisation",
+      "category": "Fictional internal risk note",
+      "synthetic_risk_description": "Synthetic internal concern that requires evidence review and does not establish a compliance conclusion.",
+      "reference_text": "Deterministic fictional internal risk record 8.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-RISK-009",
+      "record_type": "internal_risk",
+      "display_name": "Ivory Spruce Ltd",
+      "normalized_name": "ivory spruce ltd",
+      "aliases": [],
+      "countries": [
+        "Norway"
+      ],
+      "date_of_birth": "",
+      "entity_type": "organisation",
+      "category": "Fictional internal risk note",
+      "synthetic_risk_description": "Synthetic internal concern that requires evidence review and does not establish a compliance conclusion.",
+      "reference_text": "Deterministic fictional internal risk record 9.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-RISK-010",
+      "record_type": "internal_risk",
+      "display_name": "Juniper Bay AB",
+      "normalized_name": "juniper bay ab",
+      "aliases": [],
+      "countries": [
+        "Finland"
+      ],
+      "date_of_birth": "",
+      "entity_type": "organisation",
+      "category": "Fictional internal risk note",
+      "synthetic_risk_description": "Synthetic internal concern that requires evidence review and does not establish a compliance conclusion.",
+      "reference_text": "Deterministic fictional internal risk record 10.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-RISK-011",
+      "record_type": "internal_risk",
+      "display_name": "Kestrel Rune ApS",
+      "normalized_name": "kestrel rune aps",
+      "aliases": [],
+      "countries": [
+        "Denmark"
+      ],
+      "date_of_birth": "",
+      "entity_type": "organisation",
+      "category": "Fictional internal risk note",
+      "synthetic_risk_description": "Synthetic internal concern that requires evidence review and does not establish a compliance conclusion.",
+      "reference_text": "Deterministic fictional internal risk record 11.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "SYN-RISK-012",
+      "record_type": "internal_risk",
+      "display_name": "Lighthouse Moss Oy",
+      "normalized_name": "lighthouse moss oy",
+      "aliases": [],
+      "countries": [
+        "Ireland"
+      ],
+      "date_of_birth": "",
+      "entity_type": "organisation",
+      "category": "Fictional internal risk note",
+      "synthetic_risk_description": "Synthetic internal concern that requires evidence review and does not establish a compliance conclusion.",
+      "reference_text": "Deterministic fictional internal risk record 12.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "POL-001",
+      "record_type": "policy_reference",
+      "display_name": "Name similarity review",
+      "normalized_name": "name similarity review",
+      "aliases": [],
+      "countries": [],
+      "date_of_birth": "",
+      "entity_type": "reference",
+      "category": "Synthetic KYC reference",
+      "synthetic_risk_description": "Synthetic policy/reference content for the demonstration.",
+      "reference_text": "Compare corroborating identity attributes; a name similarity alone is not a confirmed match.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "POL-002",
+      "record_type": "policy_reference",
+      "display_name": "Ownership evidence review",
+      "normalized_name": "ownership evidence review",
+      "aliases": [],
+      "countries": [],
+      "date_of_birth": "",
+      "entity_type": "reference",
+      "category": "Synthetic KYC reference",
+      "synthetic_risk_description": "Synthetic policy/reference content for the demonstration.",
+      "reference_text": "Request evidence where beneficial ownership is missing, conflicting, or indirect.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "POL-003",
+      "record_type": "policy_reference",
+      "display_name": "Synthetic public-role review",
+      "normalized_name": "synthetic public-role review",
+      "aliases": [],
+      "countries": [],
+      "date_of_birth": "",
+      "entity_type": "reference",
+      "category": "Synthetic KYC reference",
+      "synthetic_risk_description": "Synthetic policy/reference content for the demonstration.",
+      "reference_text": "Treat fictional public-role indicators as prompts for proportionate analyst review.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    },
+    {
+      "record_id": "POL-004",
+      "record_type": "policy_reference",
+      "display_name": "Human decision control",
+      "normalized_name": "human decision control",
+      "aliases": [],
+      "countries": [],
+      "date_of_birth": "",
+      "entity_type": "reference",
+      "category": "Synthetic KYC reference",
+      "synthetic_risk_description": "Synthetic policy/reference content for the demonstration.",
+      "reference_text": "AI output is advisory and a named analyst remains responsible for the final decision.",
+      "source_label": "Synthetic demo screening data",
+      "synthetic": true
+    }
+  ]
+}

@@ -1,1 +1,0 @@
-"""Demo-state persistence abstractions."""

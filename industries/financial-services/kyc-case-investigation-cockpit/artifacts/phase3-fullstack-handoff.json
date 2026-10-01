@@ -1,0 +1,98 @@
+{
+  "artifact_version": "1.0",
+  "generated_at": "2026-09-30T20:19:01.170011Z",
+  "contains_secrets": false,
+  "deployment": {
+    "resource_group": "rg-financial-services-01",
+    "container_app_environment": "cae-kyc-fs01-norwayeast",
+    "container_app": "ca-kyc-fs01",
+    "public_url": "https://ca-kyc-fs01.salmonpebble-2b6fa79e.norwayeast.azurecontainerapps.io",
+    "image": "acrkycfs017jkdk72fhocg2.azurecr.io/kyc-cockpit:phase3-20260930-184342",
+    "image_digest": "sha256:e1793f0e97086cc06f545d1de1d1e8f68256caad27c0baa11f01768321f5efe8",
+    "revision": "ca-kyc-fs01--phase3-20260930h",
+    "traffic_percent": 100,
+    "rollback_revision": "ca-kyc-fs01--0000001"
+  },
+  "automated_validation": {
+    "pytest": "11 passed",
+    "frontend_typecheck": "passed",
+    "frontend_build": "passed",
+    "bicep_build": "passed"
+  },
+  "live_validation": {
+    "health": "passed",
+    "homepage": "passed",
+    "case_count": 25,
+    "primary_case": "KYC-2026-001 — Northstar Meridian AB",
+    "document_intelligence": "all 6 primary-case documents processed and persisted",
+    "pre_acceptance_checkpoint_verified": "INV-8d83a7ea-1225-4def-aa04-8e126645db7e",
+    "investigation_id": "INV-4c667b09-757b-48d1-80b6-347a976682a9",
+    "investigation_status": "completed",
+    "completed_agents": [
+      {
+        "name": "kyc-document-entity-extractor",
+        "version": "1",
+        "response_id": "resp_07021007c4979d80006abd6e3e66608190a9e2978d1ad7db88"
+      },
+      {
+        "name": "kyc-completeness-validator",
+        "version": "1",
+        "response_id": "resp_0ac58abb343e703d006abd6e5e8a8881908383dbea807399a2"
+      },
+      {
+        "name": "kyc-risk-investigator",
+        "version": "1",
+        "response_id": "resp_044c32beaac77a13006abd6e8aa4f48190983c86be2421ca3a"
+      },
+      {
+        "name": "kyc-analyst-summary",
+        "version": "1",
+        "response_id": "resp_00cdae4c2f3f8cec006abd6ea6779c81908ea87221dd6b3b99"
+      }
+    ],
+    "completed_stages": 7,
+    "blocked_stage": null,
+    "blocker": null,
+    "capacity_remediation": "Existing Sweden Central gpt-5-mini GlobalStandard deployment increased from capacity 1 to 20 (20 RPM / 20000 TPM).",
+    "checkpoint_preserved": true,
+    "risk_potential_match": {
+      "confirmed": false,
+      "analyst_review_required": true,
+      "evidence_ref": "EV-SEARCH-SYN-WATCH-001"
+    },
+    "summary_advisory_only": true,
+    "summary_recommendation": "Request More Information",
+    "human_decision_submitted": true,
+    "decision": {
+      "decision_id": "DEC-LIVE-INV-4c667b09-757b-48d1-80b6-347a976682a9",
+      "analyst_name": "Elin Berg (fictional)",
+      "action": "Request More Information",
+      "reason": "Additional evidence is required to validate the beneficial ownership structure and resolve the potential screening similarity.",
+      "decided_at": "2026-09-30T20:19:01.170011+00:00",
+      "previous_status": "Ready for Decision",
+      "new_status": "Awaiting Information"
+    },
+    "audit_chronological": true,
+    "fresh_request_persistence": "passed"
+  },
+  "previous_platform_validation": {
+    "four_agents_schema_valid": true,
+    "search_query_valid": true,
+    "evidence_artifact": "artifacts\\phase3-validation.json"
+  },
+  "resource_validation": {
+    "public_container_app_count": 1,
+    "container_app": "ca-kyc-fs01",
+    "external_ingress": true,
+    "running_status": "Running",
+    "revision": "ca-kyc-fs01--phase3-20260930h",
+    "revision_health": "Healthy",
+    "traffic_percent": 100,
+    "ai_data_identity_acr_region": "swedencentral",
+    "hosting_exception_region": "norwayeast"
+  },
+  "redeployed": false,
+  "configuration_changed": false,
+  "status_file_updated": true,
+  "status_file_reason": "Focused deployed Phase 3 acceptance passed, including the persisted human decision and fresh-request verification."
+}

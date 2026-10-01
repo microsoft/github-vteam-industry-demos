@@ -1,0 +1,131 @@
+{
+  "artifact_version": "1.0",
+  "generated_at": "2026-09-30T20:12:02.624201+00:00",
+  "foundry_project_endpoint": "https://foundry-financial-services-01.services.ai.azure.com/api/projects/proj-financial-services-01",
+  "model_deployment_name": "gpt-5-mini",
+  "model_deployment": {
+    "name": "gpt-5-mini",
+    "model": "gpt-5-mini",
+    "version": "2025-08-07",
+    "sku": "GlobalStandard",
+    "capacity": 20,
+    "region": "swedencentral"
+  },
+  "capacity_remediation": {
+    "root_cause": "The previous capacity 1 deployment enforced 1 request/minute and 1000 tokens/minute. Contract-sized sequential requests exceeded the deployment token rate limit and returned HTTP 429.",
+    "quota_before": {
+      "quota_name": "OpenAI.GlobalStandard.gpt-5-mini",
+      "allocated_capacity": 686,
+      "quota_limit": 1000,
+      "available_capacity": 314
+    },
+    "change": "Increased the existing gpt-5-mini deployment from capacity 1 to capacity 20.",
+    "rate_limits_after": {
+      "requests_per_minute": 20,
+      "tokens_per_minute": 20000
+    },
+    "alternative_model_deployed": false,
+    "foundry_resource_replaced": false,
+    "foundry_project_replaced": false,
+    "container_app_redeployed": false
+  },
+  "agents": [
+    {
+      "purpose": "Document & Entity Extraction Agent",
+      "name": "kyc-document-entity-extractor",
+      "version": "1",
+      "id": "kyc-document-entity-extractor:1",
+      "agent_id": "kyc-document-entity-extractor",
+      "response_schema_name": "DocumentEntityExtractionOutputV1",
+      "contract_hash": "5132b58008ca17eb0af115e827210e9d06bbad1da3d278c7188e9cec9335cdb9"
+    },
+    {
+      "purpose": "Completeness Validation Agent",
+      "name": "kyc-completeness-validator",
+      "version": "1",
+      "id": "kyc-completeness-validator:1",
+      "agent_id": "kyc-completeness-validator",
+      "response_schema_name": "CompletenessValidationOutputV1",
+      "contract_hash": "3d2a5ae4698e47b2ea01fd566873fdf4ccb411c8c0f33b7824b1a53549508eca"
+    },
+    {
+      "purpose": "Risk Investigation Agent",
+      "name": "kyc-risk-investigator",
+      "version": "1",
+      "id": "kyc-risk-investigator:1",
+      "agent_id": "kyc-risk-investigator",
+      "response_schema_name": "RiskInvestigationOutputV1",
+      "contract_hash": "d41934b52352093fed596c7daf68259df7a298debdbb35849a4e47fdd424e719"
+    },
+    {
+      "purpose": "Analyst Summary Agent",
+      "name": "kyc-analyst-summary",
+      "version": "1",
+      "id": "kyc-analyst-summary:1",
+      "agent_id": "kyc-analyst-summary",
+      "response_schema_name": "AnalystSummaryOutputV1",
+      "contract_hash": "219617f648c76e238f3d83f4d0e60ec28acdbcf35c8e90ee0b920c0b6893bf82"
+    }
+  ],
+  "agent_definitions_path": "artifacts\\phase3-agent-definitions.json",
+  "expected_schemas": {
+    "kyc-document-entity-extractor": {
+      "schema_name": "DocumentEntityExtractionOutputV1",
+      "path": "artifacts\\phase3-agent-definitions.json"
+    },
+    "kyc-completeness-validator": {
+      "schema_name": "CompletenessValidationOutputV1",
+      "path": "artifacts\\phase3-agent-definitions.json"
+    },
+    "kyc-risk-investigator": {
+      "schema_name": "RiskInvestigationOutputV1",
+      "path": "artifacts\\phase3-agent-definitions.json"
+    },
+    "kyc-analyst-summary": {
+      "schema_name": "AnalystSummaryOutputV1",
+      "path": "artifacts\\phase3-agent-definitions.json"
+    }
+  },
+  "search_endpoint": "https://srch-kyc-fs01-7jkdk72fhocg2.search.windows.net",
+  "search_index_name": "kyc-screening-v1",
+  "search_seed_version": "1.0.0",
+  "search_seed_count": 40,
+  "primary_case_screening_record_ids": [
+    "SYN-WATCH-001"
+  ],
+  "required_environment_variables": [
+    "AZURE_CLIENT_ID",
+    "FOUNDRY_PROJECT_ENDPOINT",
+    "FOUNDRY_MODEL_DEPLOYMENT",
+    "FOUNDRY_AGENT_DOCUMENT_NAME",
+    "FOUNDRY_AGENT_DOCUMENT_VERSION",
+    "FOUNDRY_AGENT_COMPLETENESS_NAME",
+    "FOUNDRY_AGENT_COMPLETENESS_VERSION",
+    "FOUNDRY_AGENT_RISK_NAME",
+    "FOUNDRY_AGENT_RISK_VERSION",
+    "FOUNDRY_AGENT_SUMMARY_NAME",
+    "FOUNDRY_AGENT_SUMMARY_VERSION",
+    "AZURE_SEARCH_ENDPOINT",
+    "AZURE_SEARCH_INDEX_NAME"
+  ],
+  "required_role_assignments": [
+    {
+      "principal": "/subscriptions/e2d6ac89-1bb7-420c-97fb-a96dea6c0635/resourceGroups/rg-financial-services-01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-kyc-fs01",
+      "scope": "/subscriptions/e2d6ac89-1bb7-420c-97fb-a96dea6c0635/resourceGroups/rg-financial-services-01/providers/Microsoft.CognitiveServices/accounts/foundry-financial-services-01",
+      "role_name": "Foundry User"
+    },
+    {
+      "principal": "/subscriptions/e2d6ac89-1bb7-420c-97fb-a96dea6c0635/resourceGroups/rg-financial-services-01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-kyc-fs01",
+      "scope": "/subscriptions/e2d6ac89-1bb7-420c-97fb-a96dea6c0635/resourceGroups/rg-financial-services-01/providers/Microsoft.Search/searchServices/srch-kyc-fs01-7jkdk72fhocg2",
+      "role_name": "Search Index Data Contributor"
+    }
+  ],
+  "validation": {
+    "structured_agent_invocations_passed": true,
+    "search_query_passed": true,
+    "deployed_investigation_passed": true,
+    "evidence_path": "artifacts\\phase3-validation.json",
+    "investigation_id": "INV-8d83a7ea-1225-4def-aa04-8e126645db7e"
+  },
+  "contains_secrets": false
+}

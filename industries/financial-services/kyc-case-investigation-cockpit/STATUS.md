@@ -1,17 +1,7 @@
-# Deployment Status
-
-**Current phase:** Portable fresh-clone deployment path implemented and statically validated
-
-**Last successful deployment:** Environment-specific deployment details are intentionally not stored in the shareable repository
-
-**Application URL:** Run `azd env get-value SERVICE_WEB_URI` for the current environment
-
-**Primary demo case:** `KYC-DEMO-001` — Northstar Components AB — Medium risk
-
-**Working:** Parameterized subscription-scope Bicep, unique per-environment names, ACR remote build, managed identity/RBAC, Foundry project/model, idempotent four-agent bootstrap, Document Intelligence, deterministic 25-case/40-screening seed, public cockpit, navigation, live investigation, decisions, and audit behavior.
-
-**Known optional limitations:** Azure AI Search is optional and the baseline uses local synthetic screening. Durable Azure Storage data-plane persistence may require enterprise network policy changes; private networking is intentionally excluded. Baseline state persists only for the running Container App replica.
-
-**Validation:** Portability scan passed across 120 shareable text files; 31 backend tests passed; deterministic seed remained 25 cases and 40 screening records; frontend production build, Bicep build, four-agent dry-run, and bootstrap idempotency tests passed.
-
-**Next:** A colleague can authenticate, create a new `azd` environment, and run `azd up`.
+Current phase: Phase 3 complete.
+Last successful deployment: 2026-09-30 — ca-kyc-fs01--phase3-20260930h is healthy and serves 100% of traffic
+Application URL: https://ca-kyc-fs01.salmonpebble-2b6fa79e.norwayeast.azurecontainerapps.io
+Primary demo case: KYC-2026-001 — Northstar Meridian AB (fictional, medium risk)
+Working: Public UI/API; 25 seeded cases; primary profile, six processed documents, ownership, completeness, four persisted Foundry outputs, grounded synthetic screening evidence, advisory AI summary, human Request More Information decision, Awaiting Information status, and chronological AI/human audit persistence are live and verified; AI/data/identity/ACR remain in Sweden Central and the approved hosting exception remains in Norway East
+Blocked: None.
+Next: Final demo ready; await user direction.

@@ -1,24 +1,15 @@
 name: kyc-case-investigation-cockpit
-
+metadata:
+  template: kyc-case-investigation-cockpit@phase3
 infra:
   provider: bicep
   path: infra
   module: main
-
-hooks:
-  postprovision:
-    kind: python
-    run: ./scripts/bootstrap_foundry_agents.py
-    interactive: false
-    continueOnError: false
-    config:
-      virtualEnvName: .azd-hooks
-
 services:
   web:
     project: .
     host: containerapp
-    language: docker
+    language: python
+    resourceName: ca-kyc-fs01
     docker:
       path: Dockerfile
-      remoteBuild: true

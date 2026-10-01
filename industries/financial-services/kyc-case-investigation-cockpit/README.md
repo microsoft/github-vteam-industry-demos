@@ -1,228 +1,107 @@
 # KYC Case Investigation Cockpit
 
-A single-URL React + FastAPI customer-demo application for investigating fictional
-business onboarding cases. All people, companies, documents, and screening records
-are synthetic. The application is not a production compliance platform and its
-advisory output must not be used for KYC, AML, sanctions, or compliance decisions.
 
-## Demo flow
+## 🚀 Demo Resources
 
-1. Open the dashboard and select **KYC-DEMO-001 — Northstar Components AB**.
-2. Review the company, synthetic documents, ownership structure, and source evidence.
-3. Select **Run AI Investigation**.
-4. Review completeness checks, local synthetic screening signals, and the advisory summary.
-5. Select **Request More Information**, enter an analyst reason, and confirm.
-6. Verify the status and human decision in **Audit History**.
+**Live Application:**  
+https://ca-kyc-fs01.salmonpebble-2b6fa79e.norwayeast.azurecontainerapps.io/
 
-Document extraction uses Azure AI Document Intelligence `prebuilt-layout` in the
-deployed Sweden Central environment. The seeded document preview is rendered as an
-in-memory DOCX and submitted with `DefaultAzureCredential`; extracted facts retain
-their source-document label. Live extraction interpretation, completeness, risk, and
-summary use the four persistent Foundry agents described below.
+**Demo Video:**  
+[Watch the end-to-end demo](./demo/financial-services-kyc-demo.mp4)
 
-The live document adapter can be tested independently with:
+**GitHub Copilot CLI + Squad Live Demo Changes:**  
+[Open the quick-change playbook](./LIVE-DEMO-QUICK-CHANGES.md)
 
-```text
-POST /api/cases/KYC-DEMO-001/documents/DOC-001-01/extract
-```
+> All customer and KYC data used in this demo is synthetic.
 
-Local development defaults to deterministic document extraction. Set
-`DOCUMENT_EXTRACTION_PROVIDER=azure`,
-`AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT`, and optionally
-`AZURE_DOCUMENT_INTELLIGENCE_MODEL=prebuilt-layout` to enable the live adapter.
+Phase 3 is a single-container React + FastAPI demonstration for reviewing synthetic KYC cases and running a checkpointed, human-controlled investigation through four Microsoft Foundry Prompt Agents and the existing Azure AI Search index.
 
-## Microsoft Foundry agents
+## Target
 
-The Sweden Central Foundry project contains four persistent versioned prompt agents,
-all using the existing `gpt-5-1-kyc` deployment:
+- Resource group: `rg-financial-services-01` (must already exist)
+- Primary AI/data region: `swedencentral`
+- Phase 2 Container Apps hosting exception: `norwayeast`
+- Foundry resource: `foundry-financial-services-01`
+- Foundry project: `proj-financial-services-01`
 
-- `agt-kyc-extract` — normalises live Document Intelligence facts and preserves evidence.
-- `agt-kyc-complete` — returns structured completeness findings without a decision.
-- `agt-kyc-risk` — evaluates case risks and locally prefiltered candidates from all
-  40 synthetic screening records; potential matches remain explicitly unconfirmed.
-- `agt-kyc-summary` — produces the analyst summary and advisory next action.
-
-The application uses `azure-ai-projects` with `DefaultAzureCredential`, persistent
-`PromptAgentDefinition` versions, and the Foundry Responses API. Responses are parsed
-against strict Pydantic schemas. Local tests use mocked responses and remain offline.
-
-Each live stage can be checked independently without running the full workflow:
-
-```text
-POST /api/cases/KYC-DEMO-001/agents/extract
-POST /api/cases/KYC-DEMO-001/agents/complete
-POST /api/cases/KYC-DEMO-001/agents/risk
-POST /api/cases/KYC-DEMO-001/agents/summary
-```
-
-Agent definitions are created idempotently by the `azd` post-provision hook. To inspect
-the desired definitions without Azure access:
+## Run locally
 
 ```powershell
-python scripts\bootstrap_foundry_agents.py --dry-run
-```
-
-## Persistence and full workflow
-
-The deployed customer-demo uses `STORAGE_PROVIDER=memory`: 25 cases, 40 synthetic
-screening records, packaged document content, investigation checkpoints, and results
-remain available for the lifetime of the running Container App replica. This is
-session-oriented demo state, not production persistence. The asynchronous investigation
-API executes the required seven stages and the React client polls progress:
-
-```text
-POST /api/cases/KYC-DEMO-001/investigations
-GET  /api/cases/KYC-DEMO-001/investigations/{job_id}
-```
-
-Completed stages are saved before the next stage begins. A later retryable failure
-therefore preserves earlier evidence in the running process, and the AI recommendation
-never changes case status.
-
-An optional `STORAGE_PROVIDER=azure` adapter supports Azure Tables and private Blob
-documents using managed identity. The default deployment keeps deterministic
-in-process state so enterprise policies that restrict Storage public endpoints do not
-block the critical demo. Private networking is intentionally outside this prototype;
-see `DEMO-EXTENSIONS.md`.
-
-## Deploy Your Own Copy
-
-### Prerequisites
-
-- Git
-- Azure CLI and an authenticated Azure account
-- Azure Developer CLI (`azd`)
-- Python 3.10 or later for the Foundry bootstrap hook
-- Subscription permission to create resources and role assignments, normally
-  **Contributor** plus **User Access Administrator**, or **Owner**
-- Sweden Central quota for Azure AI Services and the configured GPT model deployment
-
-Docker and Node.js are not required for deployment because `azd` uses an ACR remote
-Docker build. Copilot CLI and Squad are optional and are only needed to extend the
-solution.
-
-### Fresh-clone deployment
-
-```powershell
-git clone <repository-url>
-Set-Location <repository-directory>
-
-az login
-azd auth login
-azd env new <unique-environment-name>
-azd env set AZURE_LOCATION swedencentral
-azd up
-
-azd env get-value SERVICE_WEB_URI
-```
-
-Use a short environment name containing letters, numbers, or hyphens. Bicep combines
-that name with a subscription-scoped hash, so each subscription/environment receives
-its own resource group and globally unique resource names.
-
-`azd up` provisions:
-
-- one resource group in Sweden Central;
-- one Container Apps environment and public Container App;
-- one ACR using remote build;
-- one user-assigned managed identity and required RBAC;
-- one Microsoft Foundry resource/project and one GPT model deployment;
-- four managed Foundry prompt agents;
-- one Azure AI Document Intelligence resource;
-- one Storage Account retained as optional infrastructure.
-
-After provisioning, `scripts\bootstrap_foundry_agents.py` creates or reuses the four
-logical agents using source-controlled prompts. A definition hash prevents duplicate
-versions when the model and prompt are unchanged. New agent IDs and versions are saved
-only in the current ignored `.azure` environment; the application uses the matching
-environment-specific agent names. The runtime authenticates with managed identity.
-
-The application starts with 25 deterministic cases, `KYC-DEMO-001`, packaged synthetic
-documents, ownership examples, prior audit/history examples, and 40 synthetic screening
-records. No data from another Azure environment is required. A typical first deployment
-takes roughly 8–15 minutes, but regional model provisioning and ACR build time vary.
-
-Application-only redeploy:
-
-```powershell
-azd deploy web
-```
-
-Delete your environment:
-
-```powershell
-azd down
-```
-
-All regional resources are restricted to `swedencentral`. The template does not fall
-back to another region. If the configured model version or capacity is unavailable,
-provisioning fails clearly; select another model/version only after confirming it is
-available in Sweden Central.
-
-Optional model settings can be changed before the first `azd up`:
-
-```powershell
-azd env set AZURE_AI_MODEL_DEPLOYMENT_NAME <deployment-name>
-azd env set AZURE_AI_MODEL_NAME <model-name>
-azd env set AZURE_AI_MODEL_VERSION <model-version>
-azd env set AZURE_AI_MODEL_CAPACITY <capacity>
-```
-
-Do not place credentials in repository files. `.env.example` documents optional local
-configuration using placeholders only.
-
-### Optional Squad usage
-
-Squad is not required to deploy or run the demo. Reusable team charters and routing can
-be shared, while local histories, casting identity, memory, audit logs, sessions, and
-inboxes are ignored. A colleague who wants a new AI team for a separate clone can remove
-the reusable `.squad` configuration before first use and run:
-
-```powershell
-squad init
-```
-
-Within this repository, use the existing reusable Squad configuration and let Squad
-create fresh ignored local runtime state on first use.
-
-## Local development
-
-```powershell
-python -m venv app\backend\.venv
-app\backend\.venv\Scripts\python.exe -m pip install -r app\backend\requirements-dev.txt
-app\backend\.venv\Scripts\python.exe scripts\seed_demo.py
-
-Set-Location app\frontend
-npm ci
+python -m venv .venv
+.\.venv\Scripts\pip install -r requirements-dev.txt
+Push-Location app\frontend
+npm install
 npm run build
-Set-Location ..\..
-
-app\backend\.venv\Scripts\python.exe -m uvicorn app.backend.main:app --reload --port 8000
+Pop-Location
+.\.venv\Scripts\uvicorn app.backend.main:app --reload
 ```
 
-Open `http://localhost:8000`. For frontend hot reload, run `npm run dev` from
-`app\frontend`; Vite proxies `/api` to port 8000.
+Open `http://localhost:8000`. Local mode uses deterministic in-memory synthetic data.
 
-## Validation
+## Deploy
 
 ```powershell
-app\backend\.venv\Scripts\python.exe -m pytest app\backend\tests -q
-Set-Location app\frontend; npm run build
+az account set --subscription e2d6ac89-1bb7-420c-97fb-a96dea6c0635
+az bicep build --file infra\main.bicep
+az deployment group create `
+  --resource-group rg-financial-services-01 `
+  --template-file infra\main.bicep `
+  --parameters infra\main.parameters.json
 ```
 
-## Structure
+The deployment preserves the failed `cae-kyc-fs01` as capacity-failure evidence and reuses `cae-kyc-fs01-norwayeast` plus the public `ca-kyc-fs01`. Phase 3 uses deterministic image tag `acrkycfs017jkdk72fhocg2.azurecr.io/kyc-cockpit:phase3-20260930-184342`.
 
-- `app\backend\api` — REST endpoints
-- `app\backend\services` — case and investigation workflows
-- `app\backend\providers` — deterministic providers and Azure integration contracts
-- `app\backend\storage` — deterministic memory and managed-identity Azure Storage adapters
-- `app\backend\seed` — deterministic fictional dataset generator
-- `app\frontend\src` — React cockpit
-- `scripts\seed_demo.py` — repeatable JSON seed export
-- `data\demo_seed.json` — generated 25-case and 40-record dataset
+All AI, data, identity, and registry resources remain in Sweden Central. The Norway East hosting network contains a private endpoint to the existing Sweden Central Storage Account because public storage access remains disabled. The application authenticates to Storage and Document Intelligence with `id-kyc-fs01` through `DefaultAzureCredential`; no credentials or connection strings are required.
 
-For any deployed copy, retrieve its URL with:
+## Validate
 
 ```powershell
-azd env get-value SERVICE_WEB_URI
+pytest
+Push-Location app\frontend; npm run typecheck; npm run build; Pop-Location
+Invoke-RestMethod https://ca-kyc-fs01.salmonpebble-2b6fa79e.norwayeast.azurecontainerapps.io/api/health
+Invoke-RestMethod https://ca-kyc-fs01.salmonpebble-2b6fa79e.norwayeast.azurecontainerapps.io/api/cases
+az resource list --resource-group rg-financial-services-01 --output table
 ```
+
+The final focused live acceptance completed on September 30, 2026 against `KYC-2026-001`. The accepted investigation is `INV-4c667b09-757b-48d1-80b6-347a976682a9`; all seven stages and four Foundry outputs completed, the advisory recommendation was `Request More Information`, and the human action moved the case from `Ready for Decision` to `Awaiting Information`. Run `scripts\live_smoke.py` to revalidate the persisted completed investigation and idempotent decision without starting another investigation.
+
+The visible disclaimer is mandatory: this is synthetic demonstration data and is not a compliance decision system. Agent recommendations are advisory only; only the explicit human decision endpoint changes the final case status.
+
+## Phase 3 Azure/AI platform
+
+The four managed Prompt Agents and `kyc-screening-v1` Search index are data-plane objects created by `scripts\deploy_phase3_ai.py`; they are intentionally not represented as ARM resources. Bicep contains only the existing-resource RBAC and non-secret Container App configuration.
+
+```powershell
+python scripts\deploy_phase3_ai.py --generate-only
+python scripts\deploy_phase3_ai.py --azure-cli-credential --configure-container-app
+az bicep build --file infra\main.bicep
+```
+
+The deployment is idempotent: an agent version is reused when its model, instructions, and strict response schema hash match. See `docs\phase3-ai-platform.md` and `artifacts\phase3-azure-ai-handoff.json`.
+
+## Phase 3 application flow
+
+FastAPI owns the sequential workflow and persists every checkpoint in the existing Blob-backed `demo-state.json`:
+
+1. Read submitted documents and consume existing or newly completed Document Intelligence extraction.
+2. Invoke `kyc-document-entity-extractor:1`.
+3. Invoke `kyc-completeness-validator:1`.
+4. Query `kyc-screening-v1` for relevant fictional entities.
+5. Invoke `kyc-risk-investigator:1` with grounded Search candidates.
+6. Invoke `kyc-analyst-summary:1`.
+7. Save the investigation and move the case to `Ready for Decision`.
+
+The UI polls once per second, preserves successful sections after a later failure, permits retry from the first incomplete stage, labels screening results as unconfirmed synthetic similarities, and requires analyst name/reason for Approve, Request More Information, or Escalate.
+
+## Redeploy Phase 3
+
+```powershell
+$tag = "phase3-20260930-184342"
+az acr build --registry acrkycfs017jkdk72fhocg2 --image "kyc-cockpit:$tag" .
+az containerapp revision set-mode --name ca-kyc-fs01 --resource-group rg-financial-services-01 --mode multiple
+az containerapp update --name ca-kyc-fs01 --resource-group rg-financial-services-01 `
+  --image "acrkycfs017jkdk72fhocg2.azurecr.io/kyc-cockpit:$tag" `
+  --revision-suffix "phase3-20260930"
+```
+
+Verify the new revision through its revision FQDN before shifting ingress traffic, then retain the Phase 2 revision at zero traffic for rollback.
