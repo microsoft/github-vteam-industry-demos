@@ -1,0 +1,74 @@
+# Local tools and machine state
+.copilot/
+.vscode/
+.mcp.json
+.idea/
+.vs/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.user
+*.suo
+*.local
+
+# Squad runtime state (team definitions remain versionable)
+.squad/orchestration-log/
+.squad/log/
+.squad/decisions/inbox/
+.squad/sessions/
+.squad/.scratch/
+.squad/.cache/
+.squad-workstream
+
+# Dependencies, builds, tests, caches, and reports
+**/node_modules/
+**/dist/
+**/coverage/
+**/playwright-report/
+**/test-results/
+**/reports/
+**/.cache/
+**/.parcel-cache/
+**/.turbo/
+**/*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+*.tmp
+*.temp
+*.swp
+*.bak
+*.backup
+
+# Local application state
+app/data/playwright-state.json*
+app/data/local-state.json*
+app/data/*.next
+*.sqlite
+*.sqlite3
+
+# Environment and credential material (safe templates remain allowed)
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.sample
+!**/.env.template
+*.pfx
+*.p12
+*.pem
+*.key
+*.publishsettings
+azureProfile.json
+TokenCache.dat
+
+# Generated Azure/compiler and clean-package output
+infra/main.json
+infra/foundation.json
+.package-validation/

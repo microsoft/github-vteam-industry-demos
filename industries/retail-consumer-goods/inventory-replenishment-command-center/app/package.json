@@ -1,0 +1,54 @@
+{
+  "name": "harbour-lane-inventory-command-center",
+  "version": "1.0.0",
+  "description": "Harbour & Lane inventory replenishment API and SPA host",
+  "private": true,
+  "type": "module",
+  "main": "dist/server/index.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node --import tsx src/server/index.ts",
+    "build": "node ./node_modules/typescript/bin/tsc -p tsconfig.build.json",
+    "build:web": "node ./node_modules/vite/bin/vite.js build src/web --outDir ../../dist/web --emptyOutDir",
+    "build:full": "npm run build && npm run build:web",
+    "start": "node dist/server/index.js",
+    "typecheck": "node ./node_modules/typescript/bin/tsc -p tsconfig.json --noEmit",
+    "test": "node ./node_modules/vitest/vitest.mjs run",
+    "test:unit": "node ./node_modules/vitest/vitest.mjs run tests/unit",
+    "test:integration": "node ./node_modules/vitest/vitest.mjs run tests/integration",
+    "test:e2e": "node ./node_modules/@playwright/test/cli.js test",
+    "test:all": "npm run test && npm run build:full && npm run test:e2e",
+    "playwright:install": "node ./node_modules/@playwright/test/cli.js install chromium",
+    "seed": "node --import tsx scripts/generate-seed.ts",
+    "provision:agents": "node --import tsx scripts/provision-agents.ts",
+    "smoke:deployed": "node --import tsx tests/deployed/smoke.ts",
+    "smoke:deployed:read-only": "node --import tsx tests/deployed/read-only.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@azure/ai-projects": "^2.4.0",
+    "@azure/identity": "^4.13.3",
+    "@azure/storage-blob": "^12.34.0",
+    "express": "^5.2.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/supertest": "^7.2.1",
+    "supertest": "^7.3.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.1",
+    "vitest": "^5.0.2"
+  }
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "allowedMemberTypes": ["User"],
+    "description": "Investigate, propose, approve, reject, dispatch, receive, and reset the demo.",
+    "displayName": "Inventory Planner",
+    "id": "7d764851-e975-4f1a-8906-4b267d9f5d10",
+    "isEnabled": true,
+    "value": "Inventory.Planner"
+  },
+  {
+    "allowedMemberTypes": ["User"],
+    "description": "View inventory exceptions, evidence, recommendations, and action history.",
+    "displayName": "Inventory Viewer",
+    "id": "c69a793e-b5e6-43f9-91f6-8b7c7af4a69f",
+    "isEnabled": true,
+    "value": "Inventory.Viewer"
+  }
+]
