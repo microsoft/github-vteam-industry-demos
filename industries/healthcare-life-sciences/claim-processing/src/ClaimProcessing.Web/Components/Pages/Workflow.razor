@@ -147,6 +147,51 @@
                     }
                 </div>
                 <div class="fp-card-body">
+                    @if (_running)
+                    {
+                        <div class="wf-runtime">
+                            <div class="wf-runtime-header">
+                                <div>
+                                    <div class="wf-runtime-title">
+                                        <span class="wf-live-dot"></span>
+                                        Orchestration in progress
+                                    </div>
+                                    <div class="wf-runtime-subtitle">The request is active. Agent trace details will appear when Foundry completes.</div>
+                                </div>
+                                <span class="wf-elapsed">@_elapsedSeconds.ToString("0")s</span>
+                            </div>
+
+                            <div class="wf-progress-list">
+                                @for (var index = 0; index < ProgressPhases.Length; index++)
+                                {
+                                    var phase = ProgressPhases[index];
+                                    var state = ProgressState(index);
+                                    <div class="wf-progress-row @state">
+                                        <span class="wf-progress-icon">@ProgressIcon(index)</span>
+                                        <div class="flex-grow-1">
+                                            <div class="wf-progress-agent">@phase.Name</div>
+                                            <div class="wf-progress-detail">@phase.Detail</div>
+                                        </div>
+                                        <span class="wf-progress-status">@ProgressLabel(index)</span>
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="wf-log-panel">
+                                <div class="wf-log-header">
+                                    <span>●</span> Runtime activity
+                                </div>
+                                <div class="wf-log-lines">
+                                    @foreach (var entry in _progressLogs)
+                                    {
+                                        <div><span>@entry.Timestamp</span> @entry.Message</div>
+                                    }
+                                    <div class="wf-log-cursor">▋</div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
                     @if (_steps.Count == 0 && !_running)
                     {
                         <div class="wf-empty">
@@ -197,6 +242,19 @@
     private string? _error;
     private WorkflowRunResult? _result;
     private readonly List<WorkflowStep> _steps = new();
+    private readonly List<ProgressLog> _progressLogs = new();
+    private CancellationTokenSource? _progressCancellation;
+    private int _progressPhaseIndex;
+    private double _elapsedSeconds;
+
+    private static readonly ProgressPhase[] ProgressPhases =
+    [
+        new("orchestrator", "Orchestrator", "Sending the claim and preparing specialist delegation.", 0),
+        new("intake", "Intake Agent", "Extracting and validating claim details.", 3),
+        new("fraud_risk", "Fraud & Risk Agent", "Assessing risk signals and potential anomalies.", 11),
+        new("claim_assessor", "Policy Assessor Agent", "Comparing the claim against policy coverage.", 20),
+        new("orchestrator", "Orchestrator", "Synthesizing specialist outputs into one recommendation.", 30),
+    ];
 
     protected override async Task OnInitializedAsync()
     {
@@ -211,6 +269,14 @@
         _error = null;
         _result = null;
         _steps.Clear();
+        _progressLogs.Clear();
+        _progressPhaseIndex = 0;
+        _elapsedSeconds = 0;
+        _progressCancellation?.Cancel();
+        _progressCancellation?.Dispose();
+        _progressCancellation = new CancellationTokenSource();
+        AddProgressLog("Workflow request created.");
+        var progressTask = RunProgressAsync(_progressCancellation.Token);
         StateHasChanged();
 
         try
@@ -247,13 +313,62 @@
         }
         finally
         {
+            _progressCancellation.Cancel();
+            try
+            {
+                await progressTask;
+            }
+            catch (OperationCanceledException)
+            {
+            }
+
             _running = false;
             StateHasChanged();
         }
     }
 
     private string NodeState(string agent) =>
-        _steps.Any(s => s.Agent == agent) ? "active" : "";
+        _steps.Any(s => s.Agent == agent) ||
+        (_running && ProgressPhases[_progressPhaseIndex].Agent == agent)
+            ? "active"
+            : "";
+
+    private async Task RunProgressAsync(CancellationToken cancellationToken)
+    {
+        var startedAt = DateTime.UtcNow;
+
+        while (!cancellationToken.IsCancellationRequested)
+        {
+            _elapsedSeconds = (DateTime.UtcNow - startedAt).TotalSeconds;
+            var nextPhase = Array.FindLastIndex(
+                ProgressPhases,
+                phase => _elapsedSeconds >= phase.StartsAtSeconds);
+
+            if (nextPhase > _progressPhaseIndex)
+            {
+                _progressPhaseIndex = nextPhase;
+                AddProgressLog($"{ProgressPhases[nextPhase].Name}: {ProgressPhases[nextPhase].Detail}");
+            }
+
+            await InvokeAsync(StateHasChanged);
+            await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
+        }
+    }
+
+    private void AddProgressLog(string message) =>
+        _progressLogs.Add(new ProgressLog(DateTime.Now.ToString("HH:mm:ss"), message));
+
+    private string ProgressState(int index) =>
+        index < _progressPhaseIndex ? "complete" :
+        index == _progressPhaseIndex ? "processing" : "pending";
+
+    private string ProgressIcon(int index) =>
+        index < _progressPhaseIndex ? "✓" :
+        index == _progressPhaseIndex ? "●" : "○";
+
+    private string ProgressLabel(int index) =>
+        index < _progressPhaseIndex ? "Complete" :
+        index == _progressPhaseIndex ? "Processing" : "Queued";
 
     private static string KindClass(string kind) => kind switch
     {
@@ -293,9 +408,14 @@
 
     public async ValueTask DisposeAsync()
     {
+        _progressCancellation?.Cancel();
+        _progressCancellation?.Dispose();
+
         if (_workflowApiModule is not null)
             await _workflowApiModule.DisposeAsync();
     }
 
     private IJSObjectReference? _workflowApiModule;
+    private sealed record ProgressPhase(string Agent, string Name, string Detail, int StartsAtSeconds);
+    private sealed record ProgressLog(string Timestamp, string Message);
 }
