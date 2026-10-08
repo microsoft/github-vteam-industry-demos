@@ -1,6 +1,6 @@
-# Fidelis Claim Processing — Customer Demo Script
+# AI-Assisted Claim Processing — Customer Demo Script
 
-**Audience:** Fidelis Insurance stakeholders (claims ops + technology)
+**Audience:** Insurance stakeholders (claims operations and technology)
 **Duration:** ~20 minutes (12 min demo + 8 min Q&A)
 **Goal:** Show a modern claims portal whose decisions are enriched by a governed,
 multi-agent **Microsoft AI Foundry** workflow — and show that same orchestration
@@ -53,7 +53,7 @@ Talking points:
   is calling real agents, not a mock.
 - Walk the **stat cards** (Total / Approved / Rejected / Pending) and the recent-claims
   table — "full audit trail for every outcome."
-- Note the clean, branded UI ("ClaimPortal · Fidelis").
+- Note the clean, generic insurance UI ("ClaimPortal").
 
 ---
 
