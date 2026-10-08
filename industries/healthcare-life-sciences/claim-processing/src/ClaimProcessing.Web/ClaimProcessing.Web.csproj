@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\ClaimProcessing.Core\ClaimProcessing.Core.csproj" />
+    <ProjectReference Include="..\ClaimProcessing.PolicyEngine\ClaimProcessing.PolicyEngine.csproj" />
+    <ProjectReference Include="..\ClaimProcessing.Foundry\ClaimProcessing.Foundry.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>e8689ef9-e1f7-4069-8e8f-456a37aad452</UserSecretsId>
+  </PropertyGroup>
+
+</Project>

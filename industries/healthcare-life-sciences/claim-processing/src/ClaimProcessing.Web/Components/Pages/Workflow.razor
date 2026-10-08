@@ -1,0 +1,291 @@
+@page "/workflow"
+@rendermode InteractiveServer
+@using System.Text.Json
+@inject ClaimsService ClaimsService
+@inject IClaimWorkflowOrchestrator Orchestrator
+
+<PageTitle>Agentic Workflow — ClaimPortal · Fidelis</PageTitle>
+
+<div class="container-xl py-4">
+
+    <!-- Page header -->
+    <div class="page-header d-flex flex-wrap align-items-center gap-3">
+        <div class="flex-grow-1">
+            <h2>
+                <span class="page-icon">🧠</span>
+                Agentic Workflow
+            </h2>
+            <p>
+                A multi-agent orchestration in Microsoft AI Foundry. The orchestrator delegates
+                to specialist agents and consults live documentation, then synthesizes one decision.
+            </p>
+        </div>
+        <span class="foundry-pill @(Orchestrator.IsLive ? "live" : "sim")">
+            <span class="fp-dot"></span>
+            @(Orchestrator.IsLive ? "Live · Azure AI Foundry" : "Simulation · Local")
+        </span>
+    </div>
+
+    <!-- ====================================================== -->
+    <!-- Architecture diagram                                    -->
+    <!-- ====================================================== -->
+    <div class="fp-card mb-4">
+        <div class="fp-card-header">
+            <span style="font-size:1.1rem">🗺️</span>
+            <div>
+                <div style="font-weight:700;color:var(--fp-gray-800)">Orchestration Topology</div>
+                <div style="font-size:.8rem;color:var(--fp-gray-400)">claim-orchestrator delegates via connected-agent tools + Microsoft Learn MCP</div>
+            </div>
+        </div>
+        <div class="fp-card-body">
+            <div class="wf-diagram">
+                <div class="wf-node wf-orchestrator @NodeState("orchestrator")">
+                    <div class="wf-node-icon">🧠</div>
+                    <div class="wf-node-title">Orchestrator</div>
+                    <div class="wf-node-sub">gpt-4.1-mini</div>
+                </div>
+                <div class="wf-connectors">
+                    <span class="wf-line"></span><span class="wf-line"></span>
+                    <span class="wf-line"></span><span class="wf-line"></span>
+                </div>
+                <div class="wf-children">
+                    <div class="wf-node wf-agent @NodeState("intake")">
+                        <div class="wf-node-icon">📥</div>
+                        <div class="wf-node-title">Intake</div>
+                        <div class="wf-node-sub">extract &amp; validate</div>
+                    </div>
+                    <div class="wf-node wf-agent @NodeState("fraud_risk")">
+                        <div class="wf-node-icon">🛡️</div>
+                        <div class="wf-node-title">Fraud &amp; Risk</div>
+                        <div class="wf-node-sub">risk scoring</div>
+                    </div>
+                    <div class="wf-node wf-agent @NodeState("claim_assessor")">
+                        <div class="wf-node-icon">⚖️</div>
+                        <div class="wf-node-title">Policy Assessor</div>
+                        <div class="wf-node-sub">coverage decision</div>
+                    </div>
+                    <div class="wf-node wf-mcp @NodeState("microsoft_learn")">
+                        <div class="wf-node-icon">📚</div>
+                        <div class="wf-node-title">Microsoft Learn</div>
+                        <div class="wf-node-sub">MCP tool</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- ================================================== -->
+        <!-- Run panel                                          -->
+        <!-- ================================================== -->
+        <div class="col-lg-5">
+            <div class="fp-card h-100">
+                <div class="fp-card-header">
+                    <span style="font-size:1.1rem">▶️</span>
+                    <div>
+                        <div style="font-weight:700;color:var(--fp-gray-800)">Run the workflow</div>
+                        <div style="font-size:.8rem;color:var(--fp-gray-400)">Pick a scenario and dispatch the orchestrator</div>
+                    </div>
+                </div>
+                <div class="fp-card-body">
+                    <label class="form-label fw-semibold">Policy</label>
+                    <select class="form-select mb-3" @bind="_policyNumber" disabled="@_running">
+                        @if (_policies is not null)
+                        {
+                            @foreach (var p in _policies)
+                            {
+                                <option value="@p.PolicyNumber">@p.PolicyNumber — @p.HolderName (@(p.IsActive ? "active" : "inactive"))</option>
+                            }
+                        }
+                    </select>
+
+                    <label class="form-label fw-semibold">Claimant</label>
+                    <input class="form-control mb-3" @bind="_claimantName" disabled="@_running" />
+
+                    <label class="form-label fw-semibold">Claim amount</label>
+                    <input type="number" class="form-control mb-3" @bind="_claimAmount" disabled="@_running" />
+
+                    <label class="form-label fw-semibold">Description</label>
+                    <textarea class="form-control mb-3" rows="2" @bind="_description" disabled="@_running"></textarea>
+
+                    <button class="btn btn-hero w-100 py-2" @onclick="RunAsync" disabled="@_running">
+                        @if (_running)
+                        {
+                            <span class="spinner-border spinner-border-sm me-2"></span>
+                            <span>Running orchestration…</span>
+                        }
+                        else
+                        {
+                            <span>🚀 Run Agentic Workflow</span>
+                        }
+                    </button>
+
+                    @if (_error is not null)
+                    {
+                        <div class="alert alert-danger mt-3 mb-0">@_error</div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- ================================================== -->
+        <!-- Steps + result                                     -->
+        <!-- ================================================== -->
+        <div class="col-lg-7">
+            <div class="fp-card h-100">
+                <div class="fp-card-header">
+                    <span style="font-size:1.1rem">📡</span>
+                    <div>
+                        <div style="font-weight:700;color:var(--fp-gray-800)">Live trace</div>
+                        <div style="font-size:.8rem;color:var(--fp-gray-400)">Agents &amp; tools invoked by the orchestrator</div>
+                    </div>
+                    @if (_result is not null)
+                    {
+                        <span class="ms-auto badge bg-light text-dark">@_result.Duration.TotalSeconds.ToString("0.0")s</span>
+                    }
+                </div>
+                <div class="fp-card-body">
+                    @if (_steps.Count == 0 && !_running)
+                    {
+                        <div class="wf-empty">
+                            <div class="wf-empty-icon">🛰️</div>
+                            <p>Run the workflow to watch the orchestrator delegate to its specialist agents in real time.</p>
+                        </div>
+                    }
+
+                    <ol class="wf-steps">
+                        @foreach (var step in _steps)
+                        {
+                            <li class="wf-step @KindClass(step.Kind)">
+                                <span class="wf-step-badge">@KindIcon(step.Kind)</span>
+                                <div>
+                                    <div class="wf-step-agent">@PrettyName(step.Agent)</div>
+                                    <div class="wf-step-detail">@step.Detail</div>
+                                </div>
+                            </li>
+                        }
+                    </ol>
+
+                    @if (_result is { Success: true } && !string.IsNullOrWhiteSpace(_result.FinalJson))
+                    {
+                        <div class="wf-final mt-3">
+                            <div class="wf-final-title">✅ Synthesized recommendation</div>
+                            <pre class="wf-json">@PrettyJson(_result.FinalJson)</pre>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="text-muted small mt-4 mb-0">
+        The orchestrator output is <strong>advisory only</strong>. The deterministic PolicyEngine
+        and the human adjuster remain the authoritative decision-makers for every claim.
+    </p>
+</div>
+
+@code {
+    private List<Policy>? _policies;
+    private string _policyNumber = "POL-001";
+    private string _claimantName = "Jane Doe";
+    private decimal _claimAmount = 12000;
+    private string _description = "Water damage to kitchen following a burst pipe.";
+
+    private bool _running;
+    private string? _error;
+    private WorkflowRunResult? _result;
+    private readonly List<WorkflowStep> _steps = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _policies = (await ClaimsService.GetAllPoliciesAsync()).ToList();
+        if (_policies.Count > 0 && !_policies.Any(p => p.PolicyNumber == _policyNumber))
+            _policyNumber = _policies[0].PolicyNumber;
+    }
+
+    private async Task RunAsync()
+    {
+        _running = true;
+        _error = null;
+        _result = null;
+        _steps.Clear();
+        StateHasChanged();
+
+        try
+        {
+            var policy = await ClaimsService.GetPolicyByNumberAsync(_policyNumber);
+            var claim = new Claim
+            {
+                PolicyNumber = _policyNumber,
+                ClaimantName = _claimantName,
+                ClaimAmount = _claimAmount,
+                IncidentDate = DateTime.UtcNow.AddDays(-14),
+                Description = _description,
+            };
+
+            var result = await Orchestrator.RunAsync(claim, policy);
+            _result = result;
+
+            if (!result.Success)
+            {
+                _error = result.Error ?? "The orchestration did not complete.";
+            }
+
+            // Reveal steps one-by-one for a live feel.
+            foreach (var step in result.Steps)
+            {
+                _steps.Add(step);
+                StateHasChanged();
+                await Task.Delay(350);
+            }
+        }
+        catch (Exception ex)
+        {
+            _error = ex.Message;
+        }
+        finally
+        {
+            _running = false;
+            StateHasChanged();
+        }
+    }
+
+    private string NodeState(string agent) =>
+        _steps.Any(s => s.Agent == agent) ? "active" : "";
+
+    private static string KindClass(string kind) => kind switch
+    {
+        "mcp" => "kind-mcp",
+        "connected_agent" => "kind-agent",
+        _ => "kind-tool",
+    };
+
+    private static string KindIcon(string kind) => kind switch
+    {
+        "mcp" => "📚",
+        "connected_agent" => "🤝",
+        _ => "🔧",
+    };
+
+    private static string PrettyName(string agent) => agent switch
+    {
+        "intake" => "Intake Agent",
+        "fraud_risk" => "Fraud & Risk Agent",
+        "claim_assessor" => "Policy Assessor Agent",
+        "microsoft_learn" => "Microsoft Learn (MCP)",
+        _ => agent,
+    };
+
+    private static string PrettyJson(string json)
+    {
+        try
+        {
+            using var doc = JsonDocument.Parse(json);
+            return JsonSerializer.Serialize(doc.RootElement, new JsonSerializerOptions { WriteIndented = true });
+        }
+        catch
+        {
+            return json;
+        }
+    }
+}

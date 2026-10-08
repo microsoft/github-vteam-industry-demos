@@ -1,0 +1,14 @@
+# Keep the Docker build context small and deterministic.
+**/bin/
+**/obj/
+**/.vs/
+**/.vscode/
+.git/
+.github/
+.squad/
+.azure/
+infra/
+*.md
+**/appsettings.*.local.json
+.env
+.env.*

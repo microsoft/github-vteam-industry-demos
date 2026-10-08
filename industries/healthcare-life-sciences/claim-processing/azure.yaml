@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+#
+# ClaimProcessing — Azure Developer CLI (azd) definition.
+# Provisions Microsoft AI Foundry (account + project + gpt-5-mini) plus the Blazor
+# portal on Azure Container Apps, then creates the claim-assessment Foundry agent.
+#
+# One-command deploy:  azd up
+#   1. azd provision  → Bicep in ./infra brings up all Azure resources
+#   2. postprovision  → creates/updates the Foundry agent, captures FOUNDRY_AGENT_ID
+#   3. azd deploy     → builds the container image and rolls out the Container App
+name: claim-processing
+metadata:
+  template: claim-processing@1.0.0
+
+infra:
+  provider: bicep
+  path: infra
+
+services:
+  web:
+    project: ./src/ClaimProcessing.Web
+    language: dotnet
+    host: containerapp
+    docker:
+      path: Dockerfile
+
+hooks:
+  postprovision:
+    windows:
+      shell: pwsh
+      run: ./infra/hooks/postprovision.ps1
+      interactive: false
+      continueOnError: false
+    posix:
+      shell: sh
+      run: ./infra/hooks/postprovision.sh
+      interactive: false
+      continueOnError: false

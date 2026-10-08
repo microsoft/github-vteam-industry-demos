@@ -1,0 +1,53 @@
+{
+  "agents": {
+    "lead-architect": {
+      "persistent_name": "Trinity",
+      "universe": "The Matrix",
+      "created_at": "2026-07-23T12:34:44+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "azure-architect": {
+      "persistent_name": "Tank",
+      "universe": "The Matrix",
+      "created_at": "2026-07-23T12:34:44+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "ai-foundry-dev": {
+      "persistent_name": "Switch",
+      "universe": "The Matrix",
+      "created_at": "2026-07-23T12:34:44+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "frontend-dev": {
+      "persistent_name": "Mouse",
+      "universe": "The Matrix",
+      "created_at": "2026-07-23T12:34:44+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "backend-dev": {
+      "persistent_name": "Dozer",
+      "universe": "The Matrix",
+      "created_at": "2026-07-23T12:34:44+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "qa-tester": {
+      "persistent_name": "Ghost",
+      "universe": "The Matrix",
+      "created_at": "2026-07-23T12:34:44+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "security-engineer": {
+      "persistent_name": "Seraph",
+      "universe": "The Matrix",
+      "created_at": "2026-07-23T12:59:03+02:00",
+      "legacy_named": false,
+      "status": "active"
+    }
+  }
+}

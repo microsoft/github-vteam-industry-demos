@@ -1,0 +1,14 @@
+{
+  "projectEndpoint": "https://aif-4c5kuzbpd4uw6.services.ai.azure.com/api/projects/claim-processing",
+  "apiVersion": "2025-05-15-preview",
+  "mcp": {
+    "serverLabel": "microsoft_learn",
+    "serverUrl": "https://learn.microsoft.com/api/mcp"
+  },
+  "agents": {
+    "orchestrator": "asst_xTCmYG7EeRBN098mk8dCLLPj",
+    "intake": "asst_9P63PFOpJTr9dOVVz5Ty9SYr",
+    "fraudRisk": "asst_9gxch3fqVLrYgA8i9S07V7pE",
+    "claimAssessor": "asst_goQcNOXDkpiVxnYvXj2dEuVA"
+  }
+}
