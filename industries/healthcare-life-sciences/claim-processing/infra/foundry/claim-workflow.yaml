@@ -63,6 +63,18 @@ trigger:
         messages: Local.LatestMessage
         autoSend: true
 
+    # 4) Communications — draft the claimant decision letter from the recommendation.
+    - kind: InvokeAzureAgent
+      id: invoke_communications
+      agent:
+        name: CommunicationsAgent
+      conversationId: =System.ConversationId
+      input:
+        messages: =Local.LatestMessage
+      output:
+        messages: Local.LatestMessage
+        autoSend: true
+
     - kind: SendActivity
       id: send_final
       activity: "{Last(Local.LatestMessage).Text}"

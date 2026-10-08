@@ -1,10 +1,11 @@
 {
   "projectEndpoint": "https://aif-4c5kuzbpd4uw6.services.ai.azure.com/api/projects/claim-processing",
   "model": "gpt-4.1-mini",
-  "workflowId": "ClaimProcessingWorkflow:1",
+  "workflowId": "ClaimProcessingWorkflow:6",
   "agents": {
     "ClaimIntakeAgent": "ClaimIntakeAgent:1",
     "FraudRiskAgent": "FraudRiskAgent:1",
-    "ClaimAssessorAgent": "ClaimAssessorAgent:1"
+    "ClaimAssessorAgent": "ClaimAssessorAgent:1",
+    "CommunicationsAgent": "CommunicationsAgent:1"
   }
 }
