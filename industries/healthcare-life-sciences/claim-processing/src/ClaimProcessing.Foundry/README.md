@@ -108,6 +108,8 @@ failure degrades to a low-confidence `Review`, never dropping the claim.
 | `Foundry:AgentId` | Agent/assistant ID (e.g. `asst_...`) | *(required)* |
 | `Foundry:ModelName` | Model deployment name | `gpt-5-mini` |
 | `Foundry:ApiVersion` | Agents data-plane API version | `2025-05-01` |
+| `Foundry:GatewayEndpoint` | Optional APIM API URL ending at the imported Foundry API base path | *(empty)* |
+| `Foundry:GatewayTokenScope` | Entra audience or `/.default` scope exposed for the APIM API | *(required with gateway)* |
 
 ### Credentials
 
@@ -117,3 +119,16 @@ failure degrades to a low-confidence `Review`, never dropping the claim.
 | Local / CI | `az login` or VS/VS Code credential |
 
 No secrets in config or source code.
+
+### APIM AI gateway mode
+
+When `GatewayEndpoint` is configured, the agent client changes its request root from
+the Foundry project endpoint to:
+
+```text
+{GatewayEndpoint}/openai
+```
+
+It requests a token for `GatewayTokenScope` instead of the Foundry data-plane scope.
+The APIM API should validate the Container App managed identity and app role, while
+the APIM backend uses its own managed identity to authenticate to Foundry.

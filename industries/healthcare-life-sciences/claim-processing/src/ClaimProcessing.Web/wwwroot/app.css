@@ -1,5 +1,5 @@
 /* ============================================================
-   ClaimPortal — Fidelis Insurance · Design System
+   ClaimPortal · Design System
    ============================================================ */
 
 /* --- Custom Properties ------------------------------------ */
@@ -1037,5 +1037,4 @@ textarea.form-control { resize: vertical; min-height: 100px; }
     .wf-children { grid-template-columns: repeat(2, 1fr); }
     .wf-connectors { display: none; }
 }
-
 

@@ -41,6 +41,12 @@ param containerImage string = 'mcr.microsoft.com/k8se/quickstart:latest'
 @description('Foundry agent ID injected into the app (set by the postprovision hook after the agent is created).')
 param foundryAgentId string = ''
 
+@description('Optional APIM gateway endpoint including the imported Foundry API base path.')
+param foundryGatewayEndpoint string = ''
+
+@description('Optional Microsoft Entra audience or /.default scope for the APIM API.')
+param foundryGatewayTokenScope string = ''
+
 // Deterministic, collision-resistant token for globally-unique resource names.
 var resourceToken = toLower(uniqueString(subscription().id, environmentName, location))
 var abbrs = loadJsonContent('abbreviations.json')
@@ -124,6 +130,8 @@ module app 'modules/container-app.bicep' = {
     foundryProjectEndpoint: foundry.outputs.projectEndpoint
     foundryModelName: modelName
     foundryAgentId: foundryAgentId
+    foundryGatewayEndpoint: foundryGatewayEndpoint
+    foundryGatewayTokenScope: foundryGatewayTokenScope
   }
 }
 

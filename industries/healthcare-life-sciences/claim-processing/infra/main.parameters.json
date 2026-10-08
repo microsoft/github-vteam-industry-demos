@@ -19,6 +19,12 @@
     },
     "modelCapacity": {
       "value": "${FOUNDRY_MODEL_CAPACITY=30}"
+    },
+    "foundryGatewayEndpoint": {
+      "value": "${FOUNDRY_GATEWAY_ENDPOINT=}"
+    },
+    "foundryGatewayTokenScope": {
+      "value": "${FOUNDRY_GATEWAY_TOKEN_SCOPE=}"
     }
   }
 }

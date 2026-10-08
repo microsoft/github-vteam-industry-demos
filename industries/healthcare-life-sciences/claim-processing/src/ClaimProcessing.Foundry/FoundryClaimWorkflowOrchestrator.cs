@@ -26,13 +26,12 @@ namespace ClaimProcessing.Foundry;
 /// </summary>
 public sealed class FoundryClaimWorkflowOrchestrator : IClaimWorkflowOrchestrator
 {
-    private static readonly string[] TokenScopes = ["https://ai.azure.com/.default"];
-
     private readonly HttpClient _http;
     private readonly TokenCredential _credential;
     private readonly FoundryOptions _options;
     private readonly ILogger<FoundryClaimWorkflowOrchestrator> _logger;
     private readonly string _baseUrl;
+    private readonly string[] _tokenScopes;
 
     public FoundryClaimWorkflowOrchestrator(
         HttpClient http,
@@ -44,11 +43,13 @@ public sealed class FoundryClaimWorkflowOrchestrator : IClaimWorkflowOrchestrato
         _credential = credential;
         _options = options;
         _logger = logger;
-        _baseUrl = _options.Endpoint.TrimEnd('/');
+        _baseUrl = _options.GetAgentApiBaseUrl();
+        _tokenScopes = [_options.GetTokenScope()];
     }
 
     public bool IsLive =>
-        !string.IsNullOrWhiteSpace(_options.Endpoint) &&
+        (!string.IsNullOrWhiteSpace(_options.Endpoint) ||
+         !string.IsNullOrWhiteSpace(_options.GatewayEndpoint)) &&
         !string.IsNullOrWhiteSpace(_options.OrchestratorAgentId);
 
     public async Task<WorkflowRunResult> RunAsync(Claim claim, Policy? policy, CancellationToken cancellationToken = default)
@@ -83,7 +84,7 @@ public sealed class FoundryClaimWorkflowOrchestrator : IClaimWorkflowOrchestrato
             "Process this insurance claim end-to-end using your specialist agents, then return the final JSON.\n\n" +
             "CLAIM:\n" + claimJson + "\n\nPOLICY:\n" + policyJson;
 
-        var token = await _credential.GetTokenAsync(new TokenRequestContext(TokenScopes), cancellationToken);
+        var token = await _credential.GetTokenAsync(new TokenRequestContext(_tokenScopes), cancellationToken);
         string? threadId = null;
 
         try

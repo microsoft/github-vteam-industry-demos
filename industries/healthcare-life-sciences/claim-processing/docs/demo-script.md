@@ -19,6 +19,10 @@ running natively inside Foundry.
       (Appendix B — use **POL-001** for the happy path).
 - [ ] Network check: the portal calls Foundry live; confirm one test submission works
       end-to-end 10 minutes before the call.
+- [ ] In browser developer tools, keep the **Network** tab open and filter for
+      `api/claims` so the browser → API request is visible.
+- [ ] In APIM metrics or tracing, keep the `aif-4c5kuzbpd4uw6` API ready to show the
+      backend → AI gateway → Foundry leg.
 
 > **One-liner for the room:** "A deterministic policy engine makes the *authoritative*
 > decision; Foundry agents *enrich* it with intake validation, fraud/risk scoring, and a
@@ -66,6 +70,11 @@ Open **Submit Claim**. Enter the happy-path claim (Appendix A, **POL-001**):
 | Description | `Water damage to kitchen following a burst pipe.` |
 
 Submit and narrate:
+- Browser developer tools show `POST /api/claims`; the UI is using the same API that
+  another channel or partner application could use.
+- The backend sends the AI leg through the APIM AI gateway. APIM validates the
+  workload identity, applies gateway governance, and authenticates to Foundry with
+  its own managed identity.
 - The **PolicyEngine** evaluates coverage/validity/deductible deterministically → the
   authoritative **Approve/Reject**.
 - The **🤖 AI Recommendation** line shows the Foundry `claim-assessor` agent's advisory

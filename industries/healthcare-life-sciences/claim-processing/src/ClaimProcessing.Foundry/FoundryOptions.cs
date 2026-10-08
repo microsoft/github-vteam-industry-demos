@@ -23,6 +23,7 @@ namespace ClaimProcessing.Foundry;
 public sealed class FoundryOptions
 {
     public const string SectionName = "Foundry";
+    private const string FoundryTokenScope = "https://ai.azure.com/.default";
 
     /// <summary>Azure AI Foundry project endpoint URI.</summary>
     public string Endpoint { get; set; } = string.Empty;
@@ -35,6 +36,19 @@ public sealed class FoundryOptions
 
     /// <summary>Foundry Agents data-plane API version.</summary>
     public string ApiVersion { get; set; } = "2025-05-01";
+
+    /// <summary>
+    /// Optional APIM gateway API endpoint, including the API base path but excluding
+    /// <c>/openai</c>, for example
+    /// <c>https://contoso.azure-api.net/foundry-account</c>.
+    /// </summary>
+    public string GatewayEndpoint { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Microsoft Entra scope exposed for the APIM API. The configured value can be
+    /// either the audience URI or its <c>/.default</c> scope.
+    /// </summary>
+    public string GatewayTokenScope { get; set; } = string.Empty;
 
     /// <summary>
     /// Multi-agent orchestrator assistant ID (the <c>claim-orchestrator</c> that
@@ -60,4 +74,32 @@ public sealed class FoundryOptions
 
     /// <summary>Sampling temperature (lower = more deterministic).</summary>
     public double Temperature { get; set; } = 0.2;
+
+    public bool UsesGateway => !string.IsNullOrWhiteSpace(GatewayEndpoint);
+
+    public string GetAgentApiBaseUrl()
+    {
+        if (UsesGateway)
+            return $"{GatewayEndpoint.TrimEnd('/')}/openai";
+
+        if (string.IsNullOrWhiteSpace(Endpoint))
+            throw new InvalidOperationException("Foundry:Endpoint is not configured.");
+
+        return Endpoint.TrimEnd('/');
+    }
+
+    public string GetTokenScope()
+    {
+        if (!UsesGateway)
+            return FoundryTokenScope;
+
+        if (string.IsNullOrWhiteSpace(GatewayTokenScope))
+            throw new InvalidOperationException(
+                "Foundry:GatewayTokenScope is required when Foundry:GatewayEndpoint is configured.");
+
+        var scope = GatewayTokenScope.TrimEnd('/');
+        return scope.EndsWith("/.default", StringComparison.OrdinalIgnoreCase)
+            ? scope
+            : $"{scope}/.default";
+    }
 }

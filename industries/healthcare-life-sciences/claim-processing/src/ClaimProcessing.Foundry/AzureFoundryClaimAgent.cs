@@ -24,9 +24,6 @@ namespace ClaimProcessing.Foundry;
 /// </summary>
 public sealed class AzureFoundryClaimAgent : IFoundryClaimAgent
 {
-    // Entra ID scope for the Foundry data plane.
-    private static readonly string[] TokenScopes = ["https://ai.azure.com/.default"];
-
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
         PropertyNameCaseInsensitive = true,
@@ -37,6 +34,7 @@ public sealed class AzureFoundryClaimAgent : IFoundryClaimAgent
     private readonly FoundryOptions _options;
     private readonly ILogger<AzureFoundryClaimAgent> _logger;
     private readonly string _baseUrl;
+    private readonly string[] _tokenScopes;
 
     public AzureFoundryClaimAgent(
         HttpClient http,
@@ -49,12 +47,11 @@ public sealed class AzureFoundryClaimAgent : IFoundryClaimAgent
         _options = options;
         _logger = logger;
 
-        if (string.IsNullOrWhiteSpace(_options.Endpoint))
-            throw new InvalidOperationException("Foundry:Endpoint is not configured.");
         if (string.IsNullOrWhiteSpace(_options.AgentId))
             throw new InvalidOperationException("Foundry:AgentId is not configured.");
 
-        _baseUrl = _options.Endpoint.TrimEnd('/');
+        _baseUrl = _options.GetAgentApiBaseUrl();
+        _tokenScopes = [_options.GetTokenScope()];
     }
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -189,7 +186,7 @@ public sealed class AzureFoundryClaimAgent : IFoundryClaimAgent
     // ─────────────────────────────────────────────────────────────────────────
     private async Task<string> RunAgentAsync(string userMessage)
     {
-        var token = await _credential.GetTokenAsync(new TokenRequestContext(TokenScopes), default);
+        var token = await _credential.GetTokenAsync(new TokenRequestContext(_tokenScopes), default);
 
         // 1. Create a thread.
         using var threadResp = await SendAsync(HttpMethod.Post, "threads", token.Token, content: null);

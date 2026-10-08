@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\ClaimProcessing.Core\ClaimProcessing.Core.csproj" />
+    <ProjectReference Include="..\..\src\ClaimProcessing.Foundry\ClaimProcessing.Foundry.csproj" />
     <ProjectReference Include="..\..\src\ClaimProcessing.PolicyEngine\ClaimProcessing.PolicyEngine.csproj" />
   </ItemGroup>
 

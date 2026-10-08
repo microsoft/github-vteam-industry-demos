@@ -42,6 +42,12 @@ param foundryModelName string
 @description('Foundry agent ID (set after the agent is created; may be empty on first deploy).')
 param foundryAgentId string = ''
 
+@description('Optional APIM gateway endpoint including its API base path.')
+param foundryGatewayEndpoint string = ''
+
+@description('Optional Microsoft Entra audience or /.default scope for the APIM API.')
+param foundryGatewayTokenScope string = ''
+
 resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2023-09-01' existing = {
   name: last(split(logAnalyticsWorkspaceId, '/'))
 }
@@ -109,6 +115,8 @@ resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
             { name: 'Foundry__Endpoint', value: foundryProjectEndpoint }
             { name: 'Foundry__ModelName', value: foundryModelName }
             { name: 'Foundry__AgentId', value: foundryAgentId }
+            { name: 'Foundry__GatewayEndpoint', value: foundryGatewayEndpoint }
+            { name: 'Foundry__GatewayTokenScope', value: foundryGatewayTokenScope }
           ]
         }
       ]

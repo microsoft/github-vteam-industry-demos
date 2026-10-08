@@ -64,6 +64,32 @@ dotnet test
 
 ---
 
+## APIM AI Gateway Demo
+
+The claim form demonstrates this request path:
+
+```text
+Browser → POST /api/claims → ClaimProcessing backend
+        → APIM AI gateway → Microsoft Foundry claim-assessor
+        → deterministic PolicyEngine → browser response
+```
+
+The browser submits the claim through the public JSON API, making the UI request
+visible in browser developer tools. The backend acquires a Microsoft Entra token
+with its managed identity and sends the Foundry Threads/Runs calls through APIM.
+APIM validates the application identity, then uses its own managed identity to
+authenticate to Foundry.
+
+Configure these settings in addition to the existing Foundry agent settings:
+
+| Setting | Example |
+|---|---|
+| `Foundry__GatewayEndpoint` | `https://apim-erydrnupdated.azure-api.net/aif-4c5kuzbpd4uw6` |
+| `Foundry__GatewayTokenScope` | `api://<apim-api-application-id>/.default` |
+
+When `Foundry__GatewayEndpoint` is empty, the backend continues calling the Foundry
+project endpoint directly.
+
 ## AI Foundry Swap-in
 
 The `IFoundryClaimAgent` interface is implemented by `MockFoundryClaimAgent` locally.

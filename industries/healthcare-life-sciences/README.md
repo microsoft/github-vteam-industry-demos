@@ -6,9 +6,9 @@
 
 A Microsoft Foundry-powered Healthcare & Life Sciences demo for AI-assisted claim processing, built with GitHub Copilot CLI + Squad.
 
-- **[Open the Claim Processing portal](./ClaimProcessing/)**
+- **[Open the Claim Processing portal](./claim-processing/)**
 - **[Open the live application](https://ca-web-4c5kuzbpd4uw6.icysmoke-92629667.eastus2.azurecontainerapps.io/)**
-- **[Open the demo walkthrough](./ClaimProcessing/docs/demo-script.md)**
+- **[Open the demo walkthrough](./claim-processing/docs/demo-script.md)**
 
 > The demo uses synthetic claim and policy data. AI recommendations are advisory and the final action remains human-controlled.
 

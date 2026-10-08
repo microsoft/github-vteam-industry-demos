@@ -3,8 +3,10 @@
 @using System.Text.Json
 @inject ClaimsService ClaimsService
 @inject IClaimWorkflowOrchestrator Orchestrator
+@inject IJSRuntime JS
+@implements IAsyncDisposable
 
-<PageTitle>Agentic Workflow — ClaimPortal · Fidelis</PageTitle>
+<PageTitle>Agentic Workflow — ClaimPortal</PageTitle>
 
 <div class="container-xl py-4">
 
@@ -213,17 +215,17 @@
 
         try
         {
-            var policy = await ClaimsService.GetPolicyByNumberAsync(_policyNumber);
-            var claim = new Claim
-            {
-                PolicyNumber = _policyNumber,
-                ClaimantName = _claimantName,
-                ClaimAmount = _claimAmount,
-                IncidentDate = DateTime.UtcNow.AddDays(-14),
-                Description = _description,
-            };
+            _workflowApiModule ??= await JS.InvokeAsync<IJSObjectReference>(
+                "import", "./js/workflow-api.js");
 
-            var result = await Orchestrator.RunAsync(claim, policy);
+            var result = await _workflowApiModule.InvokeAsync<WorkflowRunResult>(
+                "runWorkflow",
+                new RunWorkflowRequest(
+                    _policyNumber,
+                    _claimantName,
+                    _claimAmount,
+                    DateTime.UtcNow.AddDays(-14),
+                    _description));
             _result = result;
 
             if (!result.Success)
@@ -288,4 +290,12 @@
             return json;
         }
     }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_workflowApiModule is not null)
+            await _workflowApiModule.DisposeAsync();
+    }
+
+    private IJSObjectReference? _workflowApiModule;
 }

@@ -18,14 +18,15 @@ builder.Services.AddSingleton<IClaimsRepository, InMemoryClaimsRepository>();
 builder.Services.AddScoped<IPolicyEngine, PolicyEvaluator>();
 builder.Services.AddScoped<ClaimsService>();
 
-// Foundry agent — uses the LIVE Microsoft AI Foundry agent when Foundry:Endpoint
-// and Foundry:AgentId are configured (container env: Foundry__Endpoint / Foundry__AgentId),
-// otherwise falls back to the local deterministic mock (no Azure creds required).
+// Foundry agent — uses the LIVE Microsoft AI Foundry agent when a direct Foundry
+// endpoint or APIM gateway endpoint and Foundry:AgentId are configured; otherwise
+// it falls back to the local deterministic mock (no Azure creds required).
 var foundryOptions = builder.Configuration
     .GetSection(FoundryOptions.SectionName).Get<FoundryOptions>() ?? new FoundryOptions();
 builder.Services.AddSingleton(foundryOptions);
 
-if (!string.IsNullOrWhiteSpace(foundryOptions.Endpoint) &&
+if ((!string.IsNullOrWhiteSpace(foundryOptions.Endpoint) ||
+     !string.IsNullOrWhiteSpace(foundryOptions.GatewayEndpoint)) &&
     !string.IsNullOrWhiteSpace(foundryOptions.AgentId))
 {
     // DefaultAzureCredential picks the user-assigned managed identity via AZURE_CLIENT_ID
@@ -73,5 +74,6 @@ app.MapRazorComponents<App>()
 // Minimal API endpoints
 app.MapClaimsEndpoints();
 app.MapPoliciesEndpoints();
+app.MapWorkflowEndpoints();
 
 app.Run();

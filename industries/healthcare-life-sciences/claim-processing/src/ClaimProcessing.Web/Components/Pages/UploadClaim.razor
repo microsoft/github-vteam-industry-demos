@@ -1,9 +1,10 @@
 @page "/upload"
 @rendermode InteractiveServer
-@inject ClaimsService ClaimsService
 @inject IClaimsRepository Repository
+@inject IJSRuntime JS
+@implements IAsyncDisposable
 
-<PageTitle>Submit Claim — ClaimPortal · Fidelis</PageTitle>
+<PageTitle>Submit Claim — ClaimPortal</PageTitle>
 
 <div class="container-xl py-4">
     <div class="row justify-content-center">
@@ -263,12 +264,22 @@
 
         try
         {
-            var (_, decision) = await ClaimsService.SubmitClaimAsync(
-                _model.PolicyNumber, _model.ClaimantName, amount,
-                _model.IncidentDate.ToDateTime(TimeOnly.MinValue), _model.Description,
-                _uploadedFileName, _uploadedFileContent, _uploadedFileContentType);
+            _claimApiModule ??= await JS.InvokeAsync<IJSObjectReference>(
+                "import", "./js/claim-api.js");
 
-            _decision = decision;
+            var response = await _claimApiModule.InvokeAsync<SubmitClaimResponse>(
+                "submitClaim",
+                new SubmitClaimJsonRequest(
+                    _model.PolicyNumber,
+                    _model.ClaimantName,
+                    amount,
+                    _model.IncidentDate.ToDateTime(TimeOnly.MinValue),
+                    _model.Description,
+                    _uploadedFileName,
+                    _uploadedFileContent is null ? null : Convert.ToBase64String(_uploadedFileContent),
+                    _uploadedFileContentType));
+
+            _decision = response.Decision;
             _model = new();
             _selectedPolicy = null;
             _uploadedFileName = null;
@@ -294,6 +305,12 @@
         _uploadedFileContent = null;
     }
 
+    public async ValueTask DisposeAsync()
+    {
+        if (_claimApiModule is not null)
+            await _claimApiModule.DisposeAsync();
+    }
+
     private class ClaimFormModel
     {
         public string PolicyNumber { get; set; } = string.Empty;
@@ -302,5 +319,6 @@
         public DateOnly IncidentDate { get; set; } = DateOnly.FromDateTime(DateTime.Today);
         public string Description { get; set; } = string.Empty;
     }
-}
 
+    private IJSObjectReference? _claimApiModule;
+}

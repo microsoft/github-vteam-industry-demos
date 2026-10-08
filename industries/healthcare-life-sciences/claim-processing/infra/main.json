@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.31.92.45157",
-      "templateHash": "16205381340172280683"
+      "templateHash": "18070175839926153200"
     }
   },
   "parameters": {
@@ -64,6 +64,20 @@
       "defaultValue": "",
       "metadata": {
         "description": "Foundry agent ID injected into the app (set by the postprovision hook after the agent is created)."
+      }
+    },
+    "foundryGatewayEndpoint": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "Optional APIM gateway endpoint including the imported Foundry API base path."
+      }
+    },
+    "foundryGatewayTokenScope": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "Optional Microsoft Entra audience or /.default scope for the APIM API."
       }
     }
   },
@@ -625,6 +639,12 @@
           },
           "foundryAgentId": {
             "value": "[parameters('foundryAgentId')]"
+          },
+          "foundryGatewayEndpoint": {
+            "value": "[parameters('foundryGatewayEndpoint')]"
+          },
+          "foundryGatewayTokenScope": {
+            "value": "[parameters('foundryGatewayTokenScope')]"
           }
         },
         "template": {
@@ -634,7 +654,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.31.92.45157",
-              "templateHash": "12417020890726814293"
+              "templateHash": "10691385571973670709"
             }
           },
           "parameters": {
@@ -716,6 +736,20 @@
               "metadata": {
                 "description": "Foundry agent ID (set after the agent is created; may be empty on first deploy)."
               }
+            },
+            "foundryGatewayEndpoint": {
+              "type": "string",
+              "defaultValue": "",
+              "metadata": {
+                "description": "Optional APIM gateway endpoint including its API base path."
+              }
+            },
+            "foundryGatewayTokenScope": {
+              "type": "string",
+              "defaultValue": "",
+              "metadata": {
+                "description": "Optional Microsoft Entra audience or /.default scope for the APIM API."
+              }
             }
           },
           "resources": [
@@ -750,6 +784,7 @@
               "properties": {
                 "managedEnvironmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('environmentName'))]",
                 "configuration": {
+                  "activeRevisionsMode": "Single",
                   "ingress": {
                     "external": true,
                     "targetPort": 8080,
@@ -798,6 +833,14 @@
                         {
                           "name": "Foundry__AgentId",
                           "value": "[parameters('foundryAgentId')]"
+                        },
+                        {
+                          "name": "Foundry__GatewayEndpoint",
+                          "value": "[parameters('foundryGatewayEndpoint')]"
+                        },
+                        {
+                          "name": "Foundry__GatewayTokenScope",
+                          "value": "[parameters('foundryGatewayTokenScope')]"
                         }
                       ]
                     }

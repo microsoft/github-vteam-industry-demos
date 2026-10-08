@@ -3,7 +3,7 @@
 @inject ClaimsService ClaimsService
 @inject IClaimWorkflowOrchestrator Orchestrator
 
-<PageTitle>Dashboard — ClaimPortal · Fidelis</PageTitle>
+<PageTitle>Dashboard — ClaimPortal</PageTitle>
 
 <!-- ======================================================
      HERO
@@ -13,7 +13,7 @@
         <div class="row align-items-center gy-4">
             <div class="col-lg-7">
                 <div class="hero-eyebrow">
-                    <span>⚕️</span> Fidelis Insurance · Claims Portal
+                    <span>⚕️</span> Insurance Claims Portal
                 </div>
                 <h1>
                     Claims processing,<br />
@@ -204,4 +204,3 @@
         _pendingClaims  = _claims.Count(c => c.Status == ClaimStatus.Pending);
     }
 }
-
