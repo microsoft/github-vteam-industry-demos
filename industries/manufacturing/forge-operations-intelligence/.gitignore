@@ -1,0 +1,39 @@
+# Squad: ignore runtime state (logs, inbox, sessions)
+# Note: .squad/casting/* is identity and MUST be committed to main, not ignored
+.squad/orchestration-log/
+.squad/log/
+.squad/decisions/inbox/
+.squad/sessions/
+.squad/.scratch/
+.squad/.cache/
+# Squad: SubSquad activation file (local to this machine)
+.squad-workstream
+
+# Phase 1 tooling (secret-free evidence/config are intentionally not ignored)
+__pycache__/
+*.py[cod]
+.venv-phase1/
+infra/main.json
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# Phase 2 application build and offline-check artifacts
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
+backend/.tokenizer-cache/
+.build-cache/
+.pytest_cache/
+data/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+*.sqlite*-journal
+*.sqlite*-wal
+*.sqlite*-shm
