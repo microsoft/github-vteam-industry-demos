@@ -12,7 +12,7 @@ agents for evidence-grounded explanations and recommendations.
 
 - **[Open the Inventory & Replenishment Command Center project](./inventory-replenishment-command-center/)**
 - **[Open the live application](https://ca-retail-consumer-goods-ne-02.thankfulocean-b1b09e44.norwayeast.azurecontainerapps.io)**
-- **[Watch the demo video](./media/retail-inventory-demo.mp4)**
+- **[Watch the demo video](./videos/retail-inventory-demo.mp4)**
 - **[GitHub Copilot CLI + Squad live demo changes](./inventory-replenishment-command-center/LIVE-DEMO-QUICK-CHANGES.md)**
 
 > Public synthetic demo; no sign-in required. State is shared and resettable.
@@ -103,11 +103,11 @@ The solution combines inventory visibility, AI-assisted recommendations, and hum
 
 The solution uses Azure Container Apps, Microsoft Foundry, Azure Blob Storage, and supporting Azure infrastructure to deliver an AI-assisted inventory management experience.
 
-![Retail Azure Solution Architecture](./assets/retail-azure-architecture.png)
+![Retail Azure Solution Architecture](./inventory-replenishment-command-center/docs/retail-azure-architecture.png)
 
 ### Application Preview
 
-![Inventory and Replenishment Command Center](./assets/retail-application-preview.png)
+![Inventory and Replenishment Command Center](./inventory-replenishment-command-center/docs/retail-application-preview.png)
 
 [Explore Project](./inventory-replenishment-command-center/) | [Launch Live Application](https://ca-retail-consumer-goods-ne-02.thankfulocean-b1b09e44.norwayeast.azurecontainerapps.io) | [Watch Demo Video](./videos/retail-inventory-demo.mp4)
 
@@ -133,4 +133,5 @@ https://github.com/user-attachments/assets/ba930ed6-0d68-4621-b200-134da97abf1e
 - [GitHub Copilot CLI + Squad Live Demo Changes](./inventory-replenishment-command-center/LIVE-DEMO-QUICK-CHANGES.md)
 
 > **Demo disclaimer:** The solution uses synthetic inventory data. AI recommendations are advisory, and all inventory movements are simulated and controlled by users.
+
 
