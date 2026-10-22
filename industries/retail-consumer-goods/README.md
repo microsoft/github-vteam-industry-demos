@@ -90,3 +90,46 @@ Additional ideas for future solutions, separate from the implemented demo above:
 - Product Recommendation Engine
 - Loyalty Program Assistant
 - E-commerce Support Agent
+
+## Featured Demo — Inventory & Replenishment Command Center
+
+### AI-Assisted Inventory Investigation & Replenishment Planning
+
+Harbour & Lane demonstrates how retail operations teams can identify inventory risks, investigate stock availability, and evaluate replenishment options using deterministic business logic and Microsoft Foundry AI agents.
+
+The solution combines inventory visibility, AI-assisted recommendations, and human-controlled replenishment simulations.
+
+### Solution Architecture
+
+The solution uses Azure Container Apps, Microsoft Foundry, Azure Blob Storage, and supporting Azure infrastructure to deliver an AI-assisted inventory management experience.
+
+![Retail Azure Solution Architecture](./assets/retail-azure-architecture.png)
+
+### Application Preview
+
+![Inventory and Replenishment Command Center](./assets/retail-application-preview.png)
+
+[Explore Project](./inventory-replenishment-command-center/) | [Launch Live Application](https://ca-retail-consumer-goods-ne-02.thankfulocean-b1b09e44.norwayeast.azurecontainerapps.io) | [Watch Demo Video](./videos/retail-inventory-demo.mp4)
+
+---
+
+## Watch the Demo — Inventory & Replenishment Command Center
+
+See how GitHub Copilot CLI and Squad were used to build and deploy an end-to-end retail inventory management application powered by Microsoft Foundry agents.
+
+The demo covers the business scenario, application experience, AI agents, and the development approach.
+
+**[Watch the full demo video](./videos/retail-inventory-demo.mp4)**
+
+<!-- GITHUB_VIDEO_EMBED_PLACEHOLDER -->
+
+---
+
+## Project Resources
+
+- [Explore the Inventory & Replenishment Command Center](./inventory-replenishment-command-center/)
+- [Project README](./inventory-replenishment-command-center/README.md)
+- [GitHub Copilot CLI + Squad Live Demo Changes](./inventory-replenishment-command-center/LIVE-DEMO-QUICK-CHANGES.md)
+
+> **Demo disclaimer:** The solution uses synthetic inventory data. AI recommendations are advisory, and all inventory movements are simulated and controlled by users.
+
