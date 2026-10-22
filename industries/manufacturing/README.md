@@ -33,3 +33,14 @@ FORGE demonstrates manufacturing operations monitoring, AI-powered incident inve
 [Explore Project](./forge-operations-intelligence/README.md) |
 [Launch Live Application](https://ca-manufacturing-01.ambitioussky-87dc9783.swedencentral.azurecontainerapps.io) |
 [Watch Demo Video](./videos/manufacturing-demo.mp4)
+
+---
+
+### Watch the Demo — FORGE Operations Intelligence
+
+See how GitHub Copilot CLI and Squad were used to build and deploy a complete Manufacturing AI application, including two Microsoft Foundry agents.
+
+
+
+https://github.com/user-attachments/assets/c64f1fd6-a657-4b69-abbe-d807e136de9f
+
