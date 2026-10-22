@@ -1,0 +1,27 @@
+flowchart TB
+    %%{init: {"theme":"base","htmlLabels":false,"fontFamily":"Segoe UI","themeVariables":{"fontFamily":"Segoe UI","primaryTextColor":"#142d4e","lineColor":"#0078d4","edgeLabelBackground":"#fafcfe"},"flowchart":{"htmlLabels":false,"wrappingWidth":1600,"curve":"linear"}}}%%
+    consultant["Professional Services Consultant<br/>Browser"]
+    app["Azure Container Apps<br/>AI Proposal Factory<br/>React frontend + Python FastAPI backend<br/>PDF export"]
+    subgraph foundry["Microsoft Foundry"]
+        direction LR
+        analyst["Requirements<br/>Analyst"]
+        writer["Proposal<br/>Writer"]
+        reviewer["Risk<br/>Reviewer"]
+        analyst --> writer --> reviewer
+    end
+    search["Azure AI Search<br/>Organizational knowledge retrieval<br/>Grounded proposal generation"]
+    storage["Azure Storage<br/>Documents and application data"]
+    consultant -->|HTTPS| app
+    app -->|Agent orchestration| foundry
+    app -->|Knowledge retrieval| search
+    app -->|Read / write| storage
+    footer["Built with GitHub Copilot CLI + Squad | Deployed using Bicep + Azure Developer CLI"]
+    storage ~~~ footer
+
+    classDef core fill:#ffffff,stroke:#0078d4,color:#142d4e
+    classDef agent fill:#f2f7fc,stroke:#c9d9e8,color:#142d4e
+    classDef annotation fill:transparent,stroke:transparent,color:#506680,font-size:14px
+    class consultant,app,search,storage core
+    class analyst,writer,reviewer agent
+    class footer annotation
+    style foundry fill:#ffffff,stroke:#c9d9e8,color:#142d4e
