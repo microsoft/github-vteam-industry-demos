@@ -65,3 +65,4 @@ The implementation followed three phases:
 - [Azure Architecture](./ai-proposal-factory/docs/architecture/)
 - [Demo Video](./videos/Professional-Services-Demo.mp4)
 - [Live Application](https://ca-professional-services-04.graysmoke-ab215499.swedencentral.azurecontainerapps.io/)
+
