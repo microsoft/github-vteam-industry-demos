@@ -35,7 +35,8 @@ The solution uses three specialist Microsoft Foundry agents to analyze requireme
 
 See how GitHub Copilot CLI and Squad were used to build and deploy a complete Professional Services AI application on Microsoft Azure, including three Microsoft Foundry agents.
 
-<!-- DEMO_VIDEO_PLAYER -->
+
+https://github.com/user-attachments/assets/3c3a9fcc-9fc5-4eea-a985-cc5c3e513fa5
 
 [Open Demo Video](./videos/Professional-Services-Demo.mp4)
 
