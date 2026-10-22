@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1680" height="980" viewBox="0 0 1680 980" role="img" aria-labelledby="title description">
+  <title id="title">FORGE Operations Intelligence - Azure solution architecture</title>
+  <desc id="description">Manufacturing operations users access a React and TypeScript frontend over public HTTPS. Azure Container Apps hosts the frontend and Python FastAPI backend together. The backend reads and writes local SQLite demo persistence inside the same Container App, and authenticates to Microsoft Foundry using Azure Managed Identity. Foundry project manufacturing-operations-01 uses GPT-4.1-mini for the Downtime Investigation Agent and Maintenance Advisor Agent. SQLite is not production-grade durable storage; container restart or replacement may lose all demo state. AI-generated recommendations require human review and approval.</desc>
+  <metadata>Official Azure service icons: Microsoft Azure Architecture Center, Azure Public Service Icons V24. https://learn.microsoft.com/azure/architecture/icons/ . Used under Microsoft's architecture-diagram icon terms. Browser, Container Apps Environments, Managed Identities, and Microsoft Foundry artwork is embedded without alteration.</metadata>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M1 1 9 5 1 9Z" fill="#147d83"/>
+    </marker>
+    <image id="icon-browser" width="48" height="48" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImI4NWUyYmYwLTNhMmYtNGNjMi1hZTVmLTYwZmU1ODgxYTJhNSIgeDE9IjkiIHkxPSIxNS44MzQiIHgyPSI5IiB5Mj0iNS43ODgiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMzMmJlZGQiIC8+PHN0b3Agb2Zmc2V0PSIwLjE3NSIgc3RvcC1jb2xvcj0iIzMyY2FlYSIgLz48c3RvcCBvZmZzZXQ9IjAuNDEiIHN0b3AtY29sb3I9IiMzMmQyZjIiIC8+PHN0b3Agb2Zmc2V0PSIwLjc3NSIgc3RvcC1jb2xvcj0iIzMyZDRmNSIgLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48dGl0bGU+TXNQb3J0YWxGeC5iYXNlLmltYWdlcy0xNTwvdGl0bGU+PGcgaWQ9ImUzZTMxMzMzLTMxZjQtNDBkOC05ODg2LWQzYTFjNThkNzY3OSI+PGc+PHBhdGggZD0iTS41LDUuNzg4aDE3YTAsMCwwLDAsMSwwLDB2OS40NzhhLjU2OC41NjgsMCwwLDEtLjU2OC41NjhIMS4wNjhBLjU2OC41NjgsMCwwLDEsLjUsMTUuMjY2VjUuNzg4QTAsMCwwLDAsMSwuNSw1Ljc4OFoiIGZpbGw9InVybCgjYjg1ZTJiZjAtM2EyZi00Y2MyLWFlNWYtNjBmZTU4ODFhMmE1KSIgLz48cGF0aCBkPSJNMS4wNzEsMi4xNjZIMTYuOTI5YS41NjguNTY4LDAsMCwxLC41NjguNTY4VjUuNzg4YTAsMCwwLDAsMSwwLDBILjVhMCwwLDAsMCwxLDAsMFYyLjczNEEuNTY4LjU2OCwwLDAsMSwxLjA3MSwyLjE2NloiIGZpbGw9IiMwMDc4ZDQiIC8+PHJlY3QgeD0iMi43ODciIHk9IjMuMjQ4IiB3aWR0aD0iMTIuNDI2IiBoZWlnaHQ9IjEuNDU5IiByeD0iMC4yODQiIGZpbGw9IiNmMmYyZjIiIC8+PC9nPjwvZz48L3N2Zz4="/>
+    <image id="icon-container" width="48" height="48" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImEzYTQ0MDkzLWIxNTctNDI2ZS1hOGZlLWNlYzlmOWMyMzk3OCIgeDE9IjExLjcyOSIgeTE9IjQuODgiIHgyPSIxMS43MjkiIHkyPSIxMy4wOTkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBvZmZzZXQ9IjAuMDAxIiBzdG9wLWNvbG9yPSIjNzczYWRjIiAvPjxzdG9wIG9mZnNldD0iMC41MjgiIHN0b3AtY29sb3I9IiM2NjM1YmIiIC8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNTUyZjk5IiAvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJhZDgzODg1OS0wM2Y0LTQ3MmYtODFiYy1lYmM5MjFkNzEzMzUiIHgxPSI2LjM1IiB5MT0iMTMuOTE0IiB4Mj0iNi4zNSIgeTI9IjQuMTk4IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIwLjAwMSIgc3RvcC1jb2xvcj0iIzc3M2FkYyIgLz48c3RvcCBvZmZzZXQ9IjAuMzA3IiBzdG9wLWNvbG9yPSIjNzkzZGRkIiAvPjxzdG9wIG9mZnNldD0iMC41MzIiIHN0b3AtY29sb3I9IiM4MDQ2ZTEiIC8+PHN0b3Agb2Zmc2V0PSIwLjczMSIgc3RvcC1jb2xvcj0iIzhjNTZlNyIgLz48c3RvcCBvZmZzZXQ9IjAuOTE1IiBzdG9wLWNvbG9yPSIjOWM2ZGVmIiAvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2E2N2FmNCIgLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48ZyBpZD0iYWU4MjQ3MGQtN2E2Yy00ZGZlLTg1MzMtNTlkOGZmOTQ4NjI5Ij48Zz48cGF0aCBkPSJNOC42MTcsOC42NDRILjYzOVYxLjc4NEExLjE2LDEuMTYsMCwwLDEsMS43ODguNjI0SDguNjE3Wk0xLjYzLDcuNjUzaDZWMS41OTRIMS43ODhhLjE1OC4xNTgsMCwwLDAtLjE1OC4xNThoMFoiIGZpbGw9IiM5NDk0OTQiIC8+PHBhdGggZD0iTTE3LjUsOC42NDRIOS41MjNWLjYyNGg2LjgyOEExLjE2LDEuMTYsMCwwLDEsMTcuNSwxLjc4NFptLTYuOTg3LS45OTFoNlYxLjc4NGEuMTU3LjE1NywwLDAsMC0uMTIzLS4xODcuMi4yLDAsMCwwLS4wMzUsMEgxMC41MTNaIiBmaWxsPSIjOTQ5NDk0IiAvPjxwYXRoIGQ9Ik04LjYxNywxNy40ODVIMS43ODhBMS4xNDksMS4xNDksMCwwLDEsLjYzOSwxNi4zNDdWOS40NzZIOC42MTdaTTEuNjMsMTAuNDY3djUuODhhLjE1OC4xNTgsMCwwLDAsLjE1OC4xNThINy42MjZWMTAuNDY3WiIgZmlsbD0iIzk0OTQ5NCIgLz48cGF0aCBkPSJNMTYuMzUxLDE3LjQ4NUg5LjUyM1Y5LjQ3NkgxNy41djYuODcxQTEuMTQ5LDEuMTQ5LDAsMCwxLDE2LjM1MSwxNy40ODVabS01LjgzOC0uOTkxaDUuODM4YS4xNTcuMTU3LDAsMCwwLC4xNTgtLjE1OFYxMC40NjdoLTZaIiBmaWxsPSIjOTQ5NDk0IiAvPjxwYXRoIGQ9Ik0xNC42LDYuMjk0YS4yOTQuMjk0LDAsMCwwLS4yLS4yNzhMOS4wNDQsNC4yMDVBLjEyOC4xMjgsMCwwLDAsOSw0LjJIOWEuMTMyLjEzMiwwLDAsMC0uMTMzLjEzM3Y5LjQ0NUEuMTMzLjEzMywwLDAsMCw5LDEzLjkxMUg5YS4xMzguMTM4LDAsMCwwLC4wNDktLjAxbDUuMzY1LTIuMTQ1YS4yOTIuMjkyLDAsMCwwLC4xODQtLjI3MloiIGZpbGw9InVybCgjYTNhNDQwOTMtYjE1Ny00MjZlLWE4ZmUtY2VjOWY5YzIzOTc4KSIgLz48cGF0aCBkPSJNOC45NjYsNC4ybC01LjI5My45NjZhLjE2MS4xNjEsMCwwLDAtLjEzLjE1OFYxMi42M2EuMTYuMTYsMCwwLDAsLjEyNi4xNTdMOC45NjIsMTMuOTFhLjE2MS4xNjEsMCwwLDAsLjE5MS0uMTIxLjIyLjIyLDAsMCwwLDAtLjAzNlY0LjM1OEEuMTYuMTYsMCwwLDAsOSw0LjIuMTYzLjE2MywwLDAsMCw4Ljk2Niw0LjJaIiBmaWxsPSJ1cmwoI2FkODM4ODU5LTAzZjQtNDcyZi04MWJjLWViYzkyMWQ3MTMzNSkiIC8+PHBhdGggZD0iTTYuNTIsNS42NTZ2Ni44bDEuODQyLjNWNS4zMzVabS0yLjI2Mi4zNjd2NS45NTVsMS42LjMyNlY1Ljc1NFoiIGZpbGw9IiNiNzk2ZjkiIG9wYWNpdHk9IjAuNSIgLz48L2c+PC9nPjwvc3ZnPg=="/>
+    <image id="icon-identity" width="48" height="48" xlink:href="data:image/svg+xml;base64,PHN2ZyBpZD0iZjgwN2NkZGUtMThmMi00NTc0LWJhMTQtZjBiMWVlZjk0YTRhIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJiNjdiMTU0LWFmOGYtNGE1My1hOWNlLWFhMDQ2YjkzOThlOSIgeDE9IjEzLjE4IiB5MT0iMTMuMDEiIHgyPSI4LjYzIiB5Mj0iNC4zOCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzE5ODhkOSIgLz48c3RvcCBvZmZzZXQ9IjAuOSIgc3RvcC1jb2xvcj0iIzU0YWVmMCIgLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iYTQ3ZDcxMzgtMDg0YS00NzFkLThkNjMtNzQ0ZTc1YjllOGEzIiB4MT0iMTEuMjIiIHkxPSIxMC41IiB4Mj0iMTQuMzciIHkyPSIxNS45MyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMC4xIiBzdG9wLWNvbG9yPSIjNTRhZWYwIiAvPjxzdG9wIG9mZnNldD0iMC4yOSIgc3RvcC1jb2xvcj0iIzRmYWJlZSIgLz48c3RvcCBvZmZzZXQ9IjAuNTEiIHN0b3AtY29sb3I9IiM0MWEyZTkiIC8+PHN0b3Agb2Zmc2V0PSIwLjc0IiBzdG9wLWNvbG9yPSIjMmE5M2UwIiAvPjxzdG9wIG9mZnNldD0iMC44OCIgc3RvcC1jb2xvcj0iIzE5ODhkOSIgLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48dGl0bGU+SWNvbi1pZGVudGl0eS0yMjc8L3RpdGxlPjxnPjxwb2x5Z29uIHBvaW50cz0iMS4xNSAxMC4yMiA4LjkzIDE1LjI3IDE2Ljg1IDEwLjIxIDE3Ljg1IDExLjM2IDguOTMgMTcuMTEgMC4xNSAxMS4zNyAxLjE1IDEwLjIyIiBmaWxsPSIjNTBlNmZmIiAvPjxwb2x5Z29uIHBvaW50cz0iMS43MyA5LjU4IDguOTMgMSAxNi4yOCA5LjU5IDguOTMgMTQuMjMgMS43MyA5LjU4IiBmaWxsPSIjZmZmIiAvPjxwb2x5Z29uIHBvaW50cz0iOC45MyAxIDguOTMgMTQuMjMgMS43MyA5LjU4IDguOTMgMSIgZmlsbD0iIzUwZTZmZiIgLz48cG9seWdvbiBwb2ludHM9IjguOTMgMSA4LjkzIDE0LjIzIDE2LjI4IDkuNTkgOC45MyAxIiBmaWxsPSJ1cmwoI2JiNjdiMTU0LWFmOGYtNGE1My1hOWNlLWFhMDQ2YjkzOThlOSkiIC8+PHBvbHlnb24gcG9pbnRzPSI4LjkzIDcuODMgMTYuMjggOS41OSA4LjkzIDE0LjIzIDguOTMgNy44MyIgZmlsbD0iIzUzYjFlMCIgLz48cG9seWdvbiBwb2ludHM9IjguOTMgMTQuMjMgMS43MyA5LjU4IDguOTMgNy44MyA4LjkzIDE0LjIzIiBmaWxsPSIjOWNlYmZmIiAvPjxwb2x5Z29uIHBvaW50cz0iOC45MyAxNy4xMSAxNy44NSAxMS4zNiAxNi44NSAxMC4yMSA4LjkzIDE1LjI3IDguOTMgMTcuMTEiIGZpbGw9InVybCgjYTQ3ZDcxMzgtMDg0YS00NzFkLThkNjMtNzQ0ZTc1YjllOGEzKSIgLz48Zz48cGF0aCBpZD0iZTE4OWE2MWYtNjMxYS00MTIyLWJiMmItMDc5ZTg2MDA0ZDk2IiBkPSJNMTYuMzIsMTEuODhhMS4xNiwxLjE2LDAsMCwwLDAtMS42NWgwbC0yLTJhMS4xNiwxLjE2LDAsMCwwLTEuNjQsMGgwbC0yLDJhMS4xOCwxLjE4LDAsMCwwLDAsMS42NWwxLjY3LDEuNjdhLjMyLjMyLDAsMCwxLC4wOS4yM3YzLjFhLjM2LjM2LDAsMCwwLC4xMi4yOGwuNzYuNzZhLjI1LjI1LDAsMCwwLC4zNywwbC43My0uNzNoMGwuNDQtLjQ0YS4xNS4xNSwwLDAsMCwwLS4yMWwtLjMxLS4zMWEuMTYuMTYsMCwwLDEsMC0uMjRsLjMxLS4zMWEuMTYuMTYsMCwwLDAsMC0uMjJsLS4zMS0uMzFhLjE1LjE1LDAsMCwxLDAtLjIzbC4zMS0uMzJhLjE1LjE1LDAsMCwwLDAtLjIxbC0uNDQtLjQ0di0uMTZaTTEzLjUsOC43MWEuNjYuNjYsMCwxLDEtLjY2LjY2LjY2LjY2LDAsMCwxLC42Ni0uNjZaIiBmaWxsPSIjZmZjYTAwIiAvPjxwYXRoIGlkPSJmYjcwMzNlZS00NjUwLTQ4ODYtODBjNy1lZGRmNjI1NjBmODUiIGQ9Ik0xMywxN2gwYS4xNC4xNCwwLDAsMCwuMjQtLjExVjE0LjMzYS4xNi4xNiwwLDAsMC0uMDYtLjEzaDBhLjE0LjE0LDAsMCwwLS4yMi4xM3YyLjUxQS4xNS4xNSwwLDAsMCwxMywxN1oiIGZpbGw9IiNmZjkzMDAiIG9wYWNpdHk9IjAuNzUiIC8+PHJlY3QgaWQ9ImIxNjZiOGMyLWI5ZWUtNGMzZC1iZjdhLTc3YmQ1Y2UwNTcwYiIgeD0iMTEuOSIgeT0iMTAuOSIgd2lkdGg9IjMuMjkiIGhlaWdodD0iMC4zOSIgcng9IjAuMTgiIGZpbGw9IiNmZjkzMDAiIG9wYWNpdHk9IjAuNzUiIC8+PHJlY3QgaWQ9ImJhZjQzN2ZlLTM0ODMtNGEyNS05NGJhLTFlODRhNjRjZDJlYiIgeD0iMTEuOSIgeT0iMTEuNTMiIHdpZHRoPSIzLjI5IiBoZWlnaHQ9IjAuMzkiIHJ4PSIwLjE4IiBmaWxsPSIjZmY5MzAwIiBvcGFjaXR5PSIwLjc1IiAvPjwvZz48L2c+PC9zdmc+"/>
+    <image id="icon-foundry" width="48" height="48" xlink:href="data:image/svg+xml;base64,PHN2ZyBpZD0idXVpZC02MjA1MDExNy02MzVlLTQyZWQtOTAyYi0yYmEyZWZkOWE3MjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiB2aWV3Qm94PSIwIDAgMTggMTgiPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0idXVpZC01YTdiZDdmYS02OTM3LTQ0YmQtYTViYS1lMjNlZGRiYjZkMzUiIHgxPSIxMC45MSIgeTE9IjEzLjY2IiB4Mj0iMTMuNjIiIHkyPSIxMy42NiIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIDIwKSBzY2FsZSgxIC0xKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzMwMmVjOSIgLz48c3RvcCBvZmZzZXQ9Ii4xMiIgc3RvcC1jb2xvcj0iIzE1MTY5OCIgLz48c3RvcCBvZmZzZXQ9Ii4yNSIgc3RvcC1jb2xvcj0iIzBhMGI3ZSIgLz48c3RvcCBvZmZzZXQ9Ii40MyIgc3RvcC1jb2xvcj0iIzA5MGM3ZiIgLz48c3RvcCBvZmZzZXQ9Ii41MSIgc3RvcC1jb2xvcj0iIzE0MTY5OCIgLz48c3RvcCBvZmZzZXQ9Ii42MSIgc3RvcC1jb2xvcj0iIzI4MmFjNCIgLz48c3RvcCBvZmZzZXQ9Ii43NyIgc3RvcC1jb2xvcj0iIzhlOGZmNCIgLz48c3RvcCBvZmZzZXQ9Ii44NSIgc3RvcC1jb2xvcj0iI2E3YTZmNyIgLz48c3RvcCBvZmZzZXQ9Ii45MSIgc3RvcC1jb2xvcj0iI2NhY2FmYiIgLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmYiIC8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InV1aWQtYTliMmFjNzgtYmZmMC00NzVkLTg5ZGYtMmM5N2YyMTIyZjkzIiB4MT0iMTIuMjYiIHkxPSI4LjMyIiB4Mj0iMTIuMjYiIHkyPSIxOC4yMyIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIDIwKSBzY2FsZSgxIC0xKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iLjAyIiBzdG9wLWNvbG9yPSIjMjAxYmE2IiAvPjxzdG9wIG9mZnNldD0iLjY0IiBzdG9wLWNvbG9yPSIjMmQyOWM3IiAvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzIwMWJhNiIgLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0idXVpZC0wM2IzYjcwYy0xYzhkLTRiM2YtOTkzNS1kOWRhMmIyMGRlMmYiIHgxPSIxNC4xOSIgeTE9IjguMjciIHgyPSIxNC4xOSIgeTI9IjE0LjQ3IiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMjApIHNjYWxlKDEgLTEpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzUzMGMzIiAvPjxzdG9wIG9mZnNldD0iLjUiIHN0b3AtY29sb3I9IiM2ZDcxZDEiIC8+PHN0b3Agb2Zmc2V0PSIuOTciIHN0b3AtY29sb3I9IiNjMGJmZjUiIC8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZTNlNGZmIiAvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJ1dWlkLWNhYmM4ZWM5LTMyOTMtNDRiOC1hMzNiLTcwODIzZjU4M2IzMCIgeDE9IjYuNTEiIHkxPSIzIiB4Mj0iNi41MSIgeTI9IjE5LjE1IiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMjApIHNjYWxlKDEgLTEpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzAyZWM5IiAvPjxzdG9wIG9mZnNldD0iLjQ1IiBzdG9wLWNvbG9yPSIjMzAyZWM5IiAvPjxzdG9wIG9mZnNldD0iLjk1IiBzdG9wLWNvbG9yPSIjY2FjYWZiIiAvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzdmN2VhZiIgLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBkPSJNMTEuOTYsMTEuNjhzLjA3LS4xLjA3LS4yNHYtMy44N2MwLS44NS42Ni0xLjc2LDEuNTktMi4wMy0uMDYtLjE5LS42NC0yLjExLS44MS0yLjY1LS4xNy0uNTYtLjY3LTEuOS0xLjI5LTEuOSwwLDAsMCwwLS4wMSwwaDBzLS4wOS4wNS0uMTMuMTNjLS4zMi41OC0uNDYsMy4wMi0uNDYsNC44NHYyLjI2Yy4yNy45Ny45MSwzLjIyLjk2LDMuMzUsMCwwLC4wNS4xLjA5LjFoMFoiIGZpbGw9InVybCgjdXVpZC01YTdiZDdmYS02OTM3LTQ0YmQtYTViYS1lMjNlZGRiYjZkMzUpIiAvPjxwYXRoIGQ9Ik0xMS45NiwxMS42OHMuMDctLjEuMDctLjI0di0zLjg3YzAtLjg1LjY2LTEuNzYsMS41OS0yLjAzLS4wNi0uMTktLjY0LTIuMTEtLjgxLTIuNjUtLjE3LS41Ni0uNjctMS45LTEuMjktMS45LDAsMCwwLDAtLjAxLDBoMHMtLjA5LjA1LS4xMy4xM2MtLjMyLjU4LS40NiwzLjAyLS40Niw0Ljg0djIuMjZjLjI3Ljk3LjkxLDMuMjIuOTYsMy4zNSwwLDAsLjA1LjEuMDkuMWgwWiIgZmlsbD0idXJsKCN1dWlkLWE5YjJhYzc4LWJmZjAtNDc1ZC04OWRmLTJjOTdmMjEyMmY5MykiIC8+PHBhdGggZD0iTTE2LjAxLDUuNDZoLTEuODFjLTEuMjEsMC0yLjE3LDEuMDktMi4xNywyLjExdjMuODdjMCwuMTQtLjA0LjI0LS4wNy4yNHMtLjA5LS4xLS4wOS0uMWMwLDAsLjA3LjIxLjE3LjIxaDEuOThjLjYyLDAsMi40OC0uNjEsMi40OC0yLjUydi0zLjI1YzAtLjQxLS4yNC0uNTUtLjQ5LS41NVoiIGZpbGw9InVybCgjdXVpZC0wM2IzYjcwYy0xYzhkLTRiM2YtOTkzNS1kOWRhMmIyMGRlMmYpIiAvPjxwYXRoIGQ9Ik0yLjM0LDE3aDUuMzhjMi4zNSwwLDMuMi0yLjAzLDMuMi0zLjgxdi03LjIzYzAtMi4wOC4xOS00Ljk3LjYxLTQuOTdoLTMuMjNjLS43NywwLTEuNDMuODItMi4xOCwyLjQ4LS43NSwxLjY2LTQuMzYsMTEuODctNC41MiwxMi4zNi0uMjYuNzktLjAyLDEuMTYuNzQsMS4xNloiIGZpbGw9InVybCgjdXVpZC1jYWJjOGVjOS0zMjkzLTQ0YjgtYTMzYi03MDgyM2Y1ODNiMzApIiAvPjwvc3ZnPg=="/>
+    <style>
+      text { font-family: "Segoe UI", Arial, sans-serif; fill: #142d46; }
+      .eyebrow { font-size: 15px; font-weight: 700; letter-spacing: 2.4px; fill: #147d83; }
+      .heading { font-size: 24px; font-weight: 700; }
+      .card-title { font-size: 22px; font-weight: 650; }
+      .body { font-size: 18px; fill: #485e70; }
+      .small { font-size: 16px; fill: #485e70; }
+      .label { font-size: 17px; font-weight: 600; fill: #147d83; }
+      .flow { fill: none; stroke: #147d83; stroke-width: 2.3; stroke-linejoin: round; stroke-linecap: round; marker-end: url(#arrow); }
+      .bidirectional { marker-start: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1680" height="980" fill="#ffffff"/>
+  <rect x="40" y="40" width="6" height="104" rx="3" fill="#147d83"/>
+  <text x="65" y="62" class="eyebrow">MANUFACTURING AI / AZURE SOLUTION ARCHITECTURE</text>
+  <text x="63" y="111" font-size="40" font-weight="750">FORGE <tspan font-weight="400">Operations Intelligence</tspan></text>
+  <text x="65" y="144" class="body">From downtime signals to evidence-linked investigations and human-reviewed maintenance plans.</text>
+  <line x1="40" y1="176" x2="1640" y2="176" stroke="#dce5eb"/>
+
+  <!-- Public user entry point. -->
+  <rect x="40" y="310" width="220" height="190" rx="16" fill="#f5f8fb" stroke="#d3dee8"/>
+  <use xlink:href="#icon-browser" x="62" y="333"/>
+  <text x="62" y="412" class="card-title">User / Browser</text>
+  <text x="62" y="446" class="body">Manufacturing</text>
+  <text x="62" y="472" class="body">operations users</text>
+  <path d="M260 375H350" class="flow"/>
+  <text x="305" y="330" text-anchor="middle" class="label">Public</text>
+  <text x="305" y="353" text-anchor="middle" class="label">HTTPS</text>
+
+  <!-- One application boundary, including the local database. -->
+  <rect x="350" y="210" width="530" height="620" rx="18" fill="#f7fafc" stroke="#b9cad8" stroke-width="1.5"/>
+  <path d="M369 210H861Q880 210 880 229V286H350V229Q350 210 369 210Z" fill="#edf3f8"/>
+  <use xlink:href="#icon-container" x="374" y="224"/>
+  <text x="438" y="254" class="heading">Azure Container Apps</text>
+  <text x="378" y="304" class="small">Single Container App / shared web origin</text>
+
+  <rect x="378" y="324" width="474" height="116" rx="12" fill="#ffffff" stroke="#d3dee8"/>
+  <rect x="378" y="340" width="4" height="84" rx="2" fill="#147d83"/>
+  <text x="400" y="357" class="card-title">Frontend</text>
+  <text x="829" y="356" text-anchor="end" class="label">React + TypeScript</text>
+  <text x="400" y="391" class="body">Production dashboards / equipment health</text>
+  <text x="400" y="418" class="body">Incidents / maintenance plans / activity history</text>
+
+  <path d="M615 448V488" class="flow bidirectional"/>
+  <text x="635" y="474" class="label">Application API</text>
+  <rect x="378" y="496" width="474" height="104" rx="12" fill="#ffffff" stroke="#d3dee8"/>
+  <rect x="378" y="512" width="4" height="72" rx="2" fill="#147d83"/>
+  <text x="400" y="532" class="card-title">Backend</text>
+  <text x="829" y="531" text-anchor="end" class="label">Python FastAPI</text>
+  <text x="400" y="570" class="body">AI orchestration / human approvals / history</text>
+
+  <path d="M615 608V658" class="flow bidirectional"/>
+  <text x="635" y="640" class="label">Read / write</text>
+  <rect x="378" y="666" width="474" height="138" rx="12" fill="#eff8f7" stroke="#9bc8c5" stroke-dasharray="5 4"/>
+  <g transform="translate(400 686)" fill="none" stroke="#147d83" stroke-width="1.8">
+    <path d="M0 7V31C0 40 34 40 34 31V7" fill="#e0f1ee"/>
+    <ellipse cx="17" cy="7" rx="17" ry="7" fill="#ffffff"/>
+    <path d="M0 19C0 28 34 28 34 19"/>
+  </g>
+  <text x="448" y="709" class="card-title">Local SQLite</text>
+  <text x="829" y="708" text-anchor="end" class="label">Demo persistence</text>
+  <text x="400" y="748" class="body">Synthetic data / incidents / AI-generated results</text>
+  <text x="400" y="777" class="body">Human approvals / activity history</text>
+
+  <!-- Identity is an authentication relationship, not a traffic proxy. -->
+  <path d="M852 548H938" class="flow"/>
+  <text x="902" y="511" text-anchor="middle" class="label">Acquire</text>
+  <text x="902" y="533" text-anchor="middle" class="label">token</text>
+  <rect x="938" y="466" width="196" height="178" rx="14" fill="#ffffff" stroke="#b9cad8" stroke-width="1.5"/>
+  <use xlink:href="#icon-identity" x="1012" y="484"/>
+  <text x="1036" y="567" text-anchor="middle" class="card-title">Azure Managed</text>
+  <text x="1036" y="595" text-anchor="middle" class="card-title">Identity</text>
+  <text x="1036" y="624" text-anchor="middle" class="small">Backend authentication</text>
+  <path d="M1134 548H1190" class="flow"/>
+  <text x="1163" y="511" text-anchor="middle" class="label">Token</text>
+  <text x="1163" y="533" text-anchor="middle" class="label">auth</text>
+  <text x="1036" y="684" text-anchor="middle" class="small">Authentication flow;</text>
+  <text x="1036" y="708" text-anchor="middle" class="small">backend calls Foundry</text>
+  <text x="1036" y="732" text-anchor="middle" class="small">directly.</text>
+
+  <!-- Foundry contains both runtime agents and their shared model context. -->
+  <rect x="1190" y="210" width="450" height="620" rx="18" fill="#f5faf9" stroke="#9bc8c5" stroke-width="1.5"/>
+  <path d="M1209 210H1621Q1640 210 1640 229V286H1190V229Q1190 210 1209 210Z" fill="#eaf4f2"/>
+  <use xlink:href="#icon-foundry" x="1214" y="224"/>
+  <text x="1278" y="254" class="heading">Microsoft Foundry</text>
+  <text x="1220" y="319" class="small">FOUNDRY PROJECT</text>
+  <text x="1220" y="349" font-size="22" font-weight="650">manufacturing-operations-01</text>
+  <rect x="1220" y="367" width="390" height="40" rx="8" fill="#ffffff" stroke="#d3e3df"/>
+  <text x="1236" y="393" class="body">Shared model: <tspan font-weight="700" fill="#142d46">GPT-4.1-mini</tspan></text>
+  <text x="1232" y="437" class="eyebrow" style="font-size:13px;letter-spacing:1.8px">TWO RUNTIME AI AGENTS</text>
+
+  <path d="M1190 548H1210" fill="none" stroke="#147d83" stroke-width="2.3"/>
+  <path d="M1210 548V526H1232" class="flow"/>
+  <path d="M1210 548V712H1232" class="flow"/>
+  <rect x="1232" y="454" width="378" height="146" rx="12" fill="#ffffff" stroke="#c4dcd7"/>
+  <rect x="1254" y="475" width="30" height="26" rx="6" fill="#eaf4f2"/>
+  <text x="1269" y="494" text-anchor="middle" font-size="15" font-weight="700" fill="#147d83">01</text>
+  <text x="1296" y="492" class="card-title">Downtime Investigation</text>
+  <text x="1296" y="520" class="card-title">Agent</text>
+  <text x="1254" y="554" class="body">Analyzes machine signals, telemetry</text>
+  <text x="1254" y="580" class="body">and operator observations.</text>
+
+  <rect x="1232" y="626" width="378" height="170" rx="12" fill="#ffffff" stroke="#c4dcd7"/>
+  <rect x="1254" y="647" width="30" height="26" rx="6" fill="#eaf4f2"/>
+  <text x="1269" y="666" text-anchor="middle" font-size="15" font-weight="700" fill="#147d83">02</text>
+  <text x="1296" y="664" class="card-title">Maintenance Advisor</text>
+  <text x="1296" y="692" class="card-title">Agent</text>
+  <text x="1254" y="731" class="body">Recommends maintenance actions,</text>
+  <text x="1254" y="757" class="body">safety checks and preventive</text>
+  <text x="1254" y="783" class="body">measures for human review.</text>
+
+  <rect x="40" y="860" width="1600" height="78" rx="12" fill="#f2f5f8"/>
+  <rect x="40" y="876" width="4" height="46" rx="2" fill="#147d83"/>
+  <text x="62" y="890" font-size="18" font-weight="700">DEMO STORAGE ONLY</text>
+  <text x="295" y="890" class="body">Local SQLite is not production-grade durable storage. Container restart or replacement may lose all state.</text>
+  <text x="62" y="919" class="small">Synthetic manufacturing data only. AI outputs require human review and approval; no autonomous equipment control.</text>
+  <text x="40" y="963" font-size="13" fill="#687e90">Runtime architecture only / build and deployment services intentionally omitted</text>
+  <text x="1640" y="963" text-anchor="end" font-size="13" fill="#687e90">Azure service icons: Microsoft / Azure Architecture Center</text>
+</svg>

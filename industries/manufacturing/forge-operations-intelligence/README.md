@@ -4,7 +4,7 @@
 
 An AI-powered Manufacturing Operations Command Center built using GitHub Copilot CLI, Squad, Microsoft Foundry, and Azure.
 
-[**Live Application**](https://ca-manufacturing-01.ambitioussky-87dc9783.swedencentral.azurecontainerapps.io) | [**Watch Demo Video**](./media/manufacturing-demo.mp4)
+[**Live Application**](https://ca-manufacturing-01.ambitioussky-87dc9783.swedencentral.azurecontainerapps.io) | [**Watch Demo Video**](../videos/manufacturing-demo.mp4)
 
 ![FORGE Manufacturing Dashboard](./media/forge-dashboard.png)
 

@@ -23,8 +23,13 @@ Focus on operational efficiency, automation, and industrial AI scenarios.
 
 FORGE demonstrates manufacturing operations monitoring, AI-powered incident investigation, and human-reviewed maintenance recommendations.
 
+### Solution Architecture
+
+![FORGE Azure Solution Architecture](./forge-operations-intelligence/media/forge-azure-architecture.png)
+### Application Preview
+
 ![FORGE Dashboard](./forge-operations-intelligence/media/forge-dashboard.png)
 
 [Explore Project](./forge-operations-intelligence/README.md) |
 [Launch Live Application](https://ca-manufacturing-01.ambitioussky-87dc9783.swedencentral.azurecontainerapps.io) |
-[Watch Demo Video](./forge-operations-intelligence/media/manufacturing-demo.mp4)
+[Watch Demo Video](./videos/manufacturing-demo.mp4)
