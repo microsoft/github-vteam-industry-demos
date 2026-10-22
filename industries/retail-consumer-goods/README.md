@@ -121,7 +121,8 @@ The demo covers the business scenario, application experience, AI agents, and th
 
 **[Watch the full demo video](./videos/retail-inventory-demo.mp4)**
 
-<!-- GITHUB_VIDEO_EMBED_PLACEHOLDER -->
+https://github.com/user-attachments/assets/ba930ed6-0d68-4621-b200-134da97abf1e
+
 
 ---
 
