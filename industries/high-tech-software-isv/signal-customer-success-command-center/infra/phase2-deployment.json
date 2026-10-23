@@ -1,0 +1,279 @@
+{
+  "phase": 2,
+  "currentPhase": 3,
+  "status": "phase2_complete_phase3_complete",
+  "phase3FinalResults": "PHASE-3-RESULTS.md",
+  "phase3FinalIntegrationEvidence": "infra\\evidence\\phase3-cycle2-validation.json",
+  "phase3FinalCheckedAt": "2026-10-15T14:24:23.861Z",
+  "phase3RemainingBlockers": [],
+  "phase3CurrentAccount": {
+    "id": "acct-002",
+    "revision": 6,
+    "historyEvents": 5,
+    "riskResponseId": "resp_0080a14dc1cebe85006ad0e1d0eaac819597e0c28f3e92ef81",
+    "advisorResponseId": "resp_0e763d64f4fef0de006ad0e1e6c0308197974d4b77b99ee049",
+    "layoutSaveApprovalCompleteRefreshHistoryExportPassed": true,
+    "phase3GenerationCallsTotal": 4
+  },
+  "phase3Patch": "infra\\phase3-deployment.json",
+  "previousPhase2Snapshot": "infra\\evidence\\phase3-prepatch-phase2-deployment.json",
+  "rbacRemediation": {
+    "checkedAt": "2026-10-15T13:30:44.316350+00:00",
+    "status": "verified_deployed_uami_metadata_read",
+    "deploymentName": "phase2-foundry-read",
+    "roleName": "High Tech ISV Foundry Agent Metadata Reader",
+    "roleDefinitionId": "/subscriptions/e2d6ac89-1bb7-420c-97fb-a96dea6c0635/providers/Microsoft.Authorization/roleDefinitions/4e676ed6-972a-5ef1-96f8-8f172ea60fc5",
+    "assignmentId": "97d19333-9e76-55b0-8bc7-79ff9931bb0a",
+    "principalId": "1a5b6869-b2d3-4a3a-a807-8fda903b97c9",
+    "assignableScope": "/subscriptions/e2d6ac89-1bb7-420c-97fb-a96dea6c0635/resourceGroups/rg-high-tech-software-isv-01",
+    "assignmentScope": "/subscriptions/e2d6ac89-1bb7-420c-97fb-a96dea6c0635/resourceGroups/rg-high-tech-software-isv-01/providers/Microsoft.CognitiveServices/accounts/foundry-high-tech-isv-f4ee1f29/projects/proj-high-tech-software-isv-01",
+    "actions": [],
+    "dataActions": ["Microsoft.CognitiveServices/accounts/AIServices/agents/read"],
+    "operationGranularity": "Provider operation also covers agent/thread/message reads; no narrower registered version-read operation.",
+    "httpStatus": 200,
+    "agentVersionModelSchemasMatch": true,
+    "generationCalls": 0,
+    "existingAssignmentsPreserved": true,
+    "appRestartedOrRedeployed": false,
+    "iac": "infra/phase2-foundry-read.bicep",
+    "deployScript": "scripts/deploy-phase2-foundry-read.ps1",
+    "readEvidence": "infra/evidence/phase2-foundry-read-uami.json",
+    "integrationUnblocked": true,
+    "generationVerified": true,
+    "generationVerifiedAt": "2026-10-15T13:37:22.069086+00:00",
+    "generationEvidence": "infra/evidence/phase2-integration-cycle2.json"
+  },
+  "checkedAt": "2026-10-15T14:18:03Z",
+  "subscriptionId": "e2d6ac89-1bb7-420c-97fb-a96dea6c0635",
+  "subscriptionName": "ME-MngEnvMCAP230040-savacristian-1",
+  "resourceGroup": "rg-high-tech-software-isv-01",
+  "region": "swedencentral",
+  "url": "https://ca-high-tech-software-isv-01.gentlebeach-d66a7b07.swedencentral.azurecontainerapps.io",
+  "appName": "ca-high-tech-software-isv-01",
+  "appId": "/subscriptions/e2d6ac89-1bb7-420c-97fb-a96dea6c0635/resourceGroups/rg-high-tech-software-isv-01/providers/Microsoft.App/containerapps/ca-high-tech-software-isv-01",
+  "deploymentName": "phase3-css-patch",
+  "environmentName": "cae-high-tech-software-isv-01",
+  "originalPhase2CreatedResources": [
+    "ca-high-tech-software-isv-01"
+  ],
+  "createdResources": [],
+  "existingResourcesModified": ["ca-high-tech-software-isv-01"],
+  "image": "acrhtisvf4ee1f29.azurecr.io/signal-command-center@sha256:46dc1505599ad4b8dfe506a29e0bbe3dadf8f38578cb34b73c4a578fdd7924c9",
+  "imageTag": "phase3-20261015T140816Z",
+  "imageDigest": "sha256:46dc1505599ad4b8dfe506a29e0bbe3dadf8f38578cb34b73c4a578fdd7924c9",
+  "acrRunId": "dt3",
+  "acrRunStatus": "Succeeded",
+  "identity": {
+    "resourceId": "/subscriptions/e2d6ac89-1bb7-420c-97fb-a96dea6c0635/resourceGroups/rg-high-tech-software-isv-01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-high-tech-software-isv-01",
+    "clientId": "63cf5272-0d17-42ce-ac7d-982d2bb12b71",
+    "principalId": "1a5b6869-b2d3-4a3a-a807-8fda903b97c9",
+    "pullVerifiedByContainerStartup": true,
+    "foundryInvocationVerified": false,
+    "priorImageFoundryInvocationVerified": true,
+    "existingRoles": [
+      "AcrPull",
+      "Foundry Project Runtime User",
+      "Foundry Agent Consumer"
+    ]
+  },
+  "runtime": {
+    "activeRevision": "ca-high-tech-software-isv-01--0000001",
+    "activeRevisionMode": "Single",
+    "minReplicas": 1,
+    "maxReplicas": 1,
+    "observedReplicas": 1,
+    "ready": true,
+    "restartCount": 0,
+    "workers": 1,
+    "cpu": 0.5,
+    "memory": "1Gi",
+    "port": 8000,
+    "externalIngress": true,
+    "allowInsecure": false,
+    "authEnabled": false,
+    "authEvidence": "Empty ACA auth configuration and successful anonymous requests",
+    "httpRedirectStatus": 301,
+    "volumes": [],
+    "environment": [
+      {
+        "name": "SQLITE_PATH",
+        "value": "/app/data/command-center.sqlite3"
+      },
+      {
+        "name": "AZURE_AUTH_MODE",
+        "value": "managed_identity"
+      },
+      {
+        "name": "AZURE_CLIENT_ID",
+        "value": "63cf5272-0d17-42ce-ac7d-982d2bb12b71"
+      },
+      {
+        "name": "FOUNDRY_PROJECT_ENDPOINT",
+        "value": "https://foundry-high-tech-isv-f4ee1f29.services.ai.azure.com/api/projects/proj-high-tech-software-isv-01"
+      }
+    ],
+    "probes": [
+      {
+        "failureThreshold": 3,
+        "httpGet": {
+          "path": "/api/health",
+          "port": 8000,
+          "scheme": "HTTP"
+        },
+        "periodSeconds": 30,
+        "timeoutSeconds": 5,
+        "type": "Liveness"
+      },
+      {
+        "failureThreshold": 3,
+        "httpGet": {
+          "path": "/api/health",
+          "port": 8000,
+          "scheme": "HTTP"
+        },
+        "periodSeconds": 10,
+        "timeoutSeconds": 5,
+        "type": "Readiness"
+      },
+      {
+        "failureThreshold": 12,
+        "httpGet": {
+          "path": "/api/health",
+          "port": 8000,
+          "scheme": "HTTP"
+        },
+        "initialDelaySeconds": 5,
+        "periodSeconds": 5,
+        "timeoutSeconds": 5,
+        "type": "Startup"
+      }
+    ]
+  },
+  "health": {
+    "status": "ok",
+    "account_count": 24,
+    "persistence": {
+      "engine": "sqlite",
+      "ephemeral": true,
+      "path": "/app/data/command-center.sqlite3",
+      "notice": "State may be lost on container restart or replacement."
+    },
+    "agents": {
+      "configured": true,
+      "api_version": "v1",
+      "model": "gpt-4.1-mini",
+      "risk": "customer-churn-risk-analyst:1",
+      "retention": "retention-strategy-advisor:1",
+      "auth_mode": "managed_identity",
+      "runtime_verified_this_process": {
+        "churnRisk": "2026-10-15T14:23:17.631364+00:00",
+        "retentionStrategy": "2026-10-15T14:23:48.223602+00:00"
+      },
+      "notice": "Configuration is not proof of deployed identity invocation."
+    },
+    "demo": {
+      "synthetic": true,
+      "anonymous": true,
+      "workers_required": 1,
+      "replicas_required": 1,
+      "ai_guard": "2 concurrent, 25s/account, 40/hour and 150/day; process-local, not a cost cap"
+    }
+  },
+  "publicChecks": {
+    "scope": "Historical pre-generation deployment-only snapshot; current account and health evidence in phase3FinalIntegrationEvidence.",
+    "checkedAt": "2026-10-15T14:14:46.1244391Z",
+    "url": "https://ca-high-tech-software-isv-01.gentlebeach-d66a7b07.swedencentral.azurecontainerapps.io",
+    "rootStatus": 200,
+    "healthStatus": 200,
+    "accountCount": 24,
+    "frontendScript": "/assets/index-CBa-k89K.js",
+    "frontendScriptStatus": 200,
+    "runtimeVerified": {},
+    "evidence": "infra\\evidence\\phase3-public-smoke.json",
+    "sampleAccountId": "acct-001"
+  },
+  "managedStoreDependencies": [],
+  "sqliteEphemeral": true,
+  "sqliteResetObserved": true,
+  "sqliteResetEvidence": "acct-002 revision6/5 events/risk+plan before; revision1/0 events/no risk or plan after replacement. acct-001 also now seeded revision1. No backup or restoration performed.",
+  "deploymentModelCalls": 0,
+  "integration": {
+    "status": "historical_phase2_passed_pre_css_replacement",
+    "evidenceScope": "All integration fields below describe pre-update Phase 2 only, not current saved SQLite state or process verification. Phase 3 pre-update calls remain in infra\\evidence\\phase3-validation.json. Final current-revision layout and real journey passed in phase3FinalIntegrationEvidence.",
+    "accountId": "acct-001",
+    "riskRoute": "POST /api/accounts/{id}/risk",
+    "planRoute": "POST /api/accounts/{id}/plan",
+    "mutationBody": "revision: latest integer",
+    "minimumSecondsBetweenAiStartsPerAccount": 25,
+    "remainingChecks": [],
+    "runtimeVerifiedThisProcess": {
+      "churnRisk": "2026-10-15T13:36:52.317641+00:00",
+      "retentionStrategy": "2026-10-15T13:37:22.069086+00:00"
+    },
+    "checkedAt": "2026-10-15T13:38:11.877268+00:00",
+    "publicRiskAttempts": 2,
+    "generationCalls": 2,
+    "advisorAttempts": 1,
+    "cycle2RiskAttempts": 1,
+    "cycle2AdvisorAttempts": 1,
+    "successfulResponseIds": [
+      "resp_0b428800bf6f8449006ad0d6eea8dc8197852b74557dec5e63",
+      "resp_07a4ae44604f31ab006ad0d70799588197a8be81f05e7e773d"
+    ],
+    "advisorLinkedToActualRiskOutput": true,
+    "schemasValidated": true,
+    "secondsBetweenAiStarts": 26.001,
+    "publicBrowserVerified": true,
+    "browserViews": ["overview", "portfolio", "customer360", "ai_empty_loading_error", "history"],
+    "customerNotesSavedAndReloaded": true,
+    "savedAccountRevision": 7,
+    "savedHistoryEventCount": 6,
+    "planEditsVerified": true,
+    "actionApprovalVerified": true,
+    "actionCompletionVerified": true,
+    "refreshPersistenceVerified": true,
+    "markdownExportVerified": true,
+    "exportPrerequisite409Verified": true,
+    "blocker": null,
+    "previousBlockerResolvedAt": "2026-10-15T13:30:44.316350+00:00",
+    "rbacChanged": true,
+    "generationStillPending": false,
+    "phase2Complete": true,
+    "evidence": "infra/evidence/phase2-integration-cycle2.json",
+    "persistenceLimit": "Browser refresh verified within same container; SQLite may reset on restart/replacement."
+  },
+  "evidence": [
+    "infra/evidence/phase2-build-request.json",
+    "infra/evidence/phase2-acr-build.json",
+    "infra/evidence/phase2-what-if.json",
+    "infra/evidence/phase2-deployment-outputs.json",
+    "infra/evidence/phase2-containerapp.json",
+    "infra/evidence/phase2-revisions.json",
+    "infra/evidence/phase2-replicas.json",
+    "infra/evidence/phase2-auth.json",
+    "infra/evidence/phase2-health.json",
+    "infra/evidence/phase2-public-smoke.json",
+    "infra/evidence/phase2-integration-live.json",
+    "infra/evidence/phase2-integration-state.json",
+    "infra/evidence/phase2-integration-auth-diagnosis.json",
+    "infra/evidence/phase2-integration-rbac.json",
+    "infra/evidence/phase2-integration-containerapp.json",
+    "infra/evidence/phase2-foundry-read-provider-operations.json",
+    "infra/evidence/phase2-foundry-read-role-candidates.json",
+    "infra/evidence/phase2-foundry-read-role-definition.json",
+    "infra/evidence/phase2-foundry-read-assignments.json",
+    "infra/evidence/phase2-foundry-read-validation.json",
+    "infra/evidence/phase2-foundry-read-what-if.json",
+    "infra/evidence/phase2-foundry-read-deployment-outputs.json",
+    "infra/evidence/phase2-foundry-read-uami.json",
+    "infra/evidence/phase2-foundry-read-public-state.json",
+    "infra/evidence/phase2-foundry-read-replicas.json",
+    "infra/evidence/phase2-foundry-read-final-state.json",
+    "infra/evidence/phase2-foundry-read-after-what-if.json",
+    "infra/evidence/phase2-integration-cycle2.json",
+    "infra/evidence/phase2-cycle2-containerapp.json",
+    "infra/evidence/phase2-cycle2-replicas.json",
+    "infra/evidence/acct-001-success-plan.md"
+  ],
+  "phase3Started": true
+}

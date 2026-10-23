@@ -1,0 +1,194 @@
+{
+  "phase": 3,
+  "status": "phase3_complete_current_revision_layout_and_real_journey_passed",
+  "finalIntegrationAt": "2026-10-15T14:24:23.861Z",
+  "finalResults": "PHASE-3-RESULTS.md",
+  "finalIntegrationEvidence": "infra\\evidence\\phase3-cycle2-validation.json",
+  "remainingBlockers": [],
+  "currentDemoAccount": {
+    "id": "acct-002",
+    "name": "Cobalt Cloudworks",
+    "revision": 6,
+    "historyEvents": 5,
+    "riskResponseId": "resp_0080a14dc1cebe85006ad0e1d0eaac819597e0c28f3e92ef81",
+    "advisorResponseId": "resp_0e763d64f4fef0de006ad0e1e6c0308197974d4b77b99ee049",
+    "humanEditsSaved": true,
+    "firstActionCompleted": true,
+    "refreshHistoryExportPassed": true,
+    "stateScope": "Observed after actual SQLite reset and new real calls; public mutable ephemeral state, not a durability promise."
+  },
+  "checkedAt": "2026-10-15T14:18:03.9657851Z",
+  "subscriptionId": "e2d6ac89-1bb7-420c-97fb-a96dea6c0635",
+  "resourceGroup": "rg-high-tech-software-isv-01",
+  "region": "swedencentral",
+  "appName": "ca-high-tech-software-isv-01",
+  "appId": "/subscriptions/e2d6ac89-1bb7-420c-97fb-a96dea6c0635/resourceGroups/rg-high-tech-software-isv-01/providers/Microsoft.App/containerapps/ca-high-tech-software-isv-01",
+  "url": "https://ca-high-tech-software-isv-01.gentlebeach-d66a7b07.swedencentral.azurecontainerapps.io",
+  "deploymentName": "phase3-css-patch",
+  "image": "acrhtisvf4ee1f29.azurecr.io/signal-command-center@sha256:46dc1505599ad4b8dfe506a29e0bbe3dadf8f38578cb34b73c4a578fdd7924c9",
+  "imageDigest": "sha256:46dc1505599ad4b8dfe506a29e0bbe3dadf8f38578cb34b73c4a578fdd7924c9",
+  "imageTag": "phase3-20261015T140816Z",
+  "acrRunId": "dt3",
+  "acrRunStatus": "Succeeded",
+  "buildFinishedAt": "2026-10-15T15:09:37.099763+01:00",
+  "activeRevision": "ca-high-tech-software-isv-01--0000001",
+  "previousRevision": "ca-high-tech-software-isv-01--iwc1wjp",
+  "previousRevisionRetained": true,
+  "preservationChecks": {
+    "appIdUnchanged": true,
+    "urlUnchanged": true,
+    "identityUnchanged": true,
+    "environmentUnchanged": true,
+    "configurationUnchanged": true,
+    "variablesUnchanged": true,
+    "probesUnchanged": true,
+    "resourcesUnchanged": true,
+    "scaleUnchanged": true,
+    "noVolumes": true,
+    "digestUpdated": true
+  },
+  "createdResources": [],
+  "modifiedResources": [
+    "/subscriptions/e2d6ac89-1bb7-420c-97fb-a96dea6c0635/resourceGroups/rg-high-tech-software-isv-01/providers/Microsoft.App/containerapps/ca-high-tech-software-isv-01"
+  ],
+  "runtime": {
+    "memory": "1Gi",
+    "workers": 1,
+    "ready": true,
+    "minReplicas": 1,
+    "restartCount": 0,
+    "volumes": [],
+    "authEnabled": false,
+    "cpu": 0.5,
+    "port": 8000,
+    "observedReplicas": 1,
+    "mode": "Single",
+    "maxReplicas": 1
+  },
+  "health": {
+    "status": "ok",
+    "account_count": 24,
+    "persistence": {
+      "engine": "sqlite",
+      "ephemeral": true,
+      "path": "/app/data/command-center.sqlite3",
+      "notice": "State may be lost on container restart or replacement."
+    },
+    "agents": {
+      "configured": true,
+      "api_version": "v1",
+      "model": "gpt-4.1-mini",
+      "risk": "customer-churn-risk-analyst:1",
+      "retention": "retention-strategy-advisor:1",
+      "auth_mode": "managed_identity",
+      "runtime_verified_this_process": {
+        "churnRisk": "2026-10-15T14:23:17.631364+00:00",
+        "retentionStrategy": "2026-10-15T14:23:48.223602+00:00"
+      },
+      "notice": "Configuration is not proof of deployed identity invocation."
+    },
+    "demo": {
+      "synthetic": true,
+      "anonymous": true,
+      "workers_required": 1,
+      "replicas_required": 1,
+      "ai_guard": "2 concurrent, 25s/account, 40/hour and 150/day; process-local, not a cost cap"
+    }
+  },
+  "publicChecks": {
+    "scope": "Historical deployment-only snapshot before Integration prepared acct-002; current results in finalIntegrationEvidence.",
+    "checkedAt": "2026-10-15T14:14:46.1244391Z",
+    "url": "https://ca-high-tech-software-isv-01.gentlebeach-d66a7b07.swedencentral.azurecontainerapps.io",
+    "rootStatus": 200,
+    "healthStatus": 200,
+    "accountApiStatus": 200,
+    "accountCount": 24,
+    "frontendScript": "/assets/index-CBa-k89K.js",
+    "frontendScriptStatus": 200,
+    "frontendStylesheet": "/assets/index--vTsP3vT.css",
+    "frontendStylesheetStatus": 200,
+    "deployedTableScrollRules": [
+      ".table-scroll{overflow:auto}",
+      ".table-scroll{position:relative}",
+      ".table-scroll{margin:0 -15px}"
+    ],
+    "health": {
+      "status": "ok",
+      "account_count": 24,
+      "persistence": {
+        "engine": "sqlite",
+        "ephemeral": true,
+        "path": "/app/data/command-center.sqlite3",
+        "notice": "State may be lost on container restart or replacement."
+      },
+      "agents": {
+        "configured": true,
+        "api_version": "v1",
+        "model": "gpt-4.1-mini",
+        "risk": "customer-churn-risk-analyst:1",
+        "retention": "retention-strategy-advisor:1",
+        "auth_mode": "managed_identity",
+        "runtime_verified_this_process": {},
+        "notice": "Configuration is not proof of deployed identity invocation."
+      },
+      "demo": {
+        "synthetic": true,
+        "anonymous": true,
+        "workers_required": 1,
+        "replicas_required": 1,
+        "ai_guard": "2 concurrent, 25s/account, 40/hour and 150/day; process-local, not a cost cap"
+      }
+    },
+    "syntheticAccounts": [
+      {
+        "id": "acct-001",
+        "revision": 1,
+        "historyCount": 0,
+        "hasRisk": false,
+        "hasPlan": false
+      },
+      {
+        "id": "acct-002",
+        "revision": 1,
+        "historyCount": 0,
+        "hasRisk": false,
+        "hasPlan": false
+      }
+    ],
+    "sqliteResetObserved": true,
+    "resetEvidence": "acct-002 before revision6/5 events/risk+plan, after revision1/0 events/no risk or plan",
+      "generationCalls": 0,
+    "liveResponsiveVerification": "pending Integration; served CSS only verified"
+  },
+  "sqliteResetObserved": true,
+  "sourceDelta": [
+    "frontend\\src\\styles.css"
+  ],
+  "backendSourceUnchanged": true,
+  "deploymentGenerationCalls": 0,
+  "generationCalls": 2,
+  "phase3GenerationCallsTotal": 4,
+  "priorActualAiEvidence": "infra\\evidence\\phase3-validation.json",
+  "priorAiEvidenceScope": "Pre-update real two-agent journey only; preserved as dated history, not current live state.",
+  "liveResponsiveVerification": "passed actual deployed Edge390x844 clientWidth/scrollWidth/innerWidth all390, internal scrollLeft200 and seven semantic headers; desktop1440 no overflow; compact dashboard/Customer360 passed",
+  "retentionReadback": "Explicit maxInactiveRevisions100 preserved via same-image app-only reapply; same revision, old revision retained inactive, no deletion",
+  "evidence": [
+    "infra\\evidence\\phase3-cycle2-validation.json",
+    "infra\\evidence\\phase3-cycle2-acct-002-success-plan.md",
+    "infra\\evidence\\phase3-build-request.json",
+    "infra\\evidence\\phase3-acr-build.json",
+    "infra\\evidence\\phase3-image-manifest.json",
+    "infra\\evidence\\phase3-what-if.json",
+    "infra\\evidence\\phase3-retention-what-if.json",
+    "infra\\evidence\\phase3-deployment-outputs.json",
+    "infra\\evidence\\phase3-containerapp.json",
+    "infra\\evidence\\phase3-revisions.json",
+    "infra\\evidence\\phase3-replicas.json",
+    "infra\\evidence\\phase3-auth.json",
+    "infra\\evidence\\phase3-public-smoke.json",
+    "infra\\evidence\\phase3-prepatch-state.json",
+    "infra\\evidence\\phase3-prepatch-phase2-deployment.json",
+    "infra\\evidence\\phase3-prepatch-app-handoff.json",
+    "infra\\evidence\\phase3-fullstack-responsive.json"
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "date": "2026-10-15",
+  "owner": "Fullstack",
+  "phase": "Phase 2 COMPLETE historically; Phase 3 COMPLETE current-revision responsive and real journey verification",
+  "phase3FinalResults": "PHASE-3-RESULTS.md",
+  "phase3FinalIntegrationEvidence": "infra\\evidence\\phase3-cycle2-validation.json",
+  "phase3FinalCheckedAt": "2026-10-15T14:24:23.861Z",
+  "phase3RemainingBlockers": [],
+  "cloudMutationsDuringImplementation": false,
+  "localValidation": {
+    "date": "2026-10-15",
+    "frontendProductionBuildAndTypes": "passed",
+    "focusedBackendTests": "7 passed; unittest backend.tests.test_core",
+    "pythonDependencyConsistency": "pip check passed",
+    "httpSmoke": "HTTP 200 root and built JS asset; health reports 24 accounts and ephemeral SQLite",
+    "browserRender": "Headless Edge executive overview and Customer 360 visually inspected",
+    "realCloudCallsDuringImplementation": false,
+    "dockerImageBuildVerified": true,
+    "dockerBuildLimitation": "Docker CLI installed, but local Docker Desktop Linux daemon is unavailable. Azure must build the actual image in existing ACR.",
+    "deployedManagedIdentityVerified": true
+  },
+  "dockerfile": "Dockerfile",
+  "localBuildCommand": "docker build -t signal-command-center:phase2 .",
+  "azureBuildCommand": ".\\scripts\\build-phase2.ps1 -Phase phase3",
+  "containerPort": 8000,
+  "ingress": "external HTTPS, anonymous, same-origin frontend and API",
+  "minReplicas": 1,
+  "maxReplicas": 1,
+  "workers": 1,
+  "recommendedResources": {
+    "cpu": 0.5,
+    "memory": "1Gi"
+  },
+  "healthProbes": {
+    "startup": {
+      "path": "/api/health",
+      "port": 8000,
+      "initialDelaySeconds": 5,
+      "periodSeconds": 5,
+      "failureThreshold": 12
+    },
+    "readiness": {
+      "path": "/api/health",
+      "port": 8000,
+      "periodSeconds": 10
+    },
+    "liveness": {
+      "path": "/api/health",
+      "port": 8000,
+      "periodSeconds": 30
+    }
+  },
+  "environment": {
+    "SQLITE_PATH": "/app/data/command-center.sqlite3",
+    "AZURE_AUTH_MODE": "managed_identity",
+    "AZURE_CLIENT_ID": "63cf5272-0d17-42ce-ac7d-982d2bb12b71",
+    "FOUNDRY_PROJECT_ENDPOINT": "https://foundry-high-tech-isv-f4ee1f29.services.ai.azure.com/api/projects/proj-high-tech-software-isv-01"
+  },
+  "identityResourceId": "/subscriptions/e2d6ac89-1bb7-420c-97fb-a96dea6c0635/resourceGroups/rg-high-tech-software-isv-01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-high-tech-software-isv-01",
+  "identityObjectId": "1a5b6869-b2d3-4a3a-a807-8fda903b97c9",
+  "registry": "acrhtisvf4ee1f29.azurecr.io",
+  "environmentResourceName": "cae-high-tech-software-isv-01",
+  "resourceGroup": "rg-high-tech-software-isv-01",
+  "subscriptionId": "e2d6ac89-1bb7-420c-97fb-a96dea6c0635",
+  "region": "swedencentral",
+  "agents": [
+    "customer-churn-risk-analyst:1",
+    "retention-strategy-advisor:1"
+  ],
+  "runtimeProtocol": "REST api-version=v1; existing agents/{name}/endpoint/protocols/openai/responses; verify latest version remains 1 before invocation",
+  "scope": "https://ai.azure.com/.default",
+  "persistence": {
+    "engine": "sqlite",
+    "ephemeral": true,
+    "volumes": false,
+    "managedStoreDependencies": [],
+    "seedCount": 24,
+    "seedBehavior": "INSERT OR IGNORE; never overwrite existing rows",
+    "concurrency": "one replica/worker, SQLite WAL, BEGIN IMMEDIATE + integer revision checks"
+  },
+  "budgetGuard": "2 in flight globally; one/account; 25 seconds/account; 40/hour and 150/day/process, including failed attempts. Not a durable spending cap.",
+  "deploymentChecksRequired": [
+    "Historical Phase 2 checklist below already completed on original image. Authorized Phase 3 follow-up also completed on current image; no further calls or deployment required.",
+    "Build actual image in existing ACR; local Docker daemon unavailable during implementation.",
+    "Attach existing UAMI; confirm AcrPull and Foundry invocation permissions without changing unrelated resources.",
+    "GET /api/health reports 24 accounts, sqlite ephemeral, configured agents; no model call.",
+    "Run real risk analyst, wait at least 25 seconds, then retention advisor through public API/UI.",
+    "Verify provenance response IDs, edits/approval persistence on browser refresh and Markdown export.",
+    "Health runtime_verified_this_process is populated only after actual successful schema-valid responses.",
+    "Write PHASE-2-RESULTS.md with actual URL and live findings; stop before Phase 3."
+  ],
+  "deployment": {
+    "status": "phase3_complete",
+    "checkedAt": "2026-10-15T14:18:03Z",
+    "phase3Patch": "infra\\phase3-deployment.json",
+    "previousPhase2Snapshot": "infra\\evidence\\phase3-prepatch-app-handoff.json",
+    "url": "https://ca-high-tech-software-isv-01.gentlebeach-d66a7b07.swedencentral.azurecontainerapps.io",
+    "appName": "ca-high-tech-software-isv-01",
+    "region": "swedencentral",
+    "image": "acrhtisvf4ee1f29.azurecr.io/signal-command-center@sha256:46dc1505599ad4b8dfe506a29e0bbe3dadf8f38578cb34b73c4a578fdd7924c9",
+    "imageDigest": "sha256:46dc1505599ad4b8dfe506a29e0bbe3dadf8f38578cb34b73c4a578fdd7924c9",
+    "imageTag": "phase3-20261015T140816Z",
+    "acrRunId": "dt3",
+    "activeRevision": "ca-high-tech-software-isv-01--0000001",
+    "accountCount": 24,
+    "identityAttached": true,
+    "foundryInvocationVerified": true,
+    "priorImageFoundryInvocationVerified": true,
+    "runtimeVerifiedThisProcess": {
+      "churnRisk": "2026-10-15T14:23:17.631364+00:00",
+      "retentionStrategy": "2026-10-15T14:23:48.223602+00:00"
+    },
+    "currentDemoAccount": "acct-002",
+    "currentDemoRevision": 6,
+    "currentDemoHistoryEvents": 5,
+    "currentRiskResponseId": "resp_0080a14dc1cebe85006ad0e1d0eaac819597e0c28f3e92ef81",
+    "currentAdvisorResponseId": "resp_0e763d64f4fef0de006ad0e1e6c0308197974d4b77b99ee049",
+    "phase3GenerationCallsTotal": 4,
+    "sqliteResetObserved": true,
+    "evidence": "infra/phase2-deployment.json",
+    "integrationNext": "None; Phase3 COMPLETE. Live390/1440 layout and current-revision two-real-call human edit/accept/complete/refresh/history/export passed. Actual SQLite reset accepted; acct-002 then prepared with new real saved plan, revision6/five events. Prior acct-001 outputs remain historical only. Preserve deployment and stop.",
+    "rbacRemediation": {
+      "status": "verified_deployed_uami_metadata_read",
+      "checkedAt": "2026-10-15T13:30:44.316350+00:00",
+      "roleId": "4e676ed6-972a-5ef1-96f8-8f172ea60fc5",
+      "assignmentId": "97d19333-9e76-55b0-8bc7-79ff9931bb0a",
+      "dataActions": ["Microsoft.CognitiveServices/accounts/AIServices/agents/read"],
+      "assignmentScope": "/subscriptions/e2d6ac89-1bb7-420c-97fb-a96dea6c0635/resourceGroups/rg-high-tech-software-isv-01/providers/Microsoft.CognitiveServices/accounts/foundry-high-tech-isv-f4ee1f29/projects/proj-high-tech-software-isv-01",
+      "assignableScope": "Existing resource group only; availability is not an RG-wide permission grant.",
+      "principalId": "1a5b6869-b2d3-4a3a-a807-8fda903b97c9",
+      "readHttpStatus": 200,
+      "generationCalls": 0,
+      "appRestartedOrRedeployed": false,
+      "existingRolesPreserved": true,
+      "iac": "infra/phase2-foundry-read.bicep",
+      "evidence": "infra/evidence/phase2-foundry-read-uami.json"
+    },
+    "integration": {
+      "evidenceScope": "Historical Phase 2 on previous image, not current SQLite state/process. Preserved prepatch snapshot and Phase3 pre-update evidence remain valid historical checks.",
+      "checkedAt": "2026-10-15T13:38:11.877268+00:00",
+      "publicBrowserVerified": true,
+      "customerNotesSaveReloadHistoryVerified": true,
+      "accountId": "acct-001",
+      "savedRevision": 7,
+      "riskAttempts": 2,
+      "generationCalls": 2,
+      "advisorAttempts": 1,
+      "cycle2RiskAttempts": 1,
+      "cycle2AdvisorAttempts": 1,
+      "successfulResponseIds": [
+        "resp_0b428800bf6f8449006ad0d6eea8dc8197852b74557dec5e63",
+        "resp_07a4ae44604f31ab006ad0d70799588197a8be81f05e7e773d"
+      ],
+      "secondsBetweenAiStarts": 26.001,
+      "advisorLinkedToActualRiskOutput": true,
+      "schemasValidated": true,
+      "planEditsVerified": true,
+      "actionApprovalVerified": true,
+      "actionCompletionVerified": true,
+      "refreshPersistenceVerified": true,
+      "markdownExportVerified": true,
+      "historyEventCount": 6,
+      "error": null,
+      "historicalError": "Original public risk 502 and UAMI agents/read403; resolved by narrow role, actual UAMI read200, then successful public analyst/advisor calls. Original failure evidence preserved.",
+      "metadataReadVerified": true,
+      "evidence": "infra/evidence/phase2-integration-cycle2.json",
+      "phase2Complete": true,
+      "phase3Started": true
+    }
+  }
+}
