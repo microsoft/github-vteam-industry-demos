@@ -47,7 +47,9 @@ The demo shows:
 - human-controlled KYC decisions
 - audit history
 
-VIDEO_EMBED_PLACEHOLDER
+
+https://github.com/user-attachments/assets/3629106f-558c-421e-9cf7-71e83adcb4b8
+
 
 > **Synthetic data only — AI assists the investigation; the human analyst makes the final decision.**
 
