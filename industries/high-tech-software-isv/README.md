@@ -111,9 +111,13 @@ The demonstration covers:
 - The Azure solution architecture
 - GitHub Copilot CLI and Squad methodology
 
-**Demo video: Coming soon.**
+### Watch the Full Demonstration
 
-The recording will be added to the [`videos`](videos/) folder and linked here when available.
+See how GitHub Copilot CLI and Squad were used to create Signal, from the initial business use case to a fully deployed Azure AI application.
+
+<video src="https://github.com/microsoft/github-vteam-industry-demos/raw/refs/heads/main/industries/high-tech-software-isv/videos/Signal.demo.mp4" controls width="100%"></video>
+
+[**Watch or Download the Demo Video**](videos/Signal.demo.mp4)
 
 ---
 
@@ -152,3 +156,5 @@ See the [Live Demo Quick Changes Guide](signal-customer-success-command-center/L
 - AI recommendations require human review.
 - No customer outreach is automatically sent.
 - The solution is intended for demonstrations, not production use.
+
+
