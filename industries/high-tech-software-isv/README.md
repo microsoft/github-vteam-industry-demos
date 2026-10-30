@@ -115,6 +115,8 @@ The demonstration covers:
 
 See how GitHub Copilot CLI and Squad were used to create Signal, from the initial business use case to a fully deployed Azure AI application.
 
+https://github.com/user-attachments/assets/166851ff-1446-49a4-81da-d8898bcd6e73
+
 <video src="https://github.com/microsoft/github-vteam-industry-demos/raw/refs/heads/main/industries/high-tech-software-isv/videos/Signal.demo.mp4" controls width="100%"></video>
 
 [**Watch or Download the Demo Video**](videos/Signal.demo.mp4)
